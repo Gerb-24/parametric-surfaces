@@ -13,25 +13,21 @@ def normer(x, start):
     return norm_vec
 
 
-def scaler(func,x, y):
-    u = x/(16*256)*np.pi*4
-    v = y/(16*256)*np.pi*4
+def scaler(func,x, y, xamount, yamount, length, width):
+    u = x/(xamount*length)
+    v = y/(yamount*width)
     newfunc = lambda a, b: func(a,b)*2**8
     return newfunc(u, v)
 
 
-def mapping(x, y):
+def bezscaler(func, x, y, xamount, yamount, length, width):
+    u = x/(xamount*length)*0.99995
+    v = y/(yamount*width)
+    return np.array([func(u,v)[0]*2**4,func(u,v)[1]*2**4,func(u,v)[2]*2**12])
 
-    def mapping_x(x, y):
-        return (3+np.cos(x/2)*np.sin(y)-np.sin(x/2)*np.sin(2*y))*np.cos(x)
 
-    def mapping_y(x, y):
-        return (3+np.cos(x/2)*np.sin(y)-np.sin(x/2)*np.sin(2*y))*np.sin(x)
-
-    def mapping_z(x, y):
-        return np.sin(x/2)*np.sin(y)+np.cos(x/2)*np.sin(2*y)
-
-    return np.array([mapping_x(x,y), mapping_y(x,y), mapping_z(x,y)])
+cos = lambda x: np.cos(x*2*np.pi)
+sin = lambda x: np.sin(x*2*np.pi)
 
 
 def normal_vec(func, x, y):
@@ -295,8 +291,10 @@ cordons
         "active" "0"
 }'''
 
-with open("newmap3.vmf", "w") as text:
-    text.writelines(intro)
-    brushwriter(text, 16, 16, 256, 256, lambda x,y: scaler(mapping,x, y))
-    # file, the amount of copies in x direction, amount in y direction, length (x), width (y).
-    text.writelines(outro)
+
+def filewriter(xamount, yamount, length, width, func, scaling):
+    with open("newmap3.vmf", "w") as text:
+        text.writelines(intro)
+        brushwriter(text, xamount, yamount, length, width, lambda x,y: scaler(func,x, y, xamount, yamount, length, width)  if scaling == 1 else bezscaler(func, x, y, xamount, yamount,length, width))
+        # file, the amount of copies in x direction, amount in y direction, length (x), width (y).
+        text.writelines(outro)
