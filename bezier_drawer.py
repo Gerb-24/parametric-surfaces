@@ -1,5 +1,7 @@
 import sys
+import os
 import bezierfuncs as bez
+import ast
 import parametric_surfaces_builder as ps
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import QPoint, Qt
@@ -10,7 +12,8 @@ class GUI(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setFixedSize(self.size())
-        self.pointlist = [[[0, 10], [0, 20], [0, 30], [0, 40]]]
+        with open("saved.txt", "r") as saved:
+            self.pointlist = ast.literal_eval(saved.readline())
         """these will be the points around which we will construct the bezier curve
         so right now we only construct one bezier curve"""
         self.newpoint = [0, 0]  # this is just a starting value, so not very interesting
@@ -121,6 +124,13 @@ class GUI(QtWidgets.QMainWindow):
         elif e.key() == Qt.Key_C:
             """this will make it go into curve mode"""
             self.curve_mode = True
+
+        elif e.key() == Qt.Key_S:
+            """this will save the created points to saved.txt as a preset to be loaded"""
+            if os.path.exists("saved.txt"):
+                os.remove("saved.txt")
+            with open("saved.txt", "w") as text:
+                text.write(str(self.pointlist))
         elif e.key() == Qt.Key_Space:
             print("enter is hit")
             print(self.pointlist)
