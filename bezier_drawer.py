@@ -1,5 +1,6 @@
 import sys
 import os
+import point_selecter as sel
 import bezierfuncs as bez
 import ast
 import parametric_surfaces_builder as ps
@@ -30,6 +31,8 @@ class GUI(QtWidgets.QMainWindow):
             self.newpoint = [e.pos().x(), e.pos().y()]
             """ this stores the current coordinates of the cursor"""
 
+            self.num = sel.fixed_looper(self.pointlist[self.selected_curve-1],self.newpoint)+1
+
             if self.num == 1 and not self.selected_curve == 1:
                 self.pointlist[self.selected_curve - 2][3] = self.newpoint
             """if it is the first point then we also have to change the last point of the previous curve
@@ -40,9 +43,11 @@ class GUI(QtWidgets.QMainWindow):
             """if it is the last point then we also have to change the last point of the following curve
             but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
 
-            self.pointlist[self.selected_curve-1][self.num-1] = self.newpoint
-            """and here we change the selected point to the new point with the cursor position
-            the selected point is given by num"""
+            if not self.num == 0:
+
+                self.pointlist[self.selected_curve-1][self.num-1] = self.newpoint
+                """and here we change the selected point to the new point with the cursor position
+                the selected point is given by num"""
 
             self.update()
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
@@ -63,7 +68,8 @@ class GUI(QtWidgets.QMainWindow):
             """if it is the last point then we also have to change the last point of the following curve
             but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
 
-            self.pointlist[self.selected_curve-1][self.num-1] = self.newpoint
+            if not self.num == 0:
+                self.pointlist[self.selected_curve-1][self.num-1] = self.newpoint
             """and here we change the selected point to the new point with the cursor position
             the selected point is given by num"""
 
@@ -77,47 +83,40 @@ class GUI(QtWidgets.QMainWindow):
     def keyPressEvent(self, e):
         length = len(self.pointlist)
         if e.key() == Qt.Key_1:
-            """this will either select the curve 1 if it is in curve mode
-            otherwise it will select point 1 of the selected curve"""
+            """this will select curve 1 in curve mode"""
             if self.curve_mode:
                 if 1 <= length:
                     self.selected_curve = 1
                     self.curve_mode = False
-            else:
-                self.num = 1
+
         elif e.key() == Qt.Key_2:
-            """this will either select the curve 2 if it is in curve mode
-            otherwise it will select point 2 of the selected curve"""
+            """this will select curve 2 in curve mode"""
             if self.curve_mode:
                 if 2 <= length:
                     self.selected_curve = 2
                     self.curve_mode = False
-            else:
-                self.num = 2
+
         elif e.key() == Qt.Key_3:
-            """this will either select the curve 3 if it is in curve mode
-            otherwise it will select point 3 of the selected curve"""
+            """this will select curve 3 in curve mode"""
             if self.curve_mode:
                 if 3 <= length:
                     self.selected_curve = 3
                     self.curve_mode = False
-            else:
-                self.num = 3
+
         elif e.key() == Qt.Key_4:
-            """this will either select the curve 4 if it is in curve mode
-            otherwise it will select point 4 of the selected curve"""
+            """this will select curve 4 in curve mode"""
             if self.curve_mode:
                 if 4 <= length:
                     self.selected_curve = 4
                     self.curve_mode = False
-            else:
-                self.num = 4
+
         elif e.key() == Qt.Key_5:
             """this will select curve 5 in curve mode"""
             if self.curve_mode:
                 if 5 <= length:
                     self.selected_curve = 5
                     self.curve_mode = False
+
         elif e.key() == Qt.Key_6:
             """this will select curve 6 in curve mode"""
             if self.curve_mode:
