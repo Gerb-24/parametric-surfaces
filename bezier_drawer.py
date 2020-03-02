@@ -18,13 +18,15 @@ class GUI(QtWidgets.QMainWindow):
         so right now we only construct one bezier curve"""
         self.newpoint = [0, 0]  # this is just a starting value, so not very interesting
         self.num = 1
+        self.dragging = False
         self.selected_curve = 1
         self.curve_mode = False
         # self.Init_UI()
         self.show()
 
     def mousePressEvent(self, e):
-        if not self.curve_mode:
+        if e.button() == Qt.LeftButton and not self.curve_mode:
+            self.dragging = True
             self.newpoint = [e.pos().x(), e.pos().y()]
             """ this stores the current coordinates of the cursor"""
 
@@ -44,6 +46,33 @@ class GUI(QtWidgets.QMainWindow):
 
             self.update()
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
+
+
+    def mouseMoveEvent(self,e):
+        if (e.buttons() & Qt.LeftButton) & self.dragging:
+            self.newpoint = [e.pos().x(), e.pos().y()]
+            """ this stores the current coordinates of the cursor"""
+
+            if self.num == 1 and not self.selected_curve == 1:
+                self.pointlist[self.selected_curve - 2][3] = self.newpoint
+            """if it is the first point then we also have to change the last point of the previous curve
+            but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
+
+            if self.num == 4 and not self.selected_curve == len(self.pointlist):
+                self.pointlist[self.selected_curve][0] = self.newpoint
+            """if it is the last point then we also have to change the last point of the following curve
+            but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
+
+            self.pointlist[self.selected_curve-1][self.num-1] = self.newpoint
+            """and here we change the selected point to the new point with the cursor position
+            the selected point is given by num"""
+
+            self.update()
+            """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
+
+    def mouseReleaseEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            self.dragging = False
 
     def keyPressEvent(self, e):
         length = len(self.pointlist)
@@ -145,8 +174,8 @@ class GUI(QtWidgets.QMainWindow):
         qp.setRenderHint(QtGui.QPainter.Antialiasing)
 
         """here we define some pens and brushes"""
-        redpen = QtGui.QPen(QtCore.Qt.red, 1)
-        bluepen = QtGui.QPen(QtCore.Qt.blue, 1)
+        redpen = QtGui.QPen(QtCore.Qt.red, 2)
+        bluepen = QtGui.QPen(QtCore.Qt.blue, 2)
         blackpen = QtGui.QPen(QtCore.Qt.black, 1)
         brush = QtGui.QBrush(QtCore.Qt.black)
 
@@ -161,7 +190,7 @@ class GUI(QtWidgets.QMainWindow):
             """these are the four points of our curve"""
             for i in range(len(selected_pointlist)):
                 j = i+1
-                qp.drawEllipse(selected_pointlist[i][0], selected_pointlist[i][1], 3, 3)
+                qp.drawEllipse(selected_pointlist[i][0]-3, selected_pointlist[i][1]-3, 6, 6)
                 """there are circles drawn at the places where the points are at"""
                 qp.drawText(selected_pointlist[i][0] + 5, selected_pointlist[i][1] - 3, '%d' % j)
                 """this creates a number at the top left of each circle"""
