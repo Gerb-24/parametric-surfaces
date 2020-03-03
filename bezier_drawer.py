@@ -87,21 +87,21 @@ class GUI(QtWidgets.QMainWindow):
         # Numberedkeys = 9
         # for i in range(Numberedkeys):
         #     curvekeys[i+1]=('Qt.Key_{}'.format(i+1))
-        # 
+        #
         # print(curvekeys)
         # =============================================================================
-        curvekeys = {1: 'Qt.Key_1', 2: 'Qt.Key_2', 3: 'Qt.Key_3', 4: 'Qt.Key_4', 5: 'Qt.Key_5', 6: 'Qt.Key_6', 7: 'Qt.Key_7', 8: 'Qt.Key_8', 9: 'Qt.Key_9'}
+        curvekeys = {1: Qt.Key_1, 2: Qt.Key_2, 3: Qt.Key_3, 4: Qt.Key_4, 5: Qt.Key_5, 6: Qt.Key_6, 7: Qt.Key_7, 8: Qt.Key_8, 9: Qt.Key_9}
         #create dictionary for keys
 
         length = len(self.pointlist)
-        for i,arg in zip(curvekeys):
+        for i,arg in curvekeys.items():
             """this will select curve i in curve mode"""
             if e.key() == arg:
                 if self.curve_mode:
                     if i <= length:
                         self.selected_curve = i
                         self.curve_mode = False
-        
+
 
         if e.key() == Qt.Key_A:
             print("a selected")
