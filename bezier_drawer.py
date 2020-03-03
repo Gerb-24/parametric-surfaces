@@ -81,67 +81,29 @@ class GUI(QtWidgets.QMainWindow):
             self.dragging = False
 
     def keyPressEvent(self, e):
+        # =============================================================================
+        #create dictionary for keys in text
+        # curvekeys = {}
+        # Numberedkeys = 9
+        # for i in range(Numberedkeys):
+        #     curvekeys[i+1]=('Qt.Key_{}'.format(i+1))
+        # 
+        # print(curvekeys)
+        # =============================================================================
+        curvekeys = {1: 'Qt.Key_1', 2: 'Qt.Key_2', 3: 'Qt.Key_3', 4: 'Qt.Key_4', 5: 'Qt.Key_5', 6: 'Qt.Key_6', 7: 'Qt.Key_7', 8: 'Qt.Key_8', 9: 'Qt.Key_9'}
+        #create dictionary for keys
+
         length = len(self.pointlist)
-        if e.key() == Qt.Key_1:
-            """this will select curve 1 in curve mode"""
-            if self.curve_mode:
-                if 1 <= length:
-                    self.selected_curve = 1
-                    self.curve_mode = False
+        for i,arg in zip(curvekeys):
+            """this will select curve i in curve mode"""
+            if e.key() == arg:
+                if self.curve_mode:
+                    if i <= length:
+                        self.selected_curve = i
+                        self.curve_mode = False
+        
 
-        elif e.key() == Qt.Key_2:
-            """this will select curve 2 in curve mode"""
-            if self.curve_mode:
-                if 2 <= length:
-                    self.selected_curve = 2
-                    self.curve_mode = False
-
-        elif e.key() == Qt.Key_3:
-            """this will select curve 3 in curve mode"""
-            if self.curve_mode:
-                if 3 <= length:
-                    self.selected_curve = 3
-                    self.curve_mode = False
-
-        elif e.key() == Qt.Key_4:
-            """this will select curve 4 in curve mode"""
-            if self.curve_mode:
-                if 4 <= length:
-                    self.selected_curve = 4
-                    self.curve_mode = False
-
-        elif e.key() == Qt.Key_5:
-            """this will select curve 5 in curve mode"""
-            if self.curve_mode:
-                if 5 <= length:
-                    self.selected_curve = 5
-                    self.curve_mode = False
-
-        elif e.key() == Qt.Key_6:
-            """this will select curve 6 in curve mode"""
-            if self.curve_mode:
-                if 6 <= length:
-                    self.selected_curve = 6
-                    self.curve_mode = False
-        elif e.key() == Qt.Key_7:
-            """this will select curve 7 in curve mode"""
-            if self.curve_mode:
-                if 7 <= length:
-                    self.selected_curve = 7
-                    self.curve_mode = False
-        elif e.key() == Qt.Key_8:
-            """this will select curve 8 in curve mode"""
-            if self.curve_mode:
-                if 8 <= length:
-                    self.selected_curve = 8
-                    self.curve_mode = False
-        elif e.key() == Qt.Key_9:
-            """this will select curve 9 in curve mode"""
-            if self.curve_mode:
-                if 9 <= length:
-                    self.selected_curve = 9
-                    self.curve_mode = False
-        elif e.key() == Qt.Key_A:
+        if e.key() == Qt.Key_A:
             print("a selected")
             """this will be adding a new curve"""
             lastpoint = self.pointlist[length-1][3]
