@@ -38,9 +38,7 @@ class DraggablePlotExample(PlotCanvas):
         super().__init__(*args, **kwargs)
         self._line =  None
         self._dragging_point = None
-        self.points = []
-        self.currentpoint=None
-        self.currentz = 0
+        self.points = {}
 
         self._init_plot()
 
@@ -73,19 +71,13 @@ class DraggablePlotExample(PlotCanvas):
     def _add_point(self, x, y=None):
         if isinstance(x, MouseEvent):
             x, y = int(x.xdata), int(x.ydata)
-        
-        if self.currentpoint in self.points.keys():
-            pass
-        else:
-            self.points[self.currentpoint] =[x,y,self.currentz]
-        for key in self.points:
-            self.points[x] = y
+        self.points[x] = y
         return x, y
 
     def _remove_point(self, x, _, event=None):
-        if x in self.points():
-            if self._find_neighbor_point(event):
-                self.points.pop(x)
+        if x in self.points:
+            #if self._find_neighbor_point(event):
+            self.points.pop(x)
 
     def _find_neighbor_point(self, event):
         u""" Find point around mouse position
@@ -152,7 +144,7 @@ class App(QMainWindow):
         super().__init__()
         self.left = 400
         self.top = 400
-        self.title = 'PyQt5 matplotlib'
+        self.title = 'PyQt5 matplotlib example - pythonspot.com'
         self.width = 640
         self.height = 400
         self.initUI()
@@ -165,7 +157,7 @@ class App(QMainWindow):
         self.plot.move(0,0)
 
         button = QPushButton('PyQt5 button', self)
-        button.setToolTip('This is a button')
+        button.setToolTip('This s an example button')
         button.move(500,0)
         button.resize(140,100)
 
