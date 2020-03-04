@@ -70,3 +70,20 @@ def curvemaker(pointlist):
         return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y]
 
     ps.filewriter(16, 16, 256, 256, lambda x,y: func(x, y, pointlist), 2)
+
+def general_bezier_curve_range_x(rangelist, pointlist):
+    """Range of points in a curve bezier"""
+    a = []
+    for item in rangelist:
+         a.append(general_bezier_mapping(item, pointlist)[0])
+
+    return a
+
+
+def general_bezier_curve_range_y(rangelist, pointlist):
+    """Range of points in a curve bezier"""
+    a = []
+    for item in rangelist:
+         a.append(general_bezier_mapping(item, pointlist)[1])
+
+    return a
