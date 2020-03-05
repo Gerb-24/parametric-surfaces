@@ -44,6 +44,7 @@ class DraggablePlotExample(PlotCanvas):
         self.num = 1
         self.selected_curve = 1
         self.dragging = False
+        self._lines = None
         self._init_plot()
 
     def _init_plot(self):
@@ -59,7 +60,6 @@ class DraggablePlotExample(PlotCanvas):
         self.draw()
 
     def _update_plot(self):
-        #print(self.pointlist)
         t = np.linspace(0, 1, 1000)
         x = bez.general_bezier_curve_range_x(t, self.pointlist)
         y = bez.general_bezier_curve_range_y(t, self.pointlist)
@@ -68,16 +68,19 @@ class DraggablePlotExample(PlotCanvas):
         for a, b in self.pointlist[0]:
             _point_drawing_list.extend([a, b, 'r.'])
         _handle_drawing_list = []
-        i = 0
-        while i < 4:
+
+        for i in range(0,4,2):
             _handle_drawing_list.extend(
                 [[self.pointlist[0][i][0], self.pointlist[0][i + 1][0]], [self.pointlist[0][i][1], self.pointlist[0][i + 1][1]], 'g-'])
-            i += 2
 
         # if not self.points:
         #     self._line.set_data([], [])
         # else:
-        self._axes.plot(x, y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        if  self._lines:
+            for line in self._lines:
+                self._axes.lines.remove(line)
+        self._lines = self._axes.plot(x, y, "b-", *_handle_drawing_list, *_point_drawing_list)
+
 
             # Update current plot
             # else:
