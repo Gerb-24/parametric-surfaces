@@ -13,8 +13,11 @@ def remove_curvepart(self, pointlist):
     self.plot.update()
     self.plot._update_plot()
 
-def xmin_func(self):
-    self.plot.xmin = int(self.lineEdit_2.text())
-    self.plot.update()
-    self.plot._update_plot()
-    print("AHHA")
+def line_editor(text,changing_property, widget):
+    try:
+        changing_property = int(text)
+    except ValueError:
+        print("thats not a numbo dumbo")
+    print(changing_property)
+    widget.plot.update()
+    widget.plot._update_plot()

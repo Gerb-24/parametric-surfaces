@@ -80,6 +80,8 @@ class DraggablePlotExample(PlotCanvas):
         self.draw()
 
     def _update_plot(self):
+        self._axes.set_xlim(self.xmin, self.xmin+self.diff)
+        self._axes.set_ylim(self.ymin, self.ymin+self.diff)
         t = np.linspace(0, 1, 200)
         self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
         self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
@@ -332,18 +334,29 @@ class AppForm(QMainWindow):
         #this is the xmin lineedit
         self.lineEdit_2 = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit_2.setObjectName("lineEdit_2")
-        self.lineEdit_2.returnPressed.connect(lambda: UIfuncs.xmin_func(self))
-
+        self.lineEdit_2.setText(str(self.plot.xmin))
+        self.lineEdit_2.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit_3, self.plot.xmin, self))
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
+
+
         self.label_3 = QtWidgets.QLabel(self.groupBox_4)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
+
+        #this is the ymin lineedit
         self.lineEdit_3 = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEdit_3.setText(str(self.plot.ymin))
+        self.lineEdit_3.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit_3, self.plot.ymin, self))
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+
+        #this is the difference
         self.lineEdit = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setText(str(self.plot.diff))
+        self.lineEdit.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit.text(), self.plot.diff, self))
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
+
         self.groupBox_5 = QtWidgets.QGroupBox(self.groupBox_2)
         self.groupBox_5.setGeometry(QtCore.QRect(20, 320, 151, 111))
         self.groupBox_5.setObjectName("groupBox_5")
