@@ -6,6 +6,8 @@ def add_curvepart(self, pointlist):
     self.plot._update_plot()
 
 def remove_curvepart(self, pointlist):
+    if self.plot.selected_curve == len(pointlist):
+        self.plot.selected_curve = self.plot.selected_curve - 1
     pointlist.pop()
     self.plot.update()
     self.plot._update_plot()
