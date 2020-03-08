@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import point_selecter as sel
+import UI_functions as UIfuncs
 import bezierfuncs as bez
 import numpy as np
 
@@ -385,7 +386,9 @@ class AppForm(QMainWindow):
         self.groupBox_2.setTitle(_translate("MainWindow", "Tools"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Curvepart tools"))
         self.pushButton.setText(_translate("MainWindow", "add curvepart"))
+        self.pushButton.clicked.connect(lambda: UIfuncs.add_curvepart(self, self.plot.pointlist))
         self.pushButton_2.setText(_translate("MainWindow", "remove curvepart"))
+        self.pushButton_2.clicked.connect(lambda: UIfuncs.remove_curvepart(self, self.plot.pointlist))
         self.pushButton_3.setText(_translate("MainWindow", "invert curve"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Axes"))
         self.label.setText(_translate("MainWindow", "difference:"))
