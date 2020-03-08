@@ -56,9 +56,12 @@ class DraggablePlotExample(PlotCanvas):
         self.num = 1
         self.selected_curve = 1
         self.dragging = False
-        self._init_plot()
         self._lines = None
+        self.xmin = 0
+        self.ymin = 0
+        self.diff = 500
         self.x, self.y = None, None
+        self._init_plot()
         self._update_plot()
 
 
@@ -67,8 +70,8 @@ class DraggablePlotExample(PlotCanvas):
         #self._figure = plt.figure("Example plot")
         #axes = plt.subplot(1, 1, 1)
         self._axes = self._figure.add_subplot(111)
-        self._axes.set_xlim(0, 500)
-        self._axes.set_ylim(0, 500)
+        self._axes.set_xlim(self.xmin, self.xmin+self.diff)
+        self._axes.set_ylim(self.ymin, self.ymin+self.diff)
         self._axes.grid(which="both")
 
         self._figure.canvas.mpl_connect('button_press_event', self._on_click)
@@ -325,8 +328,12 @@ class AppForm(QMainWindow):
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
+
+        #this is the xmin lineedit
         self.lineEdit_2 = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_2.returnPressed.connect(lambda: UIfuncs.xmin_func(self))
+
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.label_3 = QtWidgets.QLabel(self.groupBox_4)
         self.label_3.setObjectName("label_3")
