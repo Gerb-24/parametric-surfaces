@@ -62,14 +62,14 @@ def general_bezier_mapping(t, pointlist):
     return totalcurve(t, 0, funclist)
 
 
-def curvemaker(pointlist):
+def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
     def mapping(t, pointlist):
         return general_bezier_mapping(t, pointlist)
 
-    def func(x, y, pointlist):
-        return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y]
+    def func(x, y, pointlist, height):
+        return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y/(yamount*dispwidth)*height]
 
-    ps.filewriter(16, 16, 256, 256, lambda x,y: func(x, y, pointlist), 2)
+    ps.filewriter(xamount, yamount, displength, dispwidth, lambda x,y: func(x, y, pointlist, height), 2)
 
 def general_bezier_curve_range_x(rangelist, pointlist):
     """Range of points in a curve bezier"""

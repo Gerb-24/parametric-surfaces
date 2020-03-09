@@ -291,6 +291,7 @@ class AppForm(QMainWindow):
         #plot 3d graph
         #self.plot2 = Surface3D(self, width=5, height=4)
         #self.plot2.move(600,0)
+        self.vmfdict = {"height": 16*256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
         self.Ui_MainWindow()
         self.retranslateUi()
 
@@ -375,11 +376,13 @@ class AppForm(QMainWindow):
         # this is the height
         self.lineEdit_4 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_4.setObjectName("lineEdit_4")
+        self.lineEdit_4.setText(str(self.vmfdict["height"])
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
 
         # this is the xamount
         self.lineEdit_5 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_5.setObjectName("lineEdit_5")
+        self.lineEdit_5.setText(str(self.vmfdict["xamount"])
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_5)
 
         self.label_5 = QtWidgets.QLabel(self.groupBox_5)
@@ -393,6 +396,7 @@ class AppForm(QMainWindow):
         # this is the yamount
         self.lineEdit_6 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_6.setObjectName("lineEdit_6")
+        self.lineEdit_6.setText(str(self.vmfdict["yamount"])
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_6)
 
 
@@ -403,6 +407,7 @@ class AppForm(QMainWindow):
         # this is the displength
         self.lineEdit_7 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_7.setObjectName("lineEdit_7")
+        self.lineEdit_7.setText(str(self.vmfdict["displength"])
         self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_7)
 
         self.label_8 = QtWidgets.QLabel(self.groupBox_5)
@@ -412,6 +417,7 @@ class AppForm(QMainWindow):
         # this is the dispwidth
         self.lineEdit_8 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_8.setObjectName("lineEdit_8")
+        self.lineEdit_8.setText(str(self.vmfdict["dispwidth"])
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
 
         #make vmf button
@@ -466,14 +472,8 @@ class AppForm(QMainWindow):
         self.actionLoad.setText(_translate("MainWindow", "Load"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
 
-    def updateplot1(self):
-        self.plot._update_plot()
-
-    def updateplot2(self):
-        self.plot2.update_plot(self.plot.x,self.plot.y,graph_depth=self.slider.value())
-
     def vmf_maker(self):
-        bez.curvemaker(self.plot.pointlist)
+        bez.curvemaker(self.plot.pointlist, *self.vmfdict.values())
         sys.exit()
 
     def keyPressEvent(self, e):
