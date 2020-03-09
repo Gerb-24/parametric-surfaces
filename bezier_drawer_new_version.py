@@ -376,13 +376,13 @@ class AppForm(QMainWindow):
         # this is the height
         self.lineEdit_4 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_4.setObjectName("lineEdit_4")
-        self.lineEdit_4.setText(str(self.vmfdict["height"])
+        self.lineEdit_4.setText(str(self.vmfdict["height"]))
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
 
         # this is the xamount
         self.lineEdit_5 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_5.setObjectName("lineEdit_5")
-        self.lineEdit_5.setText(str(self.vmfdict["xamount"])
+        self.lineEdit_5.setText(str(self.vmfdict["xamount"]))
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_5)
 
         self.label_5 = QtWidgets.QLabel(self.groupBox_5)
@@ -396,7 +396,7 @@ class AppForm(QMainWindow):
         # this is the yamount
         self.lineEdit_6 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_6.setObjectName("lineEdit_6")
-        self.lineEdit_6.setText(str(self.vmfdict["yamount"])
+        self.lineEdit_6.setText(str(self.vmfdict["yamount"]))
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_6)
 
 
@@ -407,7 +407,7 @@ class AppForm(QMainWindow):
         # this is the displength
         self.lineEdit_7 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_7.setObjectName("lineEdit_7")
-        self.lineEdit_7.setText(str(self.vmfdict["displength"])
+        self.lineEdit_7.setText(str(self.vmfdict["displength"]))
         self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_7)
 
         self.label_8 = QtWidgets.QLabel(self.groupBox_5)
@@ -417,7 +417,7 @@ class AppForm(QMainWindow):
         # this is the dispwidth
         self.lineEdit_8 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_8.setObjectName("lineEdit_8")
-        self.lineEdit_8.setText(str(self.vmfdict["dispwidth"])
+        self.lineEdit_8.setText(str(self.vmfdict["dispwidth"]))
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
 
         #make vmf button
