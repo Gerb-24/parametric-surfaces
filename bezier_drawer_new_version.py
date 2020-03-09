@@ -331,11 +331,11 @@ class AppForm(QMainWindow):
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
 
-        #this is the xmin lineedit
+        # this is the xmin lineedit
         self.lineEdit_2 = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_2.setText(str(self.plot.xmin))
-        self.lineEdit_2.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit_3, self.plot.xmin, self))
+        self.lineEdit_2.returnPressed.connect(lambda: UIfuncs.xmin_setter(self))
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
 
 
@@ -343,43 +343,75 @@ class AppForm(QMainWindow):
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
 
-        #this is the ymin lineedit
+        # this is the ymin lineedit
         self.lineEdit_3 = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_3.setText(str(self.plot.ymin))
-        self.lineEdit_3.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit_3, self.plot.ymin, self))
+        self.lineEdit_3.returnPressed.connect(lambda: UIfuncs.ymin_setter(self))
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
 
-        #this is the difference
+        # this is the difference
         self.lineEdit = QtWidgets.QLineEdit(self.groupBox_4)
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit.setText(str(self.plot.diff))
-        self.lineEdit.returnPressed.connect(lambda: UIfuncs.line_editor(self.lineEdit.text(), self.plot.diff, self))
+        self.lineEdit.returnPressed.connect(lambda: UIfuncs.diff_setter(self))
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
 
         self.groupBox_5 = QtWidgets.QGroupBox(self.groupBox_2)
-        self.groupBox_5.setGeometry(QtCore.QRect(20, 320, 151, 111))
+        self.groupBox_5.setGeometry(QtCore.QRect(20, 320, 151, 160))
         self.groupBox_5.setObjectName("groupBox_5")
         self.formLayout_2 = QtWidgets.QFormLayout(self.groupBox_5)
         self.formLayout_2.setObjectName("formLayout_2")
         self.label_4 = QtWidgets.QLabel(self.groupBox_5)
         self.label_4.setObjectName("label_4")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
+
+        # this is the height
         self.lineEdit_4 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
+
+        # this is the xamount
         self.lineEdit_5 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_5)
+
         self.label_5 = QtWidgets.QLabel(self.groupBox_5)
         self.label_5.setObjectName("label_5")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_5)
+
         self.label_6 = QtWidgets.QLabel(self.groupBox_5)
         self.label_6.setObjectName("label_6")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_6)
+
+        # this is the yamount
         self.lineEdit_6 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_6)
+
+
+        self.label_7 = QtWidgets.QLabel(self.groupBox_5)
+        self.label_7.setObjectName("label_7")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_7)
+
+        # this is the displength
+        self.lineEdit_7 = QtWidgets.QLineEdit(self.groupBox_5)
+        self.lineEdit_7.setObjectName("lineEdit_7")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_7)
+
+        self.label_8 = QtWidgets.QLabel(self.groupBox_5)
+        self.label_8.setObjectName("label_8")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_8)
+
+        # this is the dispwidth
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.groupBox_5)
+        self.lineEdit_8.setObjectName("lineEdit_8")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
+
+        self.pushButton_4 = QtWidgets.QPushButton(self.groupBox_2)
+        self.pushButton_4.setGeometry(QtCore.QRect(50, 530, 91, 28))
+        self.pushButton_4.setObjectName("pushButton_4")
+
         self.menubar = QtWidgets.QMenuBar(self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 26))
         self.menubar.setObjectName("menubar")
@@ -418,6 +450,9 @@ class AppForm(QMainWindow):
         self.label_4.setText(_translate("MainWindow", "height:"))
         self.label_5.setText(_translate("MainWindow", "xamount:"))
         self.label_6.setText(_translate("MainWindow", "yamount:"))
+        self.label_7.setText(_translate("MainWindow", "displength:"))
+        self.label_8.setText(_translate("MainWindow", "dispwidth:"))
+        self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionNew.setText(_translate("MainWindow", "New"))
         self.actionLoad.setText(_translate("MainWindow", "Load"))

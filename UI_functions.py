@@ -14,6 +14,7 @@ def remove_curvepart(self, pointlist):
     self.plot._update_plot()
 
 def line_editor(text,changing_property, widget):
+    """this one still needs some work"""
     try:
         changing_property = int(text)
     except ValueError:
@@ -21,3 +22,31 @@ def line_editor(text,changing_property, widget):
     print(changing_property)
     widget.plot.update()
     widget.plot._update_plot()
+
+
+def diff_setter(self):
+    """this one still needs some work"""
+    try:
+        self.plot.diff = int(self.lineEdit.text())
+    except ValueError:
+        print("thats not a numbo dumbo")
+    self.plot.update()
+    self.plot._update_plot()
+
+def xmin_setter(self):
+    """this one still needs some work"""
+    try:
+        self.plot.xmin = int(self.lineEdit_2.text())
+    except ValueError:
+        print("thats not a numbo dumbo")
+    self.plot.update()
+    self.plot._update_plot()
+
+def ymin_setter(self):
+    """this one still needs some work"""
+    try:
+        self.plot.ymin = int(self.lineEdit_3.text())
+    except ValueError:
+        print("thats not a numbo dumbo")
+    self.plot.update()
+    self.plot._update_plot()
