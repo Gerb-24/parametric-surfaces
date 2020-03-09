@@ -496,8 +496,9 @@ class AppForm(QMainWindow):
                     if i <= length:
                         self.plot.selected_curve = i
                         self.plot.update()
-                        self.updateplot1()
-
+                        self.plot._update_plot()
+        if e.key() == Qt.Key_P:
+            print(self.plot.pointlist)
 
 
 
