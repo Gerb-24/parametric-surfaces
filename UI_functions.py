@@ -1,3 +1,5 @@
+import bezierfuncs as bez
+
 def add_curvepart(self, pointlist):
     length = len(pointlist)
     lastpoint = pointlist[length - 1][3]

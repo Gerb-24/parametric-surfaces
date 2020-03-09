@@ -309,23 +309,29 @@ class AppForm(QMainWindow):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout_3.addWidget(self.pushButton)
+
         self.pushButton_2 = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton_2.setObjectName("pushButton_2")
         self.verticalLayout_3.addWidget(self.pushButton_2)
+
         self.pushButton_3 = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton_3.setObjectName("pushButton_3")
         self.verticalLayout_3.addWidget(self.pushButton_3)
+
         self.groupBox_4 = QtWidgets.QGroupBox(self.groupBox_2)
         self.groupBox_4.setGeometry(QtCore.QRect(20, 190, 151, 111))
         self.groupBox_4.setObjectName("groupBox_4")
         self.formLayout = QtWidgets.QFormLayout(self.groupBox_4)
         self.formLayout.setObjectName("formLayout")
+
         self.label = QtWidgets.QLabel(self.groupBox_4)
         self.label.setObjectName("label")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+
         self.label_2 = QtWidgets.QLabel(self.groupBox_4)
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
@@ -408,9 +414,11 @@ class AppForm(QMainWindow):
         self.lineEdit_8.setObjectName("lineEdit_8")
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
 
+        #make vmf button
         self.pushButton_4 = QtWidgets.QPushButton(self.groupBox_2)
         self.pushButton_4.setGeometry(QtCore.QRect(50, 530, 91, 28))
         self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.clicked.connect(self.vmf_maker)
 
         self.menubar = QtWidgets.QMenuBar(self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 26))
@@ -464,6 +472,9 @@ class AppForm(QMainWindow):
     def updateplot2(self):
         self.plot2.update_plot(self.plot.x,self.plot.y,graph_depth=self.slider.value())
 
+    def vmf_maker(self):
+        bez.curvemaker(self.plot.pointlist)
+        sys.exit()
 
     def keyPressEvent(self, e):
         # =============================================================================
