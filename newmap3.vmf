@@ -48,7 +48,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 0 0]"
                                 "flags" "0"
@@ -208,7 +208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 256 0]"
                                 "flags" "0"
@@ -368,7 +368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 512 0]"
                                 "flags" "0"
@@ -528,7 +528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 768 0]"
                                 "flags" "0"
@@ -688,7 +688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 1024 0]"
                                 "flags" "0"
@@ -848,7 +848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 1280 0]"
                                 "flags" "0"
@@ -1008,7 +1008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 1536 0]"
                                 "flags" "0"
@@ -1168,7 +1168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 1792 0]"
                                 "flags" "0"
@@ -1328,7 +1328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 2048 0]"
                                 "flags" "0"
@@ -1488,7 +1488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 2304 0]"
                                 "flags" "0"
@@ -1648,7 +1648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 2560 0]"
                                 "flags" "0"
@@ -1808,7 +1808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 2816 0]"
                                 "flags" "0"
@@ -1968,7 +1968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 3072 0]"
                                 "flags" "0"
@@ -2128,7 +2128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 3328 0]"
                                 "flags" "0"
@@ -2288,7 +2288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 3584 0]"
                                 "flags" "0"
@@ -2448,7 +2448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[0 3840 0]"
                                 "flags" "0"
@@ -2608,7 +2608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 0 0]"
                                 "flags" "0"
@@ -2768,7 +2768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 256 0]"
                                 "flags" "0"
@@ -2928,7 +2928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 512 0]"
                                 "flags" "0"
@@ -3088,7 +3088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 768 0]"
                                 "flags" "0"
@@ -3248,7 +3248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 1024 0]"
                                 "flags" "0"
@@ -3408,7 +3408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 1280 0]"
                                 "flags" "0"
@@ -3568,7 +3568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 1536 0]"
                                 "flags" "0"
@@ -3728,7 +3728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 1792 0]"
                                 "flags" "0"
@@ -3888,7 +3888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 2048 0]"
                                 "flags" "0"
@@ -4048,7 +4048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 2304 0]"
                                 "flags" "0"
@@ -4208,7 +4208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 2560 0]"
                                 "flags" "0"
@@ -4368,7 +4368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 2816 0]"
                                 "flags" "0"
@@ -4528,7 +4528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 3072 0]"
                                 "flags" "0"
@@ -4688,7 +4688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 3328 0]"
                                 "flags" "0"
@@ -4848,7 +4848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 3584 0]"
                                 "flags" "0"
@@ -5008,7 +5008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[256 3840 0]"
                                 "flags" "0"
@@ -5168,7 +5168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 0 0]"
                                 "flags" "0"
@@ -5328,7 +5328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 256 0]"
                                 "flags" "0"
@@ -5488,7 +5488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 512 0]"
                                 "flags" "0"
@@ -5648,7 +5648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 768 0]"
                                 "flags" "0"
@@ -5808,7 +5808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 1024 0]"
                                 "flags" "0"
@@ -5968,7 +5968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 1280 0]"
                                 "flags" "0"
@@ -6128,7 +6128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 1536 0]"
                                 "flags" "0"
@@ -6288,7 +6288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 1792 0]"
                                 "flags" "0"
@@ -6448,7 +6448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 2048 0]"
                                 "flags" "0"
@@ -6608,7 +6608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 2304 0]"
                                 "flags" "0"
@@ -6768,7 +6768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 2560 0]"
                                 "flags" "0"
@@ -6928,7 +6928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 2816 0]"
                                 "flags" "0"
@@ -7088,7 +7088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 3072 0]"
                                 "flags" "0"
@@ -7248,7 +7248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 3328 0]"
                                 "flags" "0"
@@ -7408,7 +7408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 3584 0]"
                                 "flags" "0"
@@ -7568,7 +7568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[512 3840 0]"
                                 "flags" "0"
@@ -7728,7 +7728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 0 0]"
                                 "flags" "0"
@@ -7888,7 +7888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 256 0]"
                                 "flags" "0"
@@ -8048,7 +8048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 512 0]"
                                 "flags" "0"
@@ -8208,7 +8208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 768 0]"
                                 "flags" "0"
@@ -8368,7 +8368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 1024 0]"
                                 "flags" "0"
@@ -8528,7 +8528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 1280 0]"
                                 "flags" "0"
@@ -8688,7 +8688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 1536 0]"
                                 "flags" "0"
@@ -8848,7 +8848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 1792 0]"
                                 "flags" "0"
@@ -9008,7 +9008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 2048 0]"
                                 "flags" "0"
@@ -9168,7 +9168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 2304 0]"
                                 "flags" "0"
@@ -9328,7 +9328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 2560 0]"
                                 "flags" "0"
@@ -9488,7 +9488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 2816 0]"
                                 "flags" "0"
@@ -9648,7 +9648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 3072 0]"
                                 "flags" "0"
@@ -9808,7 +9808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 3328 0]"
                                 "flags" "0"
@@ -9968,7 +9968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 3584 0]"
                                 "flags" "0"
@@ -10128,7 +10128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[768 3840 0]"
                                 "flags" "0"
@@ -10288,7 +10288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 0 0]"
                                 "flags" "0"
@@ -10448,7 +10448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 256 0]"
                                 "flags" "0"
@@ -10608,7 +10608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 512 0]"
                                 "flags" "0"
@@ -10768,7 +10768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 768 0]"
                                 "flags" "0"
@@ -10928,7 +10928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 1024 0]"
                                 "flags" "0"
@@ -11088,7 +11088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 1280 0]"
                                 "flags" "0"
@@ -11248,7 +11248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 1536 0]"
                                 "flags" "0"
@@ -11408,7 +11408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 1792 0]"
                                 "flags" "0"
@@ -11568,7 +11568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 2048 0]"
                                 "flags" "0"
@@ -11728,7 +11728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 2304 0]"
                                 "flags" "0"
@@ -11888,7 +11888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 2560 0]"
                                 "flags" "0"
@@ -12048,7 +12048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 2816 0]"
                                 "flags" "0"
@@ -12208,7 +12208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 3072 0]"
                                 "flags" "0"
@@ -12368,7 +12368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 3328 0]"
                                 "flags" "0"
@@ -12528,7 +12528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 3584 0]"
                                 "flags" "0"
@@ -12688,7 +12688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1024 3840 0]"
                                 "flags" "0"
@@ -12848,7 +12848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 0 0]"
                                 "flags" "0"
@@ -13008,7 +13008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 256 0]"
                                 "flags" "0"
@@ -13168,7 +13168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 512 0]"
                                 "flags" "0"
@@ -13328,7 +13328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 768 0]"
                                 "flags" "0"
@@ -13488,7 +13488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 1024 0]"
                                 "flags" "0"
@@ -13648,7 +13648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 1280 0]"
                                 "flags" "0"
@@ -13808,7 +13808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 1536 0]"
                                 "flags" "0"
@@ -13968,7 +13968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 1792 0]"
                                 "flags" "0"
@@ -14128,7 +14128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 2048 0]"
                                 "flags" "0"
@@ -14288,7 +14288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 2304 0]"
                                 "flags" "0"
@@ -14448,7 +14448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 2560 0]"
                                 "flags" "0"
@@ -14608,7 +14608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 2816 0]"
                                 "flags" "0"
@@ -14768,7 +14768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 3072 0]"
                                 "flags" "0"
@@ -14928,7 +14928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 3328 0]"
                                 "flags" "0"
@@ -15088,7 +15088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 3584 0]"
                                 "flags" "0"
@@ -15248,7 +15248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1280 3840 0]"
                                 "flags" "0"
@@ -15408,7 +15408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 0 0]"
                                 "flags" "0"
@@ -15568,7 +15568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 256 0]"
                                 "flags" "0"
@@ -15728,7 +15728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 512 0]"
                                 "flags" "0"
@@ -15888,7 +15888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 768 0]"
                                 "flags" "0"
@@ -16048,7 +16048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 1024 0]"
                                 "flags" "0"
@@ -16208,7 +16208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 1280 0]"
                                 "flags" "0"
@@ -16368,7 +16368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 1536 0]"
                                 "flags" "0"
@@ -16528,7 +16528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 1792 0]"
                                 "flags" "0"
@@ -16688,7 +16688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 2048 0]"
                                 "flags" "0"
@@ -16848,7 +16848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 2304 0]"
                                 "flags" "0"
@@ -17008,7 +17008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 2560 0]"
                                 "flags" "0"
@@ -17168,7 +17168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 2816 0]"
                                 "flags" "0"
@@ -17328,7 +17328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 3072 0]"
                                 "flags" "0"
@@ -17488,7 +17488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 3328 0]"
                                 "flags" "0"
@@ -17648,7 +17648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 3584 0]"
                                 "flags" "0"
@@ -17808,7 +17808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1536 3840 0]"
                                 "flags" "0"
@@ -17968,7 +17968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 0 0]"
                                 "flags" "0"
@@ -18128,7 +18128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 256 0]"
                                 "flags" "0"
@@ -18288,7 +18288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 512 0]"
                                 "flags" "0"
@@ -18448,7 +18448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 768 0]"
                                 "flags" "0"
@@ -18608,7 +18608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 1024 0]"
                                 "flags" "0"
@@ -18768,7 +18768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 1280 0]"
                                 "flags" "0"
@@ -18928,7 +18928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 1536 0]"
                                 "flags" "0"
@@ -19088,7 +19088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 1792 0]"
                                 "flags" "0"
@@ -19248,7 +19248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 2048 0]"
                                 "flags" "0"
@@ -19408,7 +19408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 2304 0]"
                                 "flags" "0"
@@ -19568,7 +19568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 2560 0]"
                                 "flags" "0"
@@ -19728,7 +19728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 2816 0]"
                                 "flags" "0"
@@ -19888,7 +19888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 3072 0]"
                                 "flags" "0"
@@ -20048,7 +20048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 3328 0]"
                                 "flags" "0"
@@ -20208,7 +20208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 3584 0]"
                                 "flags" "0"
@@ -20368,7 +20368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[1792 3840 0]"
                                 "flags" "0"
@@ -20528,7 +20528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 0 0]"
                                 "flags" "0"
@@ -20688,7 +20688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 256 0]"
                                 "flags" "0"
@@ -20848,7 +20848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 512 0]"
                                 "flags" "0"
@@ -21008,7 +21008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 768 0]"
                                 "flags" "0"
@@ -21168,7 +21168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 1024 0]"
                                 "flags" "0"
@@ -21328,7 +21328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 1280 0]"
                                 "flags" "0"
@@ -21488,7 +21488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 1536 0]"
                                 "flags" "0"
@@ -21648,7 +21648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 1792 0]"
                                 "flags" "0"
@@ -21808,7 +21808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 2048 0]"
                                 "flags" "0"
@@ -21968,7 +21968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 2304 0]"
                                 "flags" "0"
@@ -22128,7 +22128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 2560 0]"
                                 "flags" "0"
@@ -22288,7 +22288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 2816 0]"
                                 "flags" "0"
@@ -22448,7 +22448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 3072 0]"
                                 "flags" "0"
@@ -22608,7 +22608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 3328 0]"
                                 "flags" "0"
@@ -22768,7 +22768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 3584 0]"
                                 "flags" "0"
@@ -22928,7 +22928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2048 3840 0]"
                                 "flags" "0"
@@ -23088,7 +23088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 0 0]"
                                 "flags" "0"
@@ -23248,7 +23248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 256 0]"
                                 "flags" "0"
@@ -23408,7 +23408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 512 0]"
                                 "flags" "0"
@@ -23568,7 +23568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 768 0]"
                                 "flags" "0"
@@ -23728,7 +23728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 1024 0]"
                                 "flags" "0"
@@ -23888,7 +23888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 1280 0]"
                                 "flags" "0"
@@ -24048,7 +24048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 1536 0]"
                                 "flags" "0"
@@ -24208,7 +24208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 1792 0]"
                                 "flags" "0"
@@ -24368,7 +24368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 2048 0]"
                                 "flags" "0"
@@ -24528,7 +24528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 2304 0]"
                                 "flags" "0"
@@ -24688,7 +24688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 2560 0]"
                                 "flags" "0"
@@ -24848,7 +24848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 2816 0]"
                                 "flags" "0"
@@ -25008,7 +25008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 3072 0]"
                                 "flags" "0"
@@ -25168,7 +25168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 3328 0]"
                                 "flags" "0"
@@ -25328,7 +25328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 3584 0]"
                                 "flags" "0"
@@ -25488,7 +25488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2304 3840 0]"
                                 "flags" "0"
@@ -25648,7 +25648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 0 0]"
                                 "flags" "0"
@@ -25808,7 +25808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 256 0]"
                                 "flags" "0"
@@ -25968,7 +25968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 512 0]"
                                 "flags" "0"
@@ -26128,7 +26128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 768 0]"
                                 "flags" "0"
@@ -26288,7 +26288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 1024 0]"
                                 "flags" "0"
@@ -26448,7 +26448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 1280 0]"
                                 "flags" "0"
@@ -26608,7 +26608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 1536 0]"
                                 "flags" "0"
@@ -26768,7 +26768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 1792 0]"
                                 "flags" "0"
@@ -26928,7 +26928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 2048 0]"
                                 "flags" "0"
@@ -27088,7 +27088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 2304 0]"
                                 "flags" "0"
@@ -27248,7 +27248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 2560 0]"
                                 "flags" "0"
@@ -27408,7 +27408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 2816 0]"
                                 "flags" "0"
@@ -27568,7 +27568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 3072 0]"
                                 "flags" "0"
@@ -27728,7 +27728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 3328 0]"
                                 "flags" "0"
@@ -27888,7 +27888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 3584 0]"
                                 "flags" "0"
@@ -28048,7 +28048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2560 3840 0]"
                                 "flags" "0"
@@ -28208,7 +28208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 0 0]"
                                 "flags" "0"
@@ -28368,7 +28368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 256 0]"
                                 "flags" "0"
@@ -28528,7 +28528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 512 0]"
                                 "flags" "0"
@@ -28688,7 +28688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 768 0]"
                                 "flags" "0"
@@ -28848,7 +28848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 1024 0]"
                                 "flags" "0"
@@ -29008,7 +29008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 1280 0]"
                                 "flags" "0"
@@ -29168,7 +29168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 1536 0]"
                                 "flags" "0"
@@ -29328,7 +29328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 1792 0]"
                                 "flags" "0"
@@ -29488,7 +29488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 2048 0]"
                                 "flags" "0"
@@ -29648,7 +29648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 2304 0]"
                                 "flags" "0"
@@ -29808,7 +29808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 2560 0]"
                                 "flags" "0"
@@ -29968,7 +29968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 2816 0]"
                                 "flags" "0"
@@ -30128,7 +30128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 3072 0]"
                                 "flags" "0"
@@ -30288,7 +30288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 3328 0]"
                                 "flags" "0"
@@ -30448,7 +30448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 3584 0]"
                                 "flags" "0"
@@ -30608,7 +30608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[2816 3840 0]"
                                 "flags" "0"
@@ -30768,7 +30768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 0 0]"
                                 "flags" "0"
@@ -30928,7 +30928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 256 0]"
                                 "flags" "0"
@@ -31088,7 +31088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 512 0]"
                                 "flags" "0"
@@ -31248,7 +31248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 768 0]"
                                 "flags" "0"
@@ -31408,7 +31408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 1024 0]"
                                 "flags" "0"
@@ -31568,7 +31568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 1280 0]"
                                 "flags" "0"
@@ -31728,7 +31728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 1536 0]"
                                 "flags" "0"
@@ -31888,7 +31888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 1792 0]"
                                 "flags" "0"
@@ -32048,7 +32048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 2048 0]"
                                 "flags" "0"
@@ -32208,7 +32208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 2304 0]"
                                 "flags" "0"
@@ -32368,7 +32368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 2560 0]"
                                 "flags" "0"
@@ -32528,7 +32528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 2816 0]"
                                 "flags" "0"
@@ -32688,7 +32688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 3072 0]"
                                 "flags" "0"
@@ -32848,7 +32848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 3328 0]"
                                 "flags" "0"
@@ -33008,7 +33008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 3584 0]"
                                 "flags" "0"
@@ -33168,7 +33168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3072 3840 0]"
                                 "flags" "0"
@@ -33328,7 +33328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 0 0]"
                                 "flags" "0"
@@ -33488,7 +33488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 256 0]"
                                 "flags" "0"
@@ -33648,7 +33648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 512 0]"
                                 "flags" "0"
@@ -33808,7 +33808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 768 0]"
                                 "flags" "0"
@@ -33968,7 +33968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 1024 0]"
                                 "flags" "0"
@@ -34128,7 +34128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 1280 0]"
                                 "flags" "0"
@@ -34288,7 +34288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 1536 0]"
                                 "flags" "0"
@@ -34448,7 +34448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 1792 0]"
                                 "flags" "0"
@@ -34608,7 +34608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 2048 0]"
                                 "flags" "0"
@@ -34768,7 +34768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 2304 0]"
                                 "flags" "0"
@@ -34928,7 +34928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 2560 0]"
                                 "flags" "0"
@@ -35088,7 +35088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 2816 0]"
                                 "flags" "0"
@@ -35248,7 +35248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 3072 0]"
                                 "flags" "0"
@@ -35408,7 +35408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 3328 0]"
                                 "flags" "0"
@@ -35568,7 +35568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 3584 0]"
                                 "flags" "0"
@@ -35728,7 +35728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3328 3840 0]"
                                 "flags" "0"
@@ -35888,7 +35888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 0 0]"
                                 "flags" "0"
@@ -36048,7 +36048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 256 0]"
                                 "flags" "0"
@@ -36208,7 +36208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 512 0]"
                                 "flags" "0"
@@ -36368,7 +36368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 768 0]"
                                 "flags" "0"
@@ -36528,7 +36528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 1024 0]"
                                 "flags" "0"
@@ -36688,7 +36688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 1280 0]"
                                 "flags" "0"
@@ -36848,7 +36848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 1536 0]"
                                 "flags" "0"
@@ -37008,7 +37008,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 1792 0]"
                                 "flags" "0"
@@ -37168,7 +37168,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 2048 0]"
                                 "flags" "0"
@@ -37328,7 +37328,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 2304 0]"
                                 "flags" "0"
@@ -37488,7 +37488,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 2560 0]"
                                 "flags" "0"
@@ -37648,7 +37648,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 2816 0]"
                                 "flags" "0"
@@ -37808,7 +37808,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 3072 0]"
                                 "flags" "0"
@@ -37968,7 +37968,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 3328 0]"
                                 "flags" "0"
@@ -38128,7 +38128,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 3584 0]"
                                 "flags" "0"
@@ -38288,7 +38288,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3584 3840 0]"
                                 "flags" "0"
@@ -38448,7 +38448,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 0 0]"
                                 "flags" "0"
@@ -38608,7 +38608,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 256 0]"
                                 "flags" "0"
@@ -38768,7 +38768,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 512 0]"
                                 "flags" "0"
@@ -38928,7 +38928,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 768 0]"
                                 "flags" "0"
@@ -39088,7 +39088,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 1024 0]"
                                 "flags" "0"
@@ -39248,7 +39248,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 1280 0]"
                                 "flags" "0"
@@ -39408,7 +39408,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 1536 0]"
                                 "flags" "0"
@@ -39568,7 +39568,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 1792 0]"
                                 "flags" "0"
@@ -39728,7 +39728,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 2048 0]"
                                 "flags" "0"
@@ -39888,7 +39888,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 2304 0]"
                                 "flags" "0"
@@ -40048,7 +40048,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 2560 0]"
                                 "flags" "0"
@@ -40208,7 +40208,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 2816 0]"
                                 "flags" "0"
@@ -40368,7 +40368,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 3072 0]"
                                 "flags" "0"
@@ -40528,7 +40528,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 3328 0]"
                                 "flags" "0"
@@ -40688,7 +40688,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 3584 0]"
                                 "flags" "0"
@@ -40848,7 +40848,7 @@ world
                         "lightmapscale" "16"
                         "smoothing_groups" "0"
                         dispinfo
-                        {       
+                        {
                                 "power" "3"
                                 "startposition" "[3840 3840 0]"
                                 "flags" "0"

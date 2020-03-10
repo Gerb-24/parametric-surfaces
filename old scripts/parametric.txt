@@ -1,0 +1,104 @@
+standard plane:
+
+def mapping(x, y):
+    def mapping_x(x, y):
+        return x
+
+    def mapping_y(x, y):
+        return y
+
+    def mapping_z(x, y):
+        return 128
+
+
+putting a map on an axis:
+
+def mapping(x, y):
+    def mapping_x(x, y):
+        return x + f(y)
+
+    def mapping_y(x, y):
+        return y
+
+    def mapping_z(x, y):
+        return 128
+
+rescaling along axis
+
+def mapping(x, y):
+    def mapping_x(x, y):
+        return x + x*f(y)
+
+    def mapping_y(x, y):
+        return y
+
+    def mapping_z(x, y):
+        return 128
+
+exmaple:
+
+    def mapping_x(x, y):
+        return x+2**8*x/(8*256)*np.cos(y/(16*256/2)*2*np.pi)
+
+    def mapping_y(x, y):
+        return y
+
+    def mapping_z(x, y):
+        return 2**8*np.cos(y/(16*256/2)*2*np.pi)
+
+
+replaneing: WORKS!!
+
+def mapping(x, y):
+    def mapping_x(x, y):
+        return x
+
+    def mapping_y(x, y):
+        return 128
+
+    def mapping_z(x, y):
+        return y
+
+cilinder: WORKS!!!
+
+    def mapping_x(x, y):
+        return 2**8*np.cos(x/(16*256/2)*2*np.pi)
+
+    def mapping_y(x, y):
+        return y
+
+    def mapping_z(x, y):
+        return 2**8*np.sin(x/(16*256/2)*2*np.pi)
+
+lissajousoid:
+
+    def mapping_x(x, y):
+        return 2**10+2**8*np.cos(y/(16*256)*2*np.pi)*np.cos(x/(16*256)*2*np.pi)
+
+    def mapping_y(x, y):
+        return 2**10+2**8*np.cos(y/(16*256)*2*np.pi)*np.sin(x/(16*256)*2*np.pi)
+
+    def mapping_z(x, y):
+        return 2**8*np.sin(x/(16*256)*2*np.pi)
+
+torus:
+
+    def mapping_x(x, y):
+        return (2**10+2**8*np.cos(y/(16*256)*2*np.pi))*np.cos(x/(16*256)*2*np.pi)+16*256/2
+
+    def mapping_y(x, y):
+        return (2**10+2**8*np.cos(y/(16*256)*2*np.pi))*np.sin(x/(16*256)*2*np.pi)+16*256/2
+
+    def mapping_z(x, y):
+        return 2**8*np.sin(y/(16*256)*2*np.pi)+2**10
+
+
+with scaler torus:
+    def mapping_x(x, y):
+        return (2+np.cos(y))*np.cos(x)
+
+    def mapping_y(x, y):
+        return (2+np.cos(y))*np.sin(x)
+
+    def mapping_z(x, y):
+        return 1*np.sin(y)+2

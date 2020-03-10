@@ -6,6 +6,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import point_selecter as sel
 import UI_functions as UIfuncs
 import bezierfuncs as bez
+import file_menu_functions as fmf
 import numpy as np
 
 
@@ -437,12 +438,19 @@ class AppForm(QMainWindow):
         self.setStatusBar(self.statusbar)
         self.actionNew = QtWidgets.QAction(self)
         self.actionNew.setObjectName("actionNew")
-        self.actionLoad = QtWidgets.QAction(self)
-        self.actionLoad.setObjectName("actionLoad")
+
+        # loading action
+        self.actionOpen = QtWidgets.QAction(self)
+        self.actionOpen.setObjectName("actionOpen")
+        self.actionOpen.triggered.connect(lambda: fmf.load(self))
+
+        # saving action
         self.actionSave = QtWidgets.QAction(self)
         self.actionSave.setObjectName("actionSave")
+        self.actionSave.triggered.connect(lambda: fmf.save(self))
+
         self.menuFile.addAction(self.actionNew)
-        self.menuFile.addAction(self.actionLoad)
+        self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menubar.addAction(self.menuFile.menuAction())
 
@@ -469,7 +477,7 @@ class AppForm(QMainWindow):
         self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionNew.setText(_translate("MainWindow", "New"))
-        self.actionLoad.setText(_translate("MainWindow", "Load"))
+        self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
 
     def vmf_maker(self):
