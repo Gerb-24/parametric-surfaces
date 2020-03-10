@@ -47,13 +47,7 @@ class DraggablePlotExample(PlotCanvas):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.pointlist = [[[155, 282], [135, 227], [185, 210], [213, 243]],
-         [[213, 243], [253, 298], [281, 281], [284, 215]],
-         [[284, 215], [283, 169], [320, 139], [348, 173]],
-         [[348, 173], [368, 197], [390, 236], [345, 267]],
-         [[345, 267], [305, 293], [309, 317], [350, 328]],
-         [[350, 328], [392, 342], [388, 401], [334, 389]],
-         [[334, 389], [294, 382], [299, 345], [243, 347]]]
+        self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.num = 1
         self.selected_curve = 1
         self.dragging = False
@@ -462,11 +456,15 @@ class AppForm(QMainWindow):
         self.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Tools"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Curvepart tools"))
+
         self.pushButton.setText(_translate("MainWindow", "add curvepart"))
         self.pushButton.clicked.connect(lambda: UIfuncs.add_curvepart(self, self.plot.pointlist))
+
         self.pushButton_2.setText(_translate("MainWindow", "remove curvepart"))
         self.pushButton_2.clicked.connect(lambda: UIfuncs.remove_curvepart(self, self.plot.pointlist))
+
         self.pushButton_3.setText(_translate("MainWindow", "invert curve"))
+
         self.groupBox_4.setTitle(_translate("MainWindow", "Axes"))
         self.label.setText(_translate("MainWindow", "difference:"))
         self.label_2.setText(_translate("MainWindow", "x-min:"))
@@ -484,9 +482,17 @@ class AppForm(QMainWindow):
         self.actionSave.setText(_translate("MainWindow", "Save"))
 
     def vmf_maker(self):
-        bez.curvemaker(self.plot.pointlist, *self.vmfdict.values())
-        sys.exit()
-
+        try:
+            print("this is working")
+            height = int(self.lineEdit_4.text())
+            xmin = int(self.lineEdit_5.text())
+            ymin = int(self.lineEdit_6.text())
+            displength = int(self.lineEdit_7.text())
+            dispwidth= int(self.lineEdit_8.text())
+            bez.curvemaker(self.plot.pointlist, height, xmin, ymin, displength, dispwidth)
+            sys.exit()
+        except ValueError:
+            print("thats not a numbo dumbo")
     def keyPressEvent(self, e):
         # =============================================================================
         #create dictionary for keys in text
