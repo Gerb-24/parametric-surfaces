@@ -47,10 +47,17 @@ class DraggablePlotExample(PlotCanvas):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.pointdict =    [{"node" : [100,250], "handles" : [[200,250]]},
+                            {"node": [300,250], "handles": [[400,250]]}]
+        self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.num = 1
         self.selected_curve = 1
+        self.preselected = False
+        self.selected = False
         self.dragging = False
+        self.drag_x = False
+        self.drag_y = False
         self._lines = None
         self.xmin = 0
         self.ymin = 0
@@ -58,8 +65,6 @@ class DraggablePlotExample(PlotCanvas):
         self.x, self.y = None, None
         self._init_plot()
         self._update_plot()
-
-
 
     def _init_plot(self):
         #self._figure = plt.figure("Example plot")
@@ -75,32 +80,54 @@ class DraggablePlotExample(PlotCanvas):
         self.draw()
 
     def _update_plot(self):
-        self._axes.set_xlim(self.xmin, self.xmin+self.diff)
-        self._axes.set_ylim(self.ymin, self.ymin+self.diff)
-        t = np.linspace(0, 1, 200)
-        self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
-        self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
+        if self.num:
 
-        _point_drawing_list = []
-        for a, b in self.pointlist[self.selected_curve-1]:
-            _point_drawing_list.extend([a, b, 'r.'])
-        _handle_drawing_list = []
+            # updating self.pointdict
+            self.pointdict = []
+            self.pointdict.append({"node": self.pointlist[0][0], "handles": [self.pointlist[0][1]]})
+            for i in range(len(self.pointlist)-1):
+                self.pointdict.append({"node": self.pointlist[i][3], "handles": [self.pointlist[i][2],self.pointlist[i+1][1]]})
+            self.pointdict.append({"node": self.pointlist[len(self.pointlist)-1][3], "handles": [self.pointlist[len(self.pointlist)-1][2]]})
 
-        for i in range(0,4,2):
-            _handle_drawing_list.extend(
-                [[self.pointlist[self.selected_curve-1][i][0], self.pointlist[self.selected_curve-1][i + 1][0]],
-                [self.pointlist[self.selected_curve-1][i][1], self.pointlist[self.selected_curve-1][i + 1][1]], 'g-'])
+            # updating self.main_points
+            self.main_points = []
+            for i in range(len(self.pointdict)):
+                self.main_points.append(self.pointdict[i]["node"])
 
-        # if not self.points:
-        #     self._line.set_data([], [])
-        # else:
-        if  self._lines:
-            for line in self._lines:
-                self._axes.lines.remove(line)
-        self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+            # updating the plot
+            self._axes.set_xlim(self.xmin, self.xmin+self.diff)
+            self._axes.set_ylim(self.ymin, self.ymin+self.diff)
+            t = np.linspace(0, 1, 200)
+            self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
+            self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
 
+            # updating the handlespoints and the handles
+            _point_drawing_list = []
+            _handle_drawing_list = []
 
-        self._figure.canvas.draw()
+            if self.num == 1 or self.num == 2:
+                for elem in self.pointdict[self.selected_curve-1]["handles"]:
+                    node = self.pointdict[self.selected_curve-1]["node"]
+                    _point_drawing_list.extend([*elem, 'r.'])
+                    _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
+
+            else:
+                for elem in self.pointdict[self.selected_curve]["handles"]:
+                    node = self.pointdict[self.selected_curve]["node"]
+                    _point_drawing_list.extend([*elem, 'r.'])
+                    _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
+
+            # updating the main points
+            for a, b in self.main_points:
+                _point_drawing_list.extend([a, b, 'b.'])
+
+            # updating the total plot
+            if  self._lines:
+                for line in self._lines:
+                    self._axes.lines.remove(line)
+            self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+
+            self._figure.canvas.draw()
 
     def _find_neighbor_point(self, event):
         u""" Find point around mouse position
@@ -129,22 +156,31 @@ class DraggablePlotExample(PlotCanvas):
             self.newpoint = [e.xdata, e.ydata]
             """ this stores the current coordinates of the cursor"""
 
-            self.num = sel.fixed_looper(self.pointlist[self.selected_curve - 1], self.newpoint) + 1
+            if self.selected == False:
+                selected_node = sel.looper(self.main_points, self.newpoint)
+                if selected_node == None:
+                    self.selected = False
+                    return
+                self.preselected = True
+                print(selected_node)
 
-            if self.num == 1 and not self.selected_curve == 1:
-                self.pointlist[self.selected_curve - 2][3] = self.newpoint
-            """if it is the first point then we also have to change the last point of the previous curve
-            but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
 
-            if self.num == 4 and not self.selected_curve == len(self.pointlist):
-                self.pointlist[self.selected_curve][0] = self.newpoint
-            """if it is the last point then we also have to change the last point of the following curve
-            but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
-
-            if not self.num == 0:
-                self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
-                """and here we change the selected point to the new point with the cursor position
-                the selected point is given by num"""
+            # self.num = sel.fixed_looper(self.pointlist[self.selected_curve - 1], self.newpoint) + 1
+            #
+            # if self.num == 1 and not self.selected_curve == 1:
+            #     self.pointlist[self.selected_curve - 2][3] = self.newpoint
+            # """if it is the first point then we also have to change the last point of the previous curve
+            # but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
+            #
+            # if self.num == 4 and not self.selected_curve == len(self.pointlist):
+            #     self.pointlist[self.selected_curve][0] = self.newpoint
+            # """if it is the last point then we also have to change the last point of the following curve
+            # but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
+            #
+            # if not self.num == 0:
+            #     self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
+            #     """and here we change the selected point to the new point with the cursor position
+            #     the selected point is given by num"""
 
             self.update()
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
@@ -154,9 +190,15 @@ class DraggablePlotExample(PlotCanvas):
         u""" callback method for mouse release event
         :type event: MouseEvent
         """
-        if event.button == 1 and event.inaxes in [self._axes] and self.dragging:
-            self.dragging = False
-            self._update_plot()
+        if event.button == 1 and event.inaxes in [self._axes]:
+            if self.dragging:
+                self.dragging = False
+                self.drag_x = False
+                self.drag_y = False
+            if self.preselected:
+                self.selected = True
+                self.preselected = False
+
 
     def _on_motion(self, e):
         u""" callback method for mouse motion event
@@ -514,8 +556,19 @@ class AppForm(QMainWindow):
                         self.plot.selected_curve = i
                         self.plot.update()
                         self.plot._update_plot()
-        if e.key() == Qt.Key_P:
-            print(self.plot.pointlist)
+
+        if not e.isAutoRepeat() and e.key() == Qt.Key_X and self.plot.dragging == True:
+            self.plot.drag_x = not self.plot.drag_x
+            self.plot.drag_y = False
+            self.plot.update()
+            self.plot._update_plot()
+
+        if not e.isAutoRepeat() and e.key() == Qt.Key_Y and self.plot.dragging == True:
+            self.plot.drag_y = not self.plot.drag_x
+            self.plot.drag_x = False
+            self.plot.update()
+            self.plot._update_plot()
+
 
 
 

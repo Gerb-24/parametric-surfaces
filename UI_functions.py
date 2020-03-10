@@ -7,7 +7,7 @@ def add_curvepart(self, pointlist):
     diff_vec = lastpoint_vec - prelastpoint_vec
     newlist = []
     for i in range(4):
-        newlist.append([(lastpoint_vec+diff_vec*(i+1))[0],(lastpoint_vec+diff_vec*(i+1))[1]])
+        newlist.append([(lastpoint_vec+diff_vec*i)[0],(lastpoint_vec+diff_vec*i)[1]])
     pointlist.append(newlist)
     self.plot.selected_curve = length+1
     self.plot.update()
