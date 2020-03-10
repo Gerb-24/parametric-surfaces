@@ -1,7 +1,14 @@
+import numpy as np
+
 def add_curvepart(self, pointlist):
     length = len(pointlist)
-    lastpoint = pointlist[length - 1][3]
-    pointlist.append([lastpoint]*4)
+    lastpoint_vec = np.array(pointlist[length - 1][3])
+    prelastpoint_vec = np.array(pointlist[length-1][2])
+    diff_vec = lastpoint_vec - prelastpoint_vec
+    newlist = []
+    for i in range(4):
+        newlist.append([(lastpoint_vec+diff_vec*(i+1))[0],(lastpoint_vec+diff_vec*(i+1))[1]])
+    pointlist.append(newlist)
     self.plot.selected_curve = length+1
     self.plot.update()
     self.plot._update_plot()
