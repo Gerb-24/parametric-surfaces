@@ -421,7 +421,7 @@ class AppForm(QMainWindow):
         self.lineEdit_8.setText(str(self.vmfdict["dispwidth"]))
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
 
-        #make vmf button
+        # make vmf button
         self.pushButton_4 = QtWidgets.QPushButton(self.groupBox_2)
         self.pushButton_4.setGeometry(QtCore.QRect(50, 530, 91, 28))
         self.pushButton_4.setObjectName("pushButton_4")
@@ -436,8 +436,11 @@ class AppForm(QMainWindow):
         self.statusbar = QtWidgets.QStatusBar(self)
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
+
+        # new file action
         self.actionNew = QtWidgets.QAction(self)
         self.actionNew.setObjectName("actionNew")
+        self.actionNew.triggered.connect(lambda: fmf.newfile(self))
 
         # loading action
         self.actionOpen = QtWidgets.QAction(self)

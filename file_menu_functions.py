@@ -18,3 +18,8 @@ def load(self):
         self.plot.update()
         self.plot._update_plot()
         text.close()
+
+def newfile(self):
+    self.plot.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
+    self.plot.update()
+    self.plot._update_plot()
