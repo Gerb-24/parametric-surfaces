@@ -51,6 +51,7 @@ class DraggablePlotExample(PlotCanvas):
                             {"node": [150,0], "handles": [[100,0]]}]
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
+        self.handle_expansion = []
         self.num = 1
         self.selected_curve = 1
         self.selected_node = 0
@@ -159,23 +160,28 @@ class DraggablePlotExample(PlotCanvas):
             self.newpoint = [e.xdata, e.ydata]
             """ this stores the current coordinates of the cursor"""
 
-            if self.selected == False:
+            if not self.selected:
                 self.selected_node = sel.looper(self.main_points, self.newpoint)
                 if self.selected_node == None:
                     return
                 self.preselected = True
                 #print(self.selected_node)
 
-            elif self.selected == True:
-                handle_expansion = self.main_points.copy()
-                handle_expansion.extend(self.pointdict[self.selected_node]["handles"])
-                self.selected_handle = sel.looper(handle_expansion, self.newpoint)
+            elif self.selected:
+
+                self.handle_expansion = self.main_points.copy()
+                self.handle_expansion.extend(self.pointdict[self.selected_node]["handles"])
+                self.selected_handle = sel.looper(self.handle_expansion, self.newpoint)
                 if self.selected_handle == None:
                     self.selected = False
                     #print("selection off")
                 else:
                     #print(self.selected_handle)
                     # the updating is in here
+                    if self.drag_x:
+                        self.newpoint = [self.newpoint[0],self.handle_expansion[self.selected_handle][1]]
+                    elif self.drag_y:
+                        self.newpoint = [self.handle_expansion[self.selected_handle][0], self.newpoint[1]]
                     if self.selected_handle < len(self.main_points):
                         if self.selected_handle == self.selected_node:
                             # here we update the handles
@@ -243,7 +249,10 @@ class DraggablePlotExample(PlotCanvas):
             return
         self.newpoint = [e.xdata, e.ydata]
         """ this stores the current coordinates of the cursor"""
-
+        if self.drag_x:
+            self.newpoint = [self.newpoint[0],self.handle_expansion[self.selected_handle][1]]
+        elif self.drag_y:
+            self.newpoint = [self.handle_expansion[self.selected_handle][0], self.newpoint[1]]
         if self.selected_handle < len(self.main_points):
 
             # here we update the handles
@@ -568,6 +577,12 @@ class AppForm(QMainWindow):
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
 
+    # def mousePressEvent(self, e):
+    #     self.plot._on_click(e)
+    #
+    # def mouseReleaseEvent(self, e):
+    #     self.plot._on_release(e)
+
     def vmf_maker(self):
         try:
             print("this is working")
@@ -609,7 +624,7 @@ class AppForm(QMainWindow):
             self.plot._update_plot()
 
         if not e.isAutoRepeat() and e.key() == Qt.Key_Y and self.plot.dragging == True:
-            self.plot.drag_y = not self.plot.drag_x
+            self.plot.drag_y = not self.plot.drag_y
             self.plot.drag_x = False
             self.plot.update()
             self.plot._update_plot()
