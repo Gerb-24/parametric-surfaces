@@ -1,15 +1,17 @@
 import numpy as np
 
-def add_curvepart(self, pointlist):
-    length = len(pointlist)
-    lastpoint_vec = np.array(pointlist[length - 1][3])
-    prelastpoint_vec = np.array(pointlist[length-1][2])
+def add_curvepart(self, pointdict):
+    length = len(pointdict)
+    lastpoint_vec = np.array(pointdict[length - 1]["node"])
+    prelastpoint_vec = np.array(pointdict[length-1]["handles"][0])
     diff_vec = lastpoint_vec - prelastpoint_vec
-    newlist = []
-    for i in range(4):
-        newlist.append([(lastpoint_vec+diff_vec*i)[0],(lastpoint_vec+diff_vec*i)[1]])
-    pointlist.append(newlist)
-    self.plot.selected_curve = length+1
+    # newlist = []
+    # for i in range(4):
+    #     newlist.append([(lastpoint_vec+diff_vec*i)[0],(lastpoint_vec+diff_vec*i)[1]])
+    # pointlist.append(newlist)
+    pointdict[length-1]["handles"].append([(lastpoint_vec+diff_vec)[0],(lastpoint_vec+diff_vec)[1]])
+    pointdict.append({"node": [(lastpoint_vec+diff_vec*3)[0],(lastpoint_vec+diff_vec*3)[1]], "handles": [[(lastpoint_vec+diff_vec*2)[0],(lastpoint_vec+diff_vec*2)[1]]]})
+    self.plot.selected_node = length
     self.plot.update()
     self.plot._update_plot()
 
@@ -21,6 +23,8 @@ def remove_curvepart(self, pointlist):
     pointlist.pop()
     self.plot.update()
     self.plot._update_plot()
+
+
 
 def line_editor(text,changing_property, widget):
     """this one still needs some work"""

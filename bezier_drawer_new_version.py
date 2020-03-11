@@ -48,11 +48,12 @@ class DraggablePlotExample(PlotCanvas):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.pointdict =    [{"node" : [100,250], "handles" : [[200,250]]},
-                            {"node": [300,250], "handles": [[400,250]]}]
+                            {"node": [400,250], "handles": [[300,250]]}]
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.num = 1
         self.selected_curve = 1
+        self.selected_node = 0
         self.preselected = False
         self.selected = False
         self.dragging = False
@@ -82,12 +83,19 @@ class DraggablePlotExample(PlotCanvas):
     def _update_plot(self):
         if self.num:
 
-            # updating self.pointdict
-            self.pointdict = []
-            self.pointdict.append({"node": self.pointlist[0][0], "handles": [self.pointlist[0][1]]})
-            for i in range(len(self.pointlist)-1):
-                self.pointdict.append({"node": self.pointlist[i][3], "handles": [self.pointlist[i][2],self.pointlist[i+1][1]]})
-            self.pointdict.append({"node": self.pointlist[len(self.pointlist)-1][3], "handles": [self.pointlist[len(self.pointlist)-1][2]]})
+            # # updating self.pointdict
+            # self.pointdict = []
+            # self.pointdict.append({"node": self.pointlist[0][0], "handles": [self.pointlist[0][1]]})
+            # for i in range(len(self.pointlist)-1):
+            #     self.pointdict.append({"node": self.pointlist[i][3], "handles": [self.pointlist[i][2],self.pointlist[i+1][1]]})
+            # self.pointdict.append({"node": self.pointlist[len(self.pointlist)-1][3], "handles": [self.pointlist[len(self.pointlist)-1][2]]})
+
+            self.pointlist = []
+            self.pointlist.append([self.pointdict[0]["node"],self.pointdict[0]["handles"][0]])
+            for i in range(1,(len(self.pointdict)-1)):
+                self.pointlist[i-1].extend([self.pointdict[i]["handles"][0], self.pointdict[i]["node"]])
+                self.pointlist.append([self.pointdict[i]["node"],self.pointdict[i]["handles"][1]])
+            self.pointlist[(len(self.pointdict)-2)].extend([self.pointdict[len(self.pointdict)-1]["handles"][0], self.pointdict[len(self.pointdict)-1]["node"]])
 
             # updating self.main_points
             self.main_points = []
@@ -105,15 +113,9 @@ class DraggablePlotExample(PlotCanvas):
             _point_drawing_list = []
             _handle_drawing_list = []
 
-            if self.num == 1 or self.num == 2:
-                for elem in self.pointdict[self.selected_curve-1]["handles"]:
-                    node = self.pointdict[self.selected_curve-1]["node"]
-                    _point_drawing_list.extend([*elem, 'r.'])
-                    _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
-
-            else:
-                for elem in self.pointdict[self.selected_curve]["handles"]:
-                    node = self.pointdict[self.selected_curve]["node"]
+            if self.selected:
+                node = self.pointdict[self.selected_node]["node"]
+                for elem in self.pointdict[self.selected_node]["handles"]:
                     _point_drawing_list.extend([*elem, 'r.'])
                     _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
 
@@ -152,37 +154,36 @@ class DraggablePlotExample(PlotCanvas):
         """
         # left click
         if e.button == 1 and e.inaxes in [self._axes]:
-            self.dragging = True
+            #self.dragging = True
             self.newpoint = [e.xdata, e.ydata]
             """ this stores the current coordinates of the cursor"""
 
-            # if self.selected == False:
-            #     selected_node = sel.looper(self.main_points, self.newpoint)
-            #     if selected_node == None:
-            #         self.selected = False
-            #         return
-            #     self.preselected = True
-            # else:
-            #     subselection = sel.looper()
-            #     print(selected_node)
+            if self.selected == False:
+                self.selected_node = sel.looper(self.main_points, self.newpoint)
+                if self.selected_node == None:
+                    return
+                self.preselected = True
+                #print(self.selected_node)
 
-
-            self.num = sel.fixed_looper(self.pointlist[self.selected_curve - 1], self.newpoint) + 1
-
-            if self.num == 1 and not self.selected_curve == 1:
-                self.pointlist[self.selected_curve - 2][3] = self.newpoint
-            """if it is the first point then we also have to change the last point of the previous curve
-            but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
-
-            if self.num == 4 and not self.selected_curve == len(self.pointlist):
-                self.pointlist[self.selected_curve][0] = self.newpoint
-            """if it is the last point then we also have to change the last point of the following curve
-            but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
-
-            if not self.num == 0:
-                self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
-                """and here we change the selected point to the new point with the cursor position
-                the selected point is given by num"""
+            elif self.selected == True:
+                handle_expansion = self.main_points.copy()
+                handle_expansion.extend(self.pointdict[self.selected_node]["handles"])
+                self.selected_handle = sel.looper(handle_expansion, self.newpoint)
+                if self.selected_handle == None:
+                    self.selected = False
+                    #print("selection off")
+                else:
+                    #print(self.selected_handle)
+                    # the updating is in here
+                    if self.selected_handle < len(self.main_points):
+                        if self.selected_handle == self.selected_node:
+                            self.pointdict[self.selected_handle]["node"] = self.newpoint
+                        else:
+                            self.selected_node = self.selected_handle
+                    else:
+                        handle_num = self.selected_handle-(len(self.main_points))
+                        self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
+                    self.dragging = True
 
             self.update()
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
@@ -200,7 +201,9 @@ class DraggablePlotExample(PlotCanvas):
             if self.preselected:
                 self.selected = True
                 self.preselected = False
-
+                #print("selection on")
+        self.update()
+        self._update_plot()
 
     def _on_motion(self, e):
         u""" callback method for mouse motion event
@@ -220,21 +223,14 @@ class DraggablePlotExample(PlotCanvas):
         self.newpoint = [e.xdata, e.ydata]
         """ this stores the current coordinates of the cursor"""
 
-        if self.num == 1 and not self.selected_curve == 1:
-            self.pointlist[self.selected_curve - 2][3] = self.newpoint
-        """if it is the first point then we also have to change the last point of the previous curve
-        but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
+        if self.selected_handle < len(self.main_points):
+            self.selected_node = self.selected_handle
+            self.pointdict[self.selected_handle]["node"] = self.newpoint
+        else:
+            handle_num = self.selected_handle-(len(self.main_points))
+            self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
 
-        if self.num == 4 and not self.selected_curve == len(self.pointlist):
-            self.pointlist[self.selected_curve][0] = self.newpoint
-        """if it is the last point then we also have to change the last point of the following curve
-        but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
-
-        if not self.num == 0:
-            self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
-        """and here we change the selected point to the new point with the cursor position
-        the selected point is given by num"""
-
+        self.update()
         self._update_plot()
         """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
 
@@ -502,7 +498,7 @@ class AppForm(QMainWindow):
         self.groupBox_3.setTitle(_translate("MainWindow", "Curvepart tools"))
 
         self.pushButton.setText(_translate("MainWindow", "add curvepart"))
-        self.pushButton.clicked.connect(lambda: UIfuncs.add_curvepart(self, self.plot.pointlist))
+        self.pushButton.clicked.connect(lambda: UIfuncs.add_curvepart(self, self.plot.pointdict))
 
         self.pushButton_2.setText(_translate("MainWindow", "remove curvepart"))
         self.pushButton_2.clicked.connect(lambda: UIfuncs.remove_curvepart(self, self.plot.pointlist))
