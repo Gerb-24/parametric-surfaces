@@ -2,6 +2,8 @@
 An Extension for hammer to create parametric surfaces using displacements.
 
 ## The bezier_drawer_new_version script:
+![alt text](https://github.com/Gerb-24/parametric-surfaces/blob/master/bezierGUI4.png "Logo Title Text 1")
+
 This script lets you draw shapes using bezier curves, and when you are satisfied it creates displacements with the same shape.
 When you start the script you start with a blue line with one big blue dot on one end, and a small blue dot on the other. The big blue dot is the first dot of your curve and the displacement will be created on your left hand if you were to walk from the big blue dot to the end of the curve. By selecting one of the points a handle will pop up. You are now able to drag the point or the handle, or you can select the other point. If you click somewhere where isn't a handle or a point you will deselect the curve.
 
