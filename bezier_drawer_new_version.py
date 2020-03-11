@@ -177,12 +177,32 @@ class DraggablePlotExample(PlotCanvas):
                     # the updating is in here
                     if self.selected_handle < len(self.main_points):
                         if self.selected_handle == self.selected_node:
+                            # here we update the handles
+                            handle_update_list = []
+                            for elem in self.pointdict[self.selected_handle]["handles"]:
+                                handle_update_list.append(np.array(elem))
+                            nodevec = np.array(self.pointdict[self.selected_node]["node"])
+                            handle_diff_list = []
+                            for elem in handle_update_list:
+                                handle_diff_list.append(elem-nodevec)
+                            newnode = np.array(self.newpoint)
+                            handle_update_list = []
+                            for elem in handle_diff_list:
+                                newvec = newnode + elem
+                                handle_update_list.append([newvec[0],newvec[1]])
+                            self.pointdict[self.selected_handle]["handles"] = handle_update_list
                             self.pointdict[self.selected_handle]["node"] = self.newpoint
                         else:
                             self.selected_node = self.selected_handle
                     else:
                         handle_num = self.selected_handle-(len(self.main_points))
                         self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
+                        if len(self.pointdict[self.selected_node]["handles"]) == 2:
+                            other_handle = 1-handle_num
+                            nodevec = np.array(self.pointdict[self.selected_node]["node"])
+                            vec = nodevec - np.array(self.newpoint)
+                            newvec = nodevec + vec
+                            self.pointdict[self.selected_node]["handles"][other_handle] = [newvec[0],newvec[1]]
                     self.dragging = True
 
             self.update()
@@ -224,11 +244,37 @@ class DraggablePlotExample(PlotCanvas):
         """ this stores the current coordinates of the cursor"""
 
         if self.selected_handle < len(self.main_points):
+
+            # here we update the handles
+            handle_update_list = []
+            for elem in self.pointdict[self.selected_handle]["handles"]:
+                handle_update_list.append(np.array(elem))
+            nodevec = np.array(self.pointdict[self.selected_node]["node"])
+            handle_diff_list = []
+            for elem in handle_update_list:
+                handle_diff_list.append(elem-nodevec)
+            newnode = np.array(self.newpoint)
+            handle_update_list = []
+            for elem in handle_diff_list:
+                newvec = newnode + elem
+                handle_update_list.append([newvec[0],newvec[1]])
+            self.pointdict[self.selected_handle]["handles"] = handle_update_list
+
+            # here we update the node position
             self.selected_node = self.selected_handle
             self.pointdict[self.selected_handle]["node"] = self.newpoint
+
+
+
         else:
             handle_num = self.selected_handle-(len(self.main_points))
             self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
+            if len(self.pointdict[self.selected_node]["handles"]) == 2:
+                other_handle = 1-handle_num
+                nodevec = np.array(self.pointdict[self.selected_node]["node"])
+                vec = nodevec - np.array(self.newpoint)
+                newvec = nodevec + vec
+                self.pointdict[self.selected_node]["handles"][other_handle] = [newvec[0],newvec[1]]
 
         self.update()
         self._update_plot()
@@ -493,7 +539,7 @@ class AppForm(QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        # self.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Tools"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Curvepart tools"))
 
