@@ -501,7 +501,7 @@ class AppForm(QMainWindow):
         self.pushButton.clicked.connect(lambda: UIfuncs.add_curvepart(self, self.plot.pointdict))
 
         self.pushButton_2.setText(_translate("MainWindow", "remove curvepart"))
-        self.pushButton_2.clicked.connect(lambda: UIfuncs.remove_curvepart(self, self.plot.pointlist))
+        self.pushButton_2.clicked.connect(lambda: UIfuncs.remove_curvepart(self, self.plot.pointdict))
 
         self.pushButton_3.setText(_translate("MainWindow", "invert curve"))
 

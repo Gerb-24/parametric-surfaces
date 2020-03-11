@@ -15,12 +15,13 @@ def add_curvepart(self, pointdict):
     self.plot.update()
     self.plot._update_plot()
 
-def remove_curvepart(self, pointlist):
-    if len(self.plot.pointlist) == 1:
+def remove_curvepart(self, pointdict):
+    if len(self.plot.pointdict) == 2:
         return
-    if self.plot.selected_curve == len(pointlist):
-        self.plot.selected_curve = self.plot.selected_curve - 1
-    pointlist.pop()
+    if self.plot.selected_node == len(pointdict)-1:
+        self.plot.selected_node = self.plot.selected_node - 1
+    pointdict.pop()
+    pointdict[len(pointdict)-1]["handles"].pop()
     self.plot.update()
     self.plot._update_plot()
 
