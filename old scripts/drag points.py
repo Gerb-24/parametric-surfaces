@@ -11,9 +11,9 @@ import math
 import random
 import sys
 
-#%matplotlib qt 
+#%matplotlib qt
 #create new plot window
-#matplotlib inline 
+#matplotlib inline
 #create plot in current console
 
 class PlotCanvas(FigureCanvas):
@@ -29,7 +29,7 @@ class PlotCanvas(FigureCanvas):
                 QSizePolicy.Expanding,
                 QSizePolicy.Expanding)
         FigureCanvas.updateGeometry(self)
-        
+
 
 class DraggablePlotExample(PlotCanvas):
     u""" An example of plot with draggable markers """
@@ -72,6 +72,8 @@ class DraggablePlotExample(PlotCanvas):
         if isinstance(x, MouseEvent):
             x, y = int(x.xdata), int(x.ydata)
         self.points[x] = y
+        """this gives a problem, because if a point is created with the same
+         x value, then the other point will be gone"""
         return x, y
 
     def _remove_point(self, x, _, event=None):
@@ -157,7 +159,7 @@ class App(QMainWindow):
         self.plot.move(0,0)
 
         button = QPushButton('PyQt5 button', self)
-        button.setToolTip('This s an example button')
+        button.setToolTip('This is an example button')
         button.move(500,0)
         button.resize(140,100)
 
@@ -174,5 +176,3 @@ if __name__ == '__main__':
      app = QApplication(sys.argv)
      ex = App()
      sys.exit(app.exec_())
- 
-
