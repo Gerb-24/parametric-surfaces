@@ -47,10 +47,10 @@ class DraggablePlotExample(PlotCanvas):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.pointdict =    [{"node" : [100,250], "handles" : [[200,250]]},
-                            {"node": [400,250], "handles": [[300,250]]}]
+        self.pointdict =    [{"node" : [-150,0], "handles" : [[-100,0]]},
+                            {"node": [150,0], "handles": [[100,0]]}]
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
-        self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
+        #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.num = 1
         self.selected_curve = 1
         self.selected_node = 0
@@ -60,9 +60,9 @@ class DraggablePlotExample(PlotCanvas):
         self.drag_x = False
         self.drag_y = False
         self._lines = None
-        self.xmin = 0
-        self.ymin = 0
-        self.diff = 500
+        self.xmin = -200
+        self.ymin = -200
+        self.diff = 400
         self.x, self.y = None, None
         self._init_plot()
         self._update_plot()
@@ -116,11 +116,12 @@ class DraggablePlotExample(PlotCanvas):
             if self.selected:
                 node = self.pointdict[self.selected_node]["node"]
                 for elem in self.pointdict[self.selected_node]["handles"]:
-                    _point_drawing_list.extend([*elem, 'r.'])
+                    _point_drawing_list.extend([*elem, 'g.'])
                     _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
 
             # updating the main points
-            for a, b in self.main_points:
+            _point_drawing_list.extend([*self.main_points[0], 'bo'])
+            for a, b in self.main_points[1::]:
                 _point_drawing_list.extend([a, b, 'b.'])
 
             # updating the total plot
