@@ -156,31 +156,33 @@ class DraggablePlotExample(PlotCanvas):
             self.newpoint = [e.xdata, e.ydata]
             """ this stores the current coordinates of the cursor"""
 
-            if self.selected == False:
-                selected_node = sel.looper(self.main_points, self.newpoint)
-                if selected_node == None:
-                    self.selected = False
-                    return
-                self.preselected = True
-                print(selected_node)
+            # if self.selected == False:
+            #     selected_node = sel.looper(self.main_points, self.newpoint)
+            #     if selected_node == None:
+            #         self.selected = False
+            #         return
+            #     self.preselected = True
+            # else:
+            #     subselection = sel.looper()
+            #     print(selected_node)
 
 
-            # self.num = sel.fixed_looper(self.pointlist[self.selected_curve - 1], self.newpoint) + 1
-            #
-            # if self.num == 1 and not self.selected_curve == 1:
-            #     self.pointlist[self.selected_curve - 2][3] = self.newpoint
-            # """if it is the first point then we also have to change the last point of the previous curve
-            # but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
-            #
-            # if self.num == 4 and not self.selected_curve == len(self.pointlist):
-            #     self.pointlist[self.selected_curve][0] = self.newpoint
-            # """if it is the last point then we also have to change the last point of the following curve
-            # but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
-            #
-            # if not self.num == 0:
-            #     self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
-            #     """and here we change the selected point to the new point with the cursor position
-            #     the selected point is given by num"""
+            self.num = sel.fixed_looper(self.pointlist[self.selected_curve - 1], self.newpoint) + 1
+
+            if self.num == 1 and not self.selected_curve == 1:
+                self.pointlist[self.selected_curve - 2][3] = self.newpoint
+            """if it is the first point then we also have to change the last point of the previous curve
+            but if it is the first point of the first curve then we do not want to change a point from the -1th curve"""
+
+            if self.num == 4 and not self.selected_curve == len(self.pointlist):
+                self.pointlist[self.selected_curve][0] = self.newpoint
+            """if it is the last point then we also have to change the last point of the following curve
+            but if it is the last point of the last curve then we do not want to change a point from the last+1th curve"""
+
+            if not self.num == 0:
+                self.pointlist[self.selected_curve - 1][self.num - 1] = self.newpoint
+                """and here we change the selected point to the new point with the cursor position
+                the selected point is given by num"""
 
             self.update()
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
@@ -532,7 +534,7 @@ class AppForm(QMainWindow):
             displength = int(self.lineEdit_7.text())
             dispwidth= int(self.lineEdit_8.text())
             bez.curvemaker(self.plot.pointlist, height, xmin, ymin, displength, dispwidth)
-            sys.exit()
+            #sys.exit()
         except ValueError:
             print("thats not a numbo dumbo")
     def keyPressEvent(self, e):
