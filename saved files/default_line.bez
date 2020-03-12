@@ -1,0 +1,3 @@
+[{'node': [-150, 0], 'handles': [[-100, 0]]}, {'node': [150, 0], 'handles': [[100, 0]]}]
+{'height': '4096', 'xamount': '16', 'yamount': '16', 'displength': '256', 'dispwidth': '256'}
+{'diff': '400', 'xmin': '-200', 'ymin': '-200'}

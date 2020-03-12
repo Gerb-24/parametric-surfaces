@@ -41,7 +41,7 @@ def line_editor(text,changing_property, widget):
 def diff_setter(self):
     """this one still needs some work"""
     try:
-        self.plot.diff = int(self.diff_le.text())
+        self.plot.axesdict["diff"] = self.diff_le.text()
     except ValueError:
         print("thats not a numbo dumbo")
     self.plot.update()
@@ -50,7 +50,7 @@ def diff_setter(self):
 def xmin_setter(self):
     """this one still needs some work"""
     try:
-        self.plot.xmin = int(self.xmin_le.text())
+        self.plot.axesdict["xmin"] = self.xmin_le.text()
     except ValueError:
         print("thats not a numbo dumbo")
     self.plot.update()
@@ -59,7 +59,7 @@ def xmin_setter(self):
 def ymin_setter(self):
     """this one still needs some work"""
     try:
-        self.plot.ymin = int(self.ymin_le.text())
+        self.plot.axesdict["ymin"] = self.ymin_le.text()
     except ValueError:
         print("thats not a numbo dumbo")
     self.plot.update()

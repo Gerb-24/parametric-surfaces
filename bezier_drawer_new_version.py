@@ -52,18 +52,17 @@ class DraggablePlotExample(PlotCanvas):
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.handle_expansion = []
-        self.num = 1
-        self.selected_curve = 1
         self.selected_node = 0
+
         self.preselected = False
         self.selected = False
         self.dragging = False
         self.drag_x = False
         self.drag_y = False
+
         self._lines = None
-        self.xmin = -200
-        self.ymin = -200
-        self.diff = 400
+
+        self.axesdict = {"diff": "400", "xmin": "-200", "ymin": "-200"}
         self.x, self.y = None, None
         self._init_plot()
         self._update_plot()
@@ -72,8 +71,8 @@ class DraggablePlotExample(PlotCanvas):
         #self._figure = plt.figure("Example plot")
         #axes = plt.subplot(1, 1, 1)
         self._axes = self._figure.add_subplot(111)
-        self._axes.set_xlim(self.xmin, self.xmin+self.diff)
-        self._axes.set_ylim(self.ymin, self.ymin+self.diff)
+        self._axes.set_xlim(int(self.axesdict["xmin"]), int(self.axesdict["xmin"])+int(self.axesdict["diff"]))
+        self._axes.set_ylim(int(self.axesdict["ymin"]), int(self.axesdict["ymin"])+int(self.axesdict["diff"]))
         self._axes.grid(which="both")
 
         self._figure.canvas.mpl_connect('button_press_event', self._on_click)
@@ -82,56 +81,55 @@ class DraggablePlotExample(PlotCanvas):
         self.draw()
 
     def _update_plot(self):
-        if self.num:
 
-            # # updating self.pointdict
-            # self.pointdict = []
-            # self.pointdict.append({"node": self.pointlist[0][0], "handles": [self.pointlist[0][1]]})
-            # for i in range(len(self.pointlist)-1):
-            #     self.pointdict.append({"node": self.pointlist[i][3], "handles": [self.pointlist[i][2],self.pointlist[i+1][1]]})
-            # self.pointdict.append({"node": self.pointlist[len(self.pointlist)-1][3], "handles": [self.pointlist[len(self.pointlist)-1][2]]})
+        # # updating self.pointdict
+        # self.pointdict = []
+        # self.pointdict.append({"node": self.pointlist[0][0], "handles": [self.pointlist[0][1]]})
+        # for i in range(len(self.pointlist)-1):
+        #     self.pointdict.append({"node": self.pointlist[i][3], "handles": [self.pointlist[i][2],self.pointlist[i+1][1]]})
+        # self.pointdict.append({"node": self.pointlist[len(self.pointlist)-1][3], "handles": [self.pointlist[len(self.pointlist)-1][2]]})
 
-            self.pointlist = []
-            self.pointlist.append([self.pointdict[0]["node"],self.pointdict[0]["handles"][0]])
-            for i in range(1,(len(self.pointdict)-1)):
-                self.pointlist[i-1].extend([self.pointdict[i]["handles"][0], self.pointdict[i]["node"]])
-                self.pointlist.append([self.pointdict[i]["node"],self.pointdict[i]["handles"][1]])
-            self.pointlist[(len(self.pointdict)-2)].extend([self.pointdict[len(self.pointdict)-1]["handles"][0], self.pointdict[len(self.pointdict)-1]["node"]])
+        self.pointlist = []
+        self.pointlist.append([self.pointdict[0]["node"],self.pointdict[0]["handles"][0]])
+        for i in range(1,(len(self.pointdict)-1)):
+            self.pointlist[i-1].extend([self.pointdict[i]["handles"][0], self.pointdict[i]["node"]])
+            self.pointlist.append([self.pointdict[i]["node"],self.pointdict[i]["handles"][1]])
+        self.pointlist[(len(self.pointdict)-2)].extend([self.pointdict[len(self.pointdict)-1]["handles"][0], self.pointdict[len(self.pointdict)-1]["node"]])
 
-            # updating self.main_points
-            self.main_points = []
-            for i in range(len(self.pointdict)):
-                self.main_points.append(self.pointdict[i]["node"])
+        # updating self.main_points
+        self.main_points = []
+        for i in range(len(self.pointdict)):
+            self.main_points.append(self.pointdict[i]["node"])
 
-            # updating the plot
-            self._axes.set_xlim(self.xmin, self.xmin+self.diff)
-            self._axes.set_ylim(self.ymin, self.ymin+self.diff)
-            t = np.linspace(0, 1, 200)
-            self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
-            self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
+        # updating the plot
+        self._axes.set_xlim(int(self.axesdict["xmin"]), int(self.axesdict["xmin"])+int(self.axesdict["diff"]))
+        self._axes.set_ylim(int(self.axesdict["ymin"]), int(self.axesdict["ymin"])+int(self.axesdict["diff"]))
+        t = np.linspace(0, 1, 200)
+        self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
+        self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
 
-            # updating the handlespoints and the handles
-            _point_drawing_list = []
-            _handle_drawing_list = []
+        # updating the handlespoints and the handles
+        _point_drawing_list = []
+        _handle_drawing_list = []
 
-            if self.selected:
-                node = self.pointdict[self.selected_node]["node"]
-                for elem in self.pointdict[self.selected_node]["handles"]:
-                    _point_drawing_list.extend([*elem, 'g.'])
-                    _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
+        if self.selected:
+            node = self.pointdict[self.selected_node]["node"]
+            for elem in self.pointdict[self.selected_node]["handles"]:
+                _point_drawing_list.extend([*elem, 'g.'])
+                _handle_drawing_list.extend([[node[0],elem[0]],[node[1],elem[1]],'g-'])
 
-            # updating the main points
-            _point_drawing_list.extend([*self.main_points[0], 'bo'])
-            for a, b in self.main_points[1::]:
-                _point_drawing_list.extend([a, b, 'b.'])
+        # updating the main points
+        _point_drawing_list.extend([*self.main_points[0], 'bo'])
+        for a, b in self.main_points[1::]:
+            _point_drawing_list.extend([a, b, 'b.'])
 
-            # updating the total plot
-            if  self._lines:
-                for line in self._lines:
-                    self._axes.lines.remove(line)
-            self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        # updating the total plot
+        if  self._lines:
+            for line in self._lines:
+                self._axes.lines.remove(line)
+        self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
 
-            self._figure.canvas.draw()
+        self._figure.canvas.draw()
 
     def _find_neighbor_point(self, event):
         u""" Find point around mouse position
@@ -432,7 +430,7 @@ class AppForm(QMainWindow):
         # this is the xmin lineedit
         self.xmin_le = QtWidgets.QLineEdit(self.groupBox_4)
         self.xmin_le.setObjectName("lineEdit_2")
-        self.xmin_le.setText(str(self.plot.xmin))
+        self.xmin_le.setText(str(self.plot.axesdict["xmin"]))
         self.xmin_le.returnPressed.connect(lambda: UIfuncs.xmin_setter(self))
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.xmin_le)
 
@@ -444,14 +442,14 @@ class AppForm(QMainWindow):
         # this is the ymin lineedit
         self.ymin_le = QtWidgets.QLineEdit(self.groupBox_4)
         self.ymin_le.setObjectName("lineEdit_3")
-        self.ymin_le.setText(str(self.plot.ymin))
+        self.ymin_le.setText(self.plot.axesdict["ymin"])
         self.ymin_le.returnPressed.connect(lambda: UIfuncs.ymin_setter(self))
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ymin_le)
 
         # this is the difference
         self.diff_le = QtWidgets.QLineEdit(self.groupBox_4)
         self.diff_le.setObjectName("lineEdit")
-        self.diff_le.setText(str(self.plot.diff))
+        self.diff_le.setText(self.plot.axesdict["diff"])
         self.diff_le.returnPressed.connect(lambda: UIfuncs.diff_setter(self))
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.diff_le)
 
