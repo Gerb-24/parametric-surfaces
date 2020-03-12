@@ -7,9 +7,9 @@ def save(self):
     if filepath == "":
         return
     self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
-
+    axesdict = {"diff": self.diff_le.text(), "xmin": self.xmin_le.text(), "ymin": self.ymin_le.text()}
     with open(filepath, "w") as text:
-        text.writelines([str(self.plot.pointdict)+"\n",str(self.vmfdict)+"\n"])
+        text.writelines([str(self.plot.pointdict)+"\n", str(self.vmfdict)+"\n", str(axesdict)+"\n"])
         text.close()
     self.title = 'b-curve draw window : ' + ntpath.basename(filepath)
     self.setWindowTitle(self.title)
@@ -21,9 +21,16 @@ def load(self):
     with open(filepath, "r") as text:
         self.plot.pointdict= ast.literal_eval(text.readline())
         self.vmfdict = ast.literal_eval(text.readline())
-        newdict = {self.height_le: "height", self.xamount_le: "xamount", self.yamount_le: "yamount", self.displength_le: "displength", self.dispwidth_le: "dispwidth"}
-        for le, le_text in newdict.items():
+        axesdict = ast.literal_eval(text.readline())
+        newvmfdict = {self.height_le: "height", self.xamount_le: "xamount", self.yamount_le: "yamount", self.displength_le: "displength", self.dispwidth_le: "dispwidth"}
+        newaxesdict = {self.diff_le: "diff", self.xmin_le: "xmin", self.ymin_le: "ymin"}
+        plotdict = {self.plot.diff: "diff", self.plot.xmin: "xmin", self.plot.ymin: "ymin"}
+        for le, le_text in newvmfdict.items():
             le.setText(self.vmfdict[le_text])
+        for le, le_text in newaxesdict.items():
+            le.setText(axesdict[le_text])
+        for elem, le_text in plotdict.items():
+            elem = int(axesdict[le_text])
 
         # # updating self.pointdict
         # self.plot.pointdict = []
