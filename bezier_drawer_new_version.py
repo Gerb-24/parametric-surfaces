@@ -54,6 +54,7 @@ class DraggablePlotExample(PlotCanvas):
         self.handle_expansion = []
         self.selected_node = 0
 
+        # selection variables
         self.preselected = False
         self.selected = False
         self.dragging = False
