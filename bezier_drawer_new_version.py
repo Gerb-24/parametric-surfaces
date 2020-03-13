@@ -586,13 +586,11 @@ class AppForm(QMainWindow):
     def vmf_maker(self):
         try:
 
-            height, xamount, ymamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
-            print("this is working")
+            height, xamount, yamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
             bez.curvemaker(self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             #sys.exit()
         except ValueError:
             print("thats not a numbo dumbo")
-            print(height, xmin, ymin, displength, dispwidth)
     def keyPressEvent(self, e):
         # =============================================================================
         #create dictionary for keys in text

@@ -66,10 +66,10 @@ def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
     def mapping(t, pointlist):
         return general_bezier_mapping(t, pointlist)
 
-    def func(x, y, pointlist, height):
+    def func(x, y):
         return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y*height]
     print("this is compiling")
-    ps.filewriter(xamount, yamount, displength, dispwidth, lambda x,y: func(x, y, pointlist, height), 2)
+    ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
     print("vmf is compiled")
 
 def general_bezier_curve_range_x(rangelist, pointlist):
