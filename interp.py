@@ -21,5 +21,5 @@ def pointlist_maker(pointdict):
 pointlist1 = pointlist_maker(pointdict1)
 pointlist2 = pointlist_maker(pointdict2)
 
-bez.interpmaker(pointlist1, pointlist2, 5*128, 16, 16, 16, 16)
+bez.interpmaker(pointlist1, pointlist2, 5*128, 3, 2, 16, 16)
 print("Done")
