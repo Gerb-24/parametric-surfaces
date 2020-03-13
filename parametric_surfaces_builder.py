@@ -20,10 +20,10 @@ def scaler(func,x, y, xamount, yamount, length, width):
     return newfunc(u, v)
 
 
-def bezscaler(func, x, y, xamount, yamount, length, width):
-    u = x/(xamount*length)*0.99995
-    v = y/(yamount*width)
-    return np.array([func(u,v)[0]*2**4,func(u,v)[1]*2**4,func(u,v)[2]*2**12])
+def bezscaler(func, x, y, xamount, yamount, displength, dispwidth):
+    u = x/(displength*xamount)
+    v = y/(dispwidth*yamount)
+    return np.array(func(u,v))
 
 
 cos = lambda x: np.cos(x*2*np.pi)
@@ -43,7 +43,7 @@ def dispmaker(info):
     start = "[{0} {1} {2}]".format(x, y, z)
     s = '''
                         dispinfo
-                        {{       
+                        {{
                                 "power" "3"
                                 "startposition" "{0}"
                                 "flags" "0"
@@ -295,6 +295,6 @@ cordons
 def filewriter(xamount, yamount, length, width, func, scaling):
     with open("newmap3.vmf", "w") as text:
         text.writelines(intro)
-        brushwriter(text, xamount, yamount, length, width, lambda x,y: scaler(func,x, y, xamount, yamount, length, width)  if scaling == 1 else bezscaler(func, x, y, xamount, yamount,length, width))
+        brushwriter(text, xamount, yamount, length, width, lambda x,y: scaler(func,x, y, xamount, yamount, length, width)  if scaling == 1 else bezscaler(func, x, y, xamount, yamount, length, width))
         # file, the amount of copies in x direction, amount in y direction, length (x), width (y).
         text.writelines(outro)

@@ -67,9 +67,10 @@ def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
         return general_bezier_mapping(t, pointlist)
 
     def func(x, y, pointlist, height):
-        return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y/(yamount*dispwidth)*height]
-
+        return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y*height]
+    print("this is compiling")
     ps.filewriter(xamount, yamount, displength, dispwidth, lambda x,y: func(x, y, pointlist, height), 2)
+    print("vmf is compiled")
 
 def general_bezier_curve_range_x(rangelist, pointlist):
     """Range of points in a curve bezier"""
@@ -87,3 +88,20 @@ def general_bezier_curve_range_y(rangelist, pointlist):
          a.append(general_bezier_mapping(item, pointlist)[1])
 
     return a
+
+
+# functions for interpolation
+def bump_function(t):
+    return 0 if t == 0 else (np.exp(-1/t)/(np.exp(-1/t)+np.exp(-1/(1-t))) if t < 1 else 1)
+
+def interp(bez1, bez2, t, y):
+    return [bump_function(y)*bez1(t)[0] + bump_function(1-y)*bez2(t)[0], bump_function(y)*bez1(t)[1]+bump_function(1-y)*bez2(t)[1]]
+
+def interpmaker(pointlist1, pointlist2, height, xamount, yamount, displength, dispwidth):
+    curve1 = lambda t: general_bezier_mapping(t, pointlist1)
+    curve2 = lambda t: general_bezier_mapping(t, pointlist2)
+
+    def func(x, y):
+        return [interp(curve1, curve2, x, y)[0], interp(curve1, curve2, x, y)[1], y*height]
+
+    ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)

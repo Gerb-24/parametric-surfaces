@@ -51,6 +51,7 @@ class DraggablePlotExample(PlotCanvas):
                             {"node": [150,0], "handles": [[100,0]]}]
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
+        self.pointlist = []
         self.handle_expansion = []
         self.selected_node = 0
 
@@ -63,7 +64,7 @@ class DraggablePlotExample(PlotCanvas):
 
         self._lines = None
 
-        self.axesdict = {"diff": "400", "xmin": "-200", "ymin": "-200"}
+        self.axesdict = {"diff": "1024", "xmin": "-512", "ymin": "-512"}
         self.x, self.y = None, None
         self._init_plot()
         self._update_plot()
@@ -584,9 +585,9 @@ class AppForm(QMainWindow):
 
     def vmf_maker(self):
         try:
-            print("this is working")
-            height, xamount, ymamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
 
+            height, xamount, ymamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
+            print("this is working")
             bez.curvemaker(self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             #sys.exit()
         except ValueError:
