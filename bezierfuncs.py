@@ -3,6 +3,7 @@ import parametric_surfaces_builder as ps
 import numpy as np
 
 
+# functions for bezier creation
 def binomial(i, n):
     """Binomial coefficient"""
     return math.factorial(n) / float(
@@ -32,14 +33,6 @@ def bezier_curve_range(n, points):
         yield bezier(t, points)
 
 
-def bezier_mapping_of_two_curves(t, pointlist):
-    """This glues two bezier curves together"""
-    bez1 = lambda t: bezier(t, pointlist[0:4])
-    bez2 = lambda t: bezier(t, pointlist[3:7])
-    tot_bez = bez1(2*t) if t<1/2 else bez2(2*t-1)
-    return tot_bez
-
-
 def general_bezier_mapping(t, pointlist):
     """this glues multiple curves together,
     pointlist is a collection of list consisting of 4 points with which we make the bezier curves"""
@@ -62,6 +55,7 @@ def general_bezier_mapping(t, pointlist):
     return totalcurve(t, 0, funclist)
 
 
+# function used for creating vmf
 def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
     def mapping(t, pointlist):
         return general_bezier_mapping(t, pointlist)
@@ -72,6 +66,8 @@ def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
     ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
     print("vmf is compiled")
 
+
+# two functions used to create the plot
 def general_bezier_curve_range_x(rangelist, pointlist):
     """Range of points in a curve bezier"""
     a = []
@@ -90,12 +86,14 @@ def general_bezier_curve_range_y(rangelist, pointlist):
     return a
 
 
-# functions for interpolation
+# functions for interpolation between two curves
 def bump_function(t):
     return 0 if t == 0 else (np.exp(-1/t)/(np.exp(-1/t)+np.exp(-1/(1-t))) if t < 1 else 1)
 
+
 def interp(bez1, bez2, t, y):
     return [bump_function(y)*bez1(t)[0] + bump_function(1-y)*bez2(t)[0], bump_function(y)*bez1(t)[1]+bump_function(1-y)*bez2(t)[1]]
+
 
 def interpmaker(pointlist1, pointlist2, height, xamount, yamount, displength, dispwidth):
     curve1 = lambda t: general_bezier_mapping(t, pointlist1)

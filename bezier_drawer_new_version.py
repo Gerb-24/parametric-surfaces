@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, QPushButton, QLabel, QSlider, QHBoxLayout, QAction, QLineEdit, QCheckBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, QPushButton, QLabel, QSlider, QHBoxLayout, QAction, QLineEdit, QCheckBox, QStyleFactory
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -386,9 +386,10 @@ class AppForm(QMainWindow):
         self.Ui_MainWindow()
         self.retranslateUi()
 
+
     def Ui_MainWindow(self):
         self.groupBox_2 = QtWidgets.QGroupBox(self)
-        self.groupBox_2.setGeometry(QtCore.QRect(800, 10, 200, 800))
+        self.groupBox_2.setGeometry(QtCore.QRect(800, 23, 200, 781))
         self.groupBox_2.setFlat(False)
         self.groupBox_2.setCheckable(False)
         self.groupBox_2.setObjectName("groupBox_2")
@@ -415,7 +416,7 @@ class AppForm(QMainWindow):
         self.verticalLayout_3.addWidget(self.pushButton_3)
 
         self.groupBox_4 = QtWidgets.QGroupBox(self.groupBox_2)
-        self.groupBox_4.setGeometry(QtCore.QRect(20, 190, 151, 111))
+        self.groupBox_4.setGeometry(QtCore.QRect(20, 190, 151, 131))
         self.groupBox_4.setObjectName("groupBox_4")
         self.formLayout = QtWidgets.QFormLayout(self.groupBox_4)
         self.formLayout.setObjectName("formLayout")
@@ -456,7 +457,7 @@ class AppForm(QMainWindow):
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.diff_le)
 
         self.groupBox_5 = QtWidgets.QGroupBox(self.groupBox_2)
-        self.groupBox_5.setGeometry(QtCore.QRect(20, 320, 151, 160))
+        self.groupBox_5.setGeometry(QtCore.QRect(20, 340, 151, 231))
         self.groupBox_5.setObjectName("groupBox_5")
         self.formLayout_2 = QtWidgets.QFormLayout(self.groupBox_5)
         self.formLayout_2.setObjectName("formLayout_2")
@@ -511,11 +512,28 @@ class AppForm(QMainWindow):
         self.dispwidth_le.setText(str(self.vmfdict["dispwidth"]))
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.dispwidth_le)
 
+        # radio button 1
+        self.radioButton_2 = QtWidgets.QRadioButton(self.groupBox_5)
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.radioButton_2)
+
+        # radio button 2
+        self.radioButton = QtWidgets.QRadioButton(self.groupBox_5)
+        self.radioButton.setObjectName("radioButton")
+        self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.radioButton)
+
         # make vmf button
         self.pushButton_4 = QtWidgets.QPushButton(self.groupBox_2)
-        self.pushButton_4.setGeometry(QtCore.QRect(50, 530, 91, 28))
+        self.pushButton_4.setGeometry(QtCore.QRect(50, 630, 91, 28))
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_4.clicked.connect(self.vmf_maker)
+
+        # background opening button
+        self.pushButton_5 = QtWidgets.QPushButton(self.groupBox_2)
+        self.pushButton_5.setGeometry(QtCore.QRect(40, 590, 111, 28))
+        #self.pushButton_5.setSizePolicy(sizePolicy)
+        self.pushButton_5.setObjectName("pushButton_5")
+
 
         self.menubar = QtWidgets.QMenuBar(self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 26))
@@ -547,6 +565,7 @@ class AppForm(QMainWindow):
         self.menuFile.addAction(self.actionSave)
         self.menubar.addAction(self.menuFile.menuAction())
 
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         # self.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -571,17 +590,15 @@ class AppForm(QMainWindow):
         self.label_6.setText(_translate("MainWindow", "yamount:"))
         self.label_7.setText(_translate("MainWindow", "displength:"))
         self.label_8.setText(_translate("MainWindow", "dispwidth:"))
+        self.radioButton_2.setText(_translate("MainWindow", "top"))
+        self.radioButton.setText(_translate("MainWindow", "side"))
         self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
+        self.pushButton_5.setText(_translate("MainWindow", "open background"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionNew.setText(_translate("MainWindow", "New"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
 
-    # def mousePressEvent(self, e):
-    #     self.plot._on_click(e)
-    #
-    # def mouseReleaseEvent(self, e):
-    #     self.plot._on_release(e)
 
     def vmf_maker(self):
         try:
@@ -591,6 +608,8 @@ class AppForm(QMainWindow):
             #sys.exit()
         except ValueError:
             print("thats not a numbo dumbo")
+
+
     def keyPressEvent(self, e):
         # =============================================================================
         #create dictionary for keys in text
@@ -631,6 +650,7 @@ class AppForm(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
+    app.setStyle(QStyleFactory.create('Fusion'))
     form = AppForm()
     # ui = Ui_MainWindow()
     # ui.setupUi(form)
