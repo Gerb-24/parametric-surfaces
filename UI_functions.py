@@ -1,4 +1,8 @@
 import numpy as np
+import bezierfuncs as bez
+from PyQt5.QtWidgets import QFileDialog
+import ast
+import ntpath
 
 def add_curvepart(self, pointdict):
     length = len(pointdict)
@@ -62,5 +66,30 @@ def ymin_setter(self):
         self.plot.axesdict["ymin"] = self.ymin_le.text()
     except ValueError:
         print("thats not a numbo dumbo")
+    self.plot.update()
+    self.plot._update_plot()
+
+def bg_setter(self):
+    if self.plot.bg_curve_list != []:
+        self.plot.bg_curve_list = []
+        return
+    filepath, _ = QFileDialog.getOpenFileName(self, "Load Background", "", "BEZ(*.bez)")
+    if filepath == "":
+        return
+    with open(filepath, "r") as text:
+        pointdict = ast.literal_eval(text.readline())
+    pointlist = []
+    pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
+    for i in range(1,(len(pointdict)-1)):
+        pointlist[i-1].extend([pointdict[i]["handles"][0], pointdict[i]["node"]])
+        pointlist.append([pointdict[i]["node"], pointdict[i]["handles"][1]])
+    pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
+
+    t = np.linspace(0, 1, 200)
+    x = bez.general_bezier_curve_range_x(t, pointlist)
+    y = bez.general_bezier_curve_range_y(t, pointlist)
+    new_bg = [x, y, "b--"]
+
+    self.plot.bg_curve_list = new_bg
     self.plot.update()
     self.plot._update_plot()

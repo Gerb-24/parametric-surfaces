@@ -62,6 +62,9 @@ class DraggablePlotExample(PlotCanvas):
         self.drag_x = False
         self.drag_y = False
 
+        # background curve list
+        self.bg_curve_list = []
+
         self._lines = None
 
         self.axesdict = {"diff": "1024", "xmin": "-512", "ymin": "-512"}
@@ -129,6 +132,8 @@ class DraggablePlotExample(PlotCanvas):
         if  self._lines:
             for line in self._lines:
                 self._axes.lines.remove(line)
+        if self.bg_curve_list != []:
+            self._lines = self._axes.plot(*self.bg_curve_list)
         self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
 
         self._figure.canvas.draw()
@@ -531,8 +536,8 @@ class AppForm(QMainWindow):
         # background opening button
         self.pushButton_5 = QtWidgets.QPushButton(self.groupBox_2)
         self.pushButton_5.setGeometry(QtCore.QRect(40, 590, 111, 28))
-        #self.pushButton_5.setSizePolicy(sizePolicy)
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.clicked.connect(lambda: UIfuncs.bg_setter(self))
 
 
         self.menubar = QtWidgets.QMenuBar(self)
