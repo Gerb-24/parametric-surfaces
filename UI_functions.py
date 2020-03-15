@@ -72,12 +72,25 @@ def ymin_setter(self):
 def bg_setter(self):
     if self.plot.bg_curve_list != []:
         self.plot.bg_curve_list = []
+        self.plot.update()
+        self.plot._update_plot()
+        self.opening_btn.setText("open background")
         return
     filepath, _ = QFileDialog.getOpenFileName(self, "Load Background", "", "BEZ(*.bez)")
     if filepath == "":
         return
     with open(filepath, "r") as text:
         pointdict = ast.literal_eval(text.readline())
+
+    main_points = []
+    for i in range(len(pointdict)):
+        main_points.append(pointdict[i]["node"])
+
+    _point_drawing_list = []
+    _point_drawing_list.extend([*main_points[0], 'ko'])
+    for a, b in main_points[1::]:
+        _point_drawing_list.extend([a, b, 'k.'])
+
     pointlist = []
     pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
     for i in range(1,(len(pointdict)-1)):
@@ -85,11 +98,14 @@ def bg_setter(self):
         pointlist.append([pointdict[i]["node"], pointdict[i]["handles"][1]])
     pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
 
+    self.plot.bg_pointlist = pointlist
+    
     t = np.linspace(0, 1, 200)
     x = bez.general_bezier_curve_range_x(t, pointlist)
     y = bez.general_bezier_curve_range_y(t, pointlist)
-    new_bg = [x, y, "b--"]
+    new_bg = [x, y, "k--", *_point_drawing_list]
 
     self.plot.bg_curve_list = new_bg
     self.plot.update()
     self.plot._update_plot()
+    self.opening_btn.setText("close background")

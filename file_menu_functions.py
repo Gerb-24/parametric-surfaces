@@ -36,6 +36,7 @@ def load(self):
         #     self.plot.pointdict.append({"node": self.plot.pointlist[i][3], "handles": [self.plot.pointlist[i][2],self.plot.pointlist[i+1][1]]})
         # self.plot.pointdict.append({"node": self.plot.pointlist[len(self.plot.pointlist)-1][3], "handles": [self.plot.pointlist[len(self.plot.pointlist)-1][2]]})
 
+        self.plot.selected_node = 0
         self.plot.update()
         self.plot._update_plot()
         text.close()

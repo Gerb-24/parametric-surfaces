@@ -64,6 +64,7 @@ class DraggablePlotExample(PlotCanvas):
 
         # background curve list
         self.bg_curve_list = []
+        self.bg_pointlist = []
 
         self._lines = None
 
@@ -133,8 +134,9 @@ class DraggablePlotExample(PlotCanvas):
             for line in self._lines:
                 self._axes.lines.remove(line)
         if self.bg_curve_list != []:
-            self._lines = self._axes.plot(*self.bg_curve_list)
-        self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+            self._lines = self._axes.plot(*self.bg_curve_list,self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        else:
+            self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
 
         self._figure.canvas.draw()
 
@@ -534,10 +536,10 @@ class AppForm(QMainWindow):
         self.pushButton_4.clicked.connect(self.vmf_maker)
 
         # background opening button
-        self.pushButton_5 = QtWidgets.QPushButton(self.groupBox_2)
-        self.pushButton_5.setGeometry(QtCore.QRect(40, 590, 111, 28))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_5.clicked.connect(lambda: UIfuncs.bg_setter(self))
+        self.opening_btn = QtWidgets.QPushButton(self.groupBox_2)
+        self.opening_btn.setGeometry(QtCore.QRect(40, 590, 111, 28))
+        self.opening_btn.setObjectName("pushButton_5")
+        self.opening_btn.clicked.connect(lambda: UIfuncs.bg_setter(self))
 
 
         self.menubar = QtWidgets.QMenuBar(self)
@@ -598,7 +600,7 @@ class AppForm(QMainWindow):
         self.radioButton_2.setText(_translate("MainWindow", "top"))
         self.radioButton.setText(_translate("MainWindow", "side"))
         self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
-        self.pushButton_5.setText(_translate("MainWindow", "open background"))
+        self.opening_btn.setText(_translate("MainWindow", "open background"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionNew.setText(_translate("MainWindow", "New"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
@@ -609,7 +611,8 @@ class AppForm(QMainWindow):
         try:
 
             height, xamount, yamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
-            bez.curvemaker(self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            print("vmf is made!")
             #sys.exit()
         except ValueError:
             print("thats not a numbo dumbo")

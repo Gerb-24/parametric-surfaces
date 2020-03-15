@@ -16,7 +16,7 @@ def looper(lijst1,lijst2):
 def inrange(lijst1, lijst2):
     vec = np.array(lijst1) - np.array(lijst2)
     dist = np.linalg.norm(vec)
-    if dist < 10:
+    if dist < 20:
         #print("In Range")
         return True
     else:
