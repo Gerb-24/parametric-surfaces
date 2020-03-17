@@ -390,6 +390,7 @@ class AppForm(QMainWindow):
         #self.plot2 = Surface3D(self, width=5, height=4)
         #self.plot2.move(600,0)
         self.vmfdict = {"height": 16*256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
+        self.vmfmakenum = 0
         self.Ui_MainWindow()
         self.retranslateUi()
 
@@ -522,11 +523,14 @@ class AppForm(QMainWindow):
         # radio button 1
         self.radioButton_2 = QtWidgets.QRadioButton(self.groupBox_5)
         self.radioButton_2.setObjectName("radioButton_2")
+        self.radioButton_2.setChecked(True)
+        self.radioButton_2.clicked.connect(lambda: UIfuncs.vmfmakenum_setter(self,0))
         self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.radioButton_2)
 
         # radio button 2
         self.radioButton = QtWidgets.QRadioButton(self.groupBox_5)
         self.radioButton.setObjectName("radioButton")
+        self.radioButton.clicked.connect(lambda: UIfuncs.vmfmakenum_setter(self,1))
         self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.radioButton)
 
         # make vmf button
@@ -597,8 +601,8 @@ class AppForm(QMainWindow):
         self.label_6.setText(_translate("MainWindow", "yamount:"))
         self.label_7.setText(_translate("MainWindow", "displength:"))
         self.label_8.setText(_translate("MainWindow", "dispwidth:"))
-        self.radioButton_2.setText(_translate("MainWindow", "top"))
-        self.radioButton.setText(_translate("MainWindow", "side"))
+        self.radioButton_2.setText(_translate("MainWindow", "side"))
+        self.radioButton.setText(_translate("MainWindow", "top"))
         self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
         self.opening_btn.setText(_translate("MainWindow", "open background"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
@@ -611,7 +615,9 @@ class AppForm(QMainWindow):
         try:
 
             height, xamount, yamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
-            bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            # bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            cm_list = [bez.curvemaker, bez.curvemaker2]
+            cm_list[self.vmfmakenum](self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             print("vmf is made!")
             #sys.exit()
         except ValueError:
@@ -628,17 +634,17 @@ class AppForm(QMainWindow):
         #
         # print(curvekeys)
         # =============================================================================
-        curvekeys = {1: Qt.Key_1, 2: Qt.Key_2, 3: Qt.Key_3, 4: Qt.Key_4, 5: Qt.Key_5, 6: Qt.Key_6, 7: Qt.Key_7, 8: Qt.Key_8, 9: Qt.Key_9}
-        #create dictionary for keys
-
-        length = len(self.plot.pointlist)
-        for i,arg in curvekeys.items():
-            """this will select curve i in curve mode"""
-            if e.key() == arg:
-                    if i <= length:
-                        self.plot.selected_curve = i
-                        self.plot.update()
-                        self.plot._update_plot()
+        # curvekeys = {1: Qt.Key_1, 2: Qt.Key_2, 3: Qt.Key_3, 4: Qt.Key_4, 5: Qt.Key_5, 6: Qt.Key_6, 7: Qt.Key_7, 8: Qt.Key_8, 9: Qt.Key_9}
+        # #create dictionary for keys
+        #
+        # length = len(self.plot.pointlist)
+        # for i,arg in curvekeys.items():
+        #     """this will select curve i in curve mode"""
+        #     if e.key() == arg:
+        #             if i <= length:
+        #                 self.plot.selected_curve = i
+        #                 self.plot.update()
+        #                 self.plot._update_plot()
 
         if not e.isAutoRepeat() and e.key() == Qt.Key_X and self.plot.dragging == True:
             self.plot.drag_x = not self.plot.drag_x

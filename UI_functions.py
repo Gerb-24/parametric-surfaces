@@ -69,6 +69,9 @@ def ymin_setter(self):
     self.plot.update()
     self.plot._update_plot()
 
+def vmfmakenum_setter(self, value):
+    self.vmfmakenum = value
+
 def bg_setter(self):
     if self.plot.bg_curve_list != []:
         self.plot.bg_curve_list = []
@@ -99,7 +102,7 @@ def bg_setter(self):
     pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
 
     self.plot.bg_pointlist = pointlist
-    
+
     t = np.linspace(0, 1, 200)
     x = bez.general_bezier_curve_range_x(t, pointlist)
     y = bez.general_bezier_curve_range_y(t, pointlist)

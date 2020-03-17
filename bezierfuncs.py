@@ -62,9 +62,15 @@ def curvemaker(pointlist, height, xamount, yamount, displength, dispwidth):
 
     def func(x, y):
         return [mapping(x, pointlist)[0], mapping(x, pointlist)[1], y*height]
-    print("this is compiling")
     ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
-    print("vmf is compiled")
+
+def curvemaker2(pointlist, height, xamount, yamount, displength, dispwidth):
+    def mapping(t, pointlist):
+        return general_bezier_mapping(t, pointlist)
+
+    def func(x, y):
+        return [mapping(x, pointlist)[0], y*height, mapping(x, pointlist)[1]]
+    ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
 
 
 # two functions used to create the plot
