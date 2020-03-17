@@ -21,6 +21,7 @@ import random
 import sys
 import random
 from mpl_toolkits.mplot3d.axes3d import get_test_data
+import copy
 
 #%matplotlib qt
 #create new plot window
@@ -51,6 +52,8 @@ class DraggablePlotExample(PlotCanvas):
                             {"node": [150,0], "handles": [[100,0]]}]
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
+        self.undolength = 10
+        self.undolist = [copy.deepcopy(self.pointdict)]*self.undolength
         self.pointlist = []
         self.handle_expansion = []
         self.selected_node = 0
@@ -233,6 +236,8 @@ class DraggablePlotExample(PlotCanvas):
                 self.dragging = False
                 self.drag_x = False
                 self.drag_y = False
+                self.undolist = self.undolist[1::]
+                self.undolist.append(copy.deepcopy(self.pointdict))
             if self.preselected:
                 self.selected = True
                 self.preselected = False
@@ -666,6 +671,15 @@ class AppForm(QMainWindow):
         if e.key() == Qt.Key_S and self.control:
             fmf.save(self)
             self.control = False
+
+        if e.key() == Qt.Key_Z and self.control:
+            self.plot.pointdict = copy.deepcopy(self.plot.undolist[self.plot.undolength-2])
+
+            self.plot.undolist = self.plot.undolist[:-1:]
+            self.plot.undolist.insert(0,self.plot.undolist[0])
+            self.control = False
+            self.plot.update()
+            self.plot._update_plot()
 
     def keyReleaseEvent(self, e):
         if e.key() == Qt.Key_Control:
