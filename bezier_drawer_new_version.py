@@ -397,6 +397,7 @@ class AppForm(QMainWindow):
         #self.plot2.move(600,0)
         self.vmfdict = {"height": 16*256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
         self.vmfmakenum = 0
+        self.filename = ""
         self.control = False
         self.Ui_MainWindow()
         self.retranslateUi()
@@ -669,7 +670,7 @@ class AppForm(QMainWindow):
             self.control = True
 
         if e.key() == Qt.Key_S and self.control:
-            fmf.save(self)
+            fmf.q_save(self)
             self.control = False
 
         if e.key() == Qt.Key_Z and self.control:

@@ -6,6 +6,7 @@ def save(self):
     filepath, _ = QFileDialog.getSaveFileName(self, "Save File", "", "BEZ(*.bez)")
     if filepath == "":
         return
+    self.filename = filepath
     self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
     self.plot.axesdict = {"diff": self.diff_le.text(), "xmin": self.xmin_le.text(), "ymin": self.ymin_le.text()}
     with open(filepath, "w") as text:
@@ -14,10 +15,22 @@ def save(self):
     self.title = 'b-curve draw window : ' + ntpath.basename(filepath)
     self.setWindowTitle(self.title)
 
+def q_save(self):
+    if self.filename == "":
+        save(self)
+        return
+    self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
+    self.plot.axesdict = {"diff": self.diff_le.text(), "xmin": self.xmin_le.text(), "ymin": self.ymin_le.text()}
+    with open(self.filename, "w") as text:
+        text.writelines([str(self.plot.pointdict)+"\n", str(self.vmfdict)+"\n", str(self.plot.axesdict)+"\n"])
+        text.close()
+
+
 def load(self):
     filepath, _ = QFileDialog.getOpenFileName(self, "Load File", "", "BEZ(*.bez)")
     if filepath == "":
         return
+    self.filename = filepath
     with open(filepath, "r") as text:
         self.plot.pointdict= ast.literal_eval(text.readline())
         self.vmfdict = ast.literal_eval(text.readline())
