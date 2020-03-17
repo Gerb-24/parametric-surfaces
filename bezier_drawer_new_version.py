@@ -62,6 +62,7 @@ class DraggablePlotExample(PlotCanvas):
         self.drag_x = False
         self.drag_y = False
 
+
         # background curve list
         self.bg_curve_list = []
         self.bg_pointlist = []
@@ -391,6 +392,7 @@ class AppForm(QMainWindow):
         #self.plot2.move(600,0)
         self.vmfdict = {"height": 16*256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
         self.vmfmakenum = 0
+        self.control = False
         self.Ui_MainWindow()
         self.retranslateUi()
 
@@ -658,8 +660,16 @@ class AppForm(QMainWindow):
             self.plot.update()
             self.plot._update_plot()
 
+        if e.key() == Qt.Key_Control:
+            self.control = True
 
+        if e.key() == Qt.Key_S and self.control:
+            fmf.save(self)
+            self.control = False
 
+    def keyReleaseEvent(self, e):
+        if e.key() == Qt.Key_Control:
+            self.control = False
 
 
 def main():
