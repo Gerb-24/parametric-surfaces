@@ -1,13 +1,10 @@
 import ast
 import bezierfuncs as bez
 
-filepath1 = r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\cliff_interp.bez"
-filepath2 = r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\cliff_interp2.bez"
+filepathlist = [r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve1.bez"
+                ,r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve2.bez"
+                ,r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve3.bez"]
 
-with open(filepath1, "r") as text:
-    pointdict1 = ast.literal_eval(text.readline())
-with open(filepath2, "r") as text:
-    pointdict2 = ast.literal_eval(text.readline())
 
 def pointlist_maker(pointdict):
     pointlist = []
@@ -18,8 +15,11 @@ def pointlist_maker(pointdict):
     pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
     return(pointlist)
 
-pointlist1 = pointlist_maker(pointdict1)
-pointlist2 = pointlist_maker(pointdict2)
+pointlistlist = []
+for elem in filepathlist:
+    with open(elem, "r") as text:
+        pointdict = ast.literal_eval(text.readline())
+        pointlistlist.append(pointlist_maker(pointdict))
 
-bez.interpmaker(pointlist1, pointlist2, 5*128, 5, 2, 256, 256)
+bez.general_interpmaker_top(pointlistlist, 8*256, 5, 8, 256, 256)
 print("Done")

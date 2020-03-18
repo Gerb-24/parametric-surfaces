@@ -97,8 +97,8 @@ def bump_function(t):
     return 0 if t == 0 else (np.exp(-1/t)/(np.exp(-1/t)+np.exp(-1/(1-t))) if t < 1 else 1)
 
 
-def interp(bez1, bez2, t, y):
-    return [bump_function(y)*bez1(t)[0] + bump_function(1-y)*bez2(t)[0], bump_function(y)*bez1(t)[1]+bump_function(1-y)*bez2(t)[1]]
+def interp(bez1, bez2, t, y, start=0, end=1):
+    return [bump_function((y-start)/(end-start))*bez1(t)[0] + bump_function(1-(y-start)/(end-start))*bez2(t)[0], bump_function((y-start)/(end-start))*bez1(t)[1]+bump_function(1-(y-start)/(end-start))*bez2(t)[1]]
 
 
 def interpmaker(pointlist1, pointlist2, height, xamount, yamount, displength, dispwidth):
@@ -109,3 +109,55 @@ def interpmaker(pointlist1, pointlist2, height, xamount, yamount, displength, di
         return [interp(curve1, curve2, x, y)[0], interp(curve1, curve2, x, y)[1], y*height]
 
     ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
+
+def general_interpmaker_side(pointlistlist, height, xamount, yamount, displength, dispwidth):
+
+    def makelambda(list):
+        return lambda s:general_bezier_mapping(s,list)
+
+    funclist = []
+    for elem in pointlistlist:
+        funclist.append(makelambda(elem))
+    list_length = len(funclist)-1
+    # still need to write something for a length of 1
+
+    def func(x, y, i, funclist):
+
+        start = i/list_length
+        end = (i+1)/list_length
+        if y <= end:
+            #print(start, end)
+            # print(i)
+            return [interp(funclist[i+1], funclist[i], x, y, start = start, end = end)[0], interp(funclist[i+1], funclist[i], x, y, start = start, end = end)[1], y*height]
+        else:
+            return func(x, y, i+1, funclist)
+
+    newfunc = lambda x,y: func(x, y, 0 , funclist)
+
+    ps.filewriter(xamount, yamount, displength, dispwidth, newfunc, 2)
+
+def general_interpmaker_top(pointlistlist, height, xamount, yamount, displength, dispwidth):
+
+    def makelambda(list):
+        return lambda s:general_bezier_mapping(s,list)
+
+    funclist = []
+    for elem in pointlistlist:
+        funclist.append(makelambda(elem))
+    list_length = len(funclist)-1
+    # still need to write something for a length of 1
+
+    def func(x, y, i, funclist):
+
+        start = i/list_length
+        end = (i+1)/list_length
+        if y <= end:
+            #print(start, end)
+            # print(i)
+            return [interp(funclist[i+1], funclist[i], x, y, start = start, end = end)[0], y*height, interp(funclist[i+1], funclist[i], x, y, start = start, end = end)[1]]
+        else:
+            return func(x, y, i+1, funclist)
+
+    newfunc = lambda x,y: func(x, y, 0 , funclist)
+
+    ps.filewriter(xamount, yamount, displength, dispwidth, newfunc, 2)
