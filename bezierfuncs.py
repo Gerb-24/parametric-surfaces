@@ -1,6 +1,7 @@
 import math
 import parametric_surfaces_builder as ps
 import numpy as np
+import normalvec as nvec
 
 
 # functions for bezier creation
@@ -161,3 +162,33 @@ def general_interpmaker_top(pointlistlist, height, xamount, yamount, displength,
     newfunc = lambda x,y: func(x, y, 0 , funclist)
 
     ps.filewriter(xamount, yamount, displength, dispwidth, newfunc, 2)
+
+
+def along_normal_maker(pointlist, height,xamount, yamount, displength, dispwidth):
+    pl = pointlist
+
+    def mapping(t):
+        return np.array([general_bezier_mapping(t, pl)[0],general_bezier_mapping(t, pl)[1]])
+
+    def newmapping(x, y):
+        #return mapping(x)+y*nvec.normal(mapping,x)*height
+        return mapping(x)+height*np.cos(y*2*np.pi)*nvec.normal(mapping,x/1.00001)
+
+    def func(x, y):
+        return [newmapping(x, y)[0], newmapping(x, y)[1], np.sin(y*2*np.pi)*height]
+    ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
+
+pointdict =[{'node': [-596.7741935483871, -886.3636363636364], 'handles': [[-438.7096774193549, -730.5194805194805]]}, {'node': [-422.58064516129025, -321.42857142857133], 'handles': [[-545.1612903225805, -490.25974025974006], [-300.0, -152.5974025974026]]}, {'node': [251.61290322580635, -155.8441558441557], 'handles': [[103.2258064516127, -311.6883116883114], [400.0, 0.0]]}, {'node': [467.741935483871, 344.1558441558443], 'handles': [[325.8064516129032, 250.0]]}]
+
+
+def pointlist_maker(pointdict):
+    pointlist = []
+    pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
+    for i in range(1,(len(pointdict)-1)):
+        pointlist[i-1].extend([pointdict[i]["handles"][0], pointdict[i]["node"]])
+        pointlist.append([pointdict[i]["node"],pointdict[i]["handles"][1]])
+    pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
+    return(pointlist)
+
+pointlist = pointlist_maker(pointdict)
+along_normal_maker(pointlist, 256/2, 6, 4, 256, 256)

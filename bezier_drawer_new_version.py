@@ -625,7 +625,8 @@ class AppForm(QMainWindow):
             height, xamount, yamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
             # bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             cm_list = [bez.curvemaker, bez.curvemaker2]
-            cm_list[self.vmfmakenum](self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            #cm_list[self.vmfmakenum](self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            bez.along_normal_maker(self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             print("vmf is made!")
             #sys.exit()
         except ValueError:
