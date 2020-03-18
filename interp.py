@@ -1,9 +1,11 @@
 import ast
 import bezierfuncs as bez
+import os
 
-filepathlist = [r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve1.bez"
-                ,r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve2.bez"
-                ,r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit\curve3.bez"]
+directory = r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\revit"
+filepathlist = []
+for filename in os.listdir(directory):
+    filepathlist.append(os.path.join(directory,filename))
 
 
 def pointlist_maker(pointdict):
