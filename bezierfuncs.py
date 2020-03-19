@@ -178,7 +178,29 @@ def along_normal_maker(pointlist, height,xamount, yamount, displength, dispwidth
         return [newmapping(x, y)[0], newmapping(x, y)[1], np.sin(y*2*np.pi)*height]
     ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
 
-pointdict =[{'node': [-596.7741935483871, -886.3636363636364], 'handles': [[-438.7096774193549, -730.5194805194805]]}, {'node': [-422.58064516129025, -321.42857142857133], 'handles': [[-545.1612903225805, -490.25974025974006], [-300.0, -152.5974025974026]]}, {'node': [251.61290322580635, -155.8441558441557], 'handles': [[103.2258064516127, -311.6883116883114], [400.0, 0.0]]}, {'node': [467.741935483871, 344.1558441558443], 'handles': [[325.8064516129032, 250.0]]}]
+def along_curve_maker(longlist, shortlist, xamount, yamount, displength, dispwidth):
+    ll = longlist
+    sl = shortlist
+    rate = 1.5
+
+    def mapping(t):
+        return np.array([general_bezier_mapping(t, ll)[0],general_bezier_mapping(t, ll)[1]])
+
+    def curve(s):
+        return general_bezier_mapping(s,sl)
+
+    def newmapping(x, y):
+        #return mapping(x)+y*nvec.normal(mapping,x)*height
+        return mapping(x)-rate*curve(y)[0]*nvec.normal(mapping,x/1.00001)
+
+    def func(x, y):
+        return [newmapping(x, y)[0], newmapping(x, y)[1], rate*curve(y)[1]]
+    ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
+
+pointdict  = [{'node': [-929.0322580645161, 0.0], 'handles': [[-738.7096774193548, -3.2467532467530873]]}, {'node': [-361.2903225806451, 55.19480519480521], 'handles': [[-554.8387096774193, 55.19480519480521], [-167.74193548387098, 55.19480519480521]]}, {'node': [212.9032258064517, -107.14285714285711], 'handles': [[2.2737367544323206e-13, -107.14285714285711], [425.8064516129032, -107.14285714285711]]}, {'node': [761.2903225806449, 0.0], 'handles': [[603.2258064516125, -6.493506493506402]]}]
+
+
+pointdict2 =[{'node': [-117.26451612903224, 4.987012987013145], 'handles': [[-140.68387096774188, 94.75324675324703]]}, {'node': [-37.98709677419356, 91.42857142857156], 'handles': [[-75.97419354838712, 89.76623376623388], [0.0, 93.09090909090924]]}, {'node': [110.65806451612912, 109.71428571428578], 'handles': [[75.97419354838723, 164.57142857142867], [145.341935483871, 54.85714285714289]]}, {'node': [64.41290322580653, -3.3246753246752405], 'handles': [[29.72903225806465, 51.53246753246765]]}]
 
 
 def pointlist_maker(pointdict):
@@ -190,5 +212,6 @@ def pointlist_maker(pointdict):
     pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
     return(pointlist)
 
-pointlist = pointlist_maker(pointdict)
-along_normal_maker(pointlist, 256/2, 6, 4, 256, 256)
+longlist = pointlist_maker(pointdict)
+shortlist = pointlist_maker(pointdict2)
+along_curve_maker(longlist, shortlist, 8, 4, 256, 256)

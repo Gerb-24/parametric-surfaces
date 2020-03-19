@@ -24,6 +24,3 @@ def gradient(func, p):
 def normal(func, p):
     grad = gradient(func, p)
     return np.array([grad[1],-grad[0]])
-
-vec2 = np.array([1,2])+np.array([8,3])
-print(vec2)
