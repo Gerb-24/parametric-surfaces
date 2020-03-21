@@ -65,6 +65,13 @@ class DraggablePlotExample(PlotCanvas):
         self.drag_x = False
         self.drag_y = False
 
+        # for panning
+        self.pan_x = None
+        self.pan_y = None
+        self.xpress = None
+        self.ypress = None
+        self.middle_dragging = True
+
 
         # background curve list
         self.bg_curve_list = []
@@ -77,6 +84,7 @@ class DraggablePlotExample(PlotCanvas):
         self._init_plot()
         self._update_plot()
 
+
     def _init_plot(self):
         #self._figure = plt.figure("Example plot")
         #axes = plt.subplot(1, 1, 1)
@@ -88,7 +96,9 @@ class DraggablePlotExample(PlotCanvas):
         self._figure.canvas.mpl_connect('button_press_event', self._on_click)
         self._figure.canvas.mpl_connect('button_release_event', self._on_release)
         self._figure.canvas.mpl_connect('motion_notify_event', self._on_motion)
+        self._figure.canvas.mpl_connect('scroll_event', self._on_zoom)
         self.draw()
+
 
     def _update_plot(self):
 
@@ -144,6 +154,7 @@ class DraggablePlotExample(PlotCanvas):
 
         self._figure.canvas.draw()
 
+
     def _find_neighbor_point(self, event):
         u""" Find point around mouse position
         :rtype: ((int, int)|None)
@@ -160,6 +171,7 @@ class DraggablePlotExample(PlotCanvas):
         if min_distance < distance_threshold:
             return nearest_point
         return None
+
 
     def _on_click(self, e):
         u""" callback method for mouse click event
@@ -227,6 +239,13 @@ class DraggablePlotExample(PlotCanvas):
             """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
             self._update_plot()
 
+        if e.button == 2:
+            self.pan_x = self._axes.get_xlim()
+            self.pan_y = self._axes.get_ylim()
+            self.xpress, self.ypress = e.xdata, e.ydata
+            self.middle_dragging = True
+
+
     def _on_release(self, event):
         u""" callback method for mouse release event
         :type event: MouseEvent
@@ -242,8 +261,12 @@ class DraggablePlotExample(PlotCanvas):
                 self.selected = True
                 self.preselected = False
                 #print("selection on")
+        if event.button == 2 and event.inaxes in [self._axes]:
+            self.middle_dragging = False
+
         self.update()
         self._update_plot()
+
 
     def _on_motion(self, e):
         u""" callback method for mouse motion event
@@ -256,52 +279,99 @@ class DraggablePlotExample(PlotCanvas):
         # self._remove_point(*self._dragging_point,event=event)
         # self._dragging_point = self._add_point(event)
         # self._update_plot()
-        if not self.dragging:
-            return
         if e.xdata is None or e.ydata is None:
             return
         self.newpoint = [e.xdata, e.ydata]
-        """ this stores the current coordinates of the cursor"""
-        if self.drag_x:
-            self.newpoint = [self.newpoint[0],self.handle_expansion[self.selected_handle][1]]
-        elif self.drag_y:
-            self.newpoint = [self.handle_expansion[self.selected_handle][0], self.newpoint[1]]
-        if self.selected_handle < len(self.main_points):
+        if e.button == 1 and self.dragging:
+            """ this stores the current coordinates of the cursor"""
+            if self.drag_x:
+                self.newpoint = [self.newpoint[0],self.handle_expansion[self.selected_handle][1]]
+            elif self.drag_y:
+                self.newpoint = [self.handle_expansion[self.selected_handle][0], self.newpoint[1]]
+            if self.selected_handle < len(self.main_points):
 
-            # here we update the handles
-            handle_update_list = []
-            for elem in self.pointdict[self.selected_handle]["handles"]:
-                handle_update_list.append(np.array(elem))
-            nodevec = np.array(self.pointdict[self.selected_node]["node"])
-            handle_diff_list = []
-            for elem in handle_update_list:
-                handle_diff_list.append(elem-nodevec)
-            newnode = np.array(self.newpoint)
-            handle_update_list = []
-            for elem in handle_diff_list:
-                newvec = newnode + elem
-                handle_update_list.append([newvec[0],newvec[1]])
-            self.pointdict[self.selected_handle]["handles"] = handle_update_list
-
-            # here we update the node position
-            self.selected_node = self.selected_handle
-            self.pointdict[self.selected_handle]["node"] = self.newpoint
-
-
-
-        else:
-            handle_num = self.selected_handle-(len(self.main_points))
-            self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
-            if len(self.pointdict[self.selected_node]["handles"]) == 2:
-                other_handle = 1-handle_num
+                # here we update the handles
+                handle_update_list = []
+                for elem in self.pointdict[self.selected_handle]["handles"]:
+                    handle_update_list.append(np.array(elem))
                 nodevec = np.array(self.pointdict[self.selected_node]["node"])
-                vec = nodevec - np.array(self.newpoint)
-                newvec = nodevec + vec
-                self.pointdict[self.selected_node]["handles"][other_handle] = [newvec[0],newvec[1]]
+                handle_diff_list = []
+                for elem in handle_update_list:
+                    handle_diff_list.append(elem-nodevec)
+                newnode = np.array(self.newpoint)
+                handle_update_list = []
+                for elem in handle_diff_list:
+                    newvec = newnode + elem
+                    handle_update_list.append([newvec[0],newvec[1]])
+                self.pointdict[self.selected_handle]["handles"] = handle_update_list
 
+                # here we update the node position
+                self.selected_node = self.selected_handle
+                self.pointdict[self.selected_handle]["node"] = self.newpoint
+
+
+
+            else:
+                handle_num = self.selected_handle-(len(self.main_points))
+                self.pointdict[self.selected_node]["handles"][handle_num] = self.newpoint
+                if len(self.pointdict[self.selected_node]["handles"]) == 2:
+                    other_handle = 1-handle_num
+                    nodevec = np.array(self.pointdict[self.selected_node]["node"])
+                    vec = nodevec - np.array(self.newpoint)
+                    newvec = nodevec + vec
+                    self.pointdict[self.selected_node]["handles"][other_handle] = [newvec[0],newvec[1]]
+
+            self.update()
+            self._update_plot()
+            """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
+        #print("works")
+        if e.button == 2:
+
+            if not self.middle_dragging: return
+            dx = e.xdata - self.xpress
+            dy = e.ydata - self.ypress
+            self.pan_x -= dx
+            self.pan_y -= dy
+            self.axesdict["xmin"] = self.pan_x[0]
+            self.axesdict["ymin"] = self.pan_y[0]
+            self.update()
+            self._update_plot()
+
+
+    def _on_zoom(self, event):
+        cur_xlim = self._axes.get_xlim()
+        cur_ylim = self._axes.get_ylim()
+
+        xdata = event.xdata # get event x location
+        ydata = event.ydata # get event y location
+        base_scale = 1.5
+
+        if event.button == 'down':
+            # deal with zoom in
+            scale_factor = 1 / base_scale
+        elif event.button == 'up':
+            # deal with zoom out
+            scale_factor = base_scale
+        else:
+            # deal with something that should never happen
+            scale_factor = 1
+            # print event.button
+
+        diff = int(round((cur_xlim[1] - cur_xlim[0]) * scale_factor))
+
+        relx = (cur_xlim[1] - xdata)/(cur_xlim[1] - cur_xlim[0])
+        rely = (cur_ylim[1] - ydata)/(cur_ylim[1] - cur_ylim[0])
+
+        xmin = int(round(xdata - diff * (1-relx)))
+        ymin = int(round(ydata - diff * (1-rely)))
+
+        self.axesdict["xmin"] = str(xmin)
+        self.axesdict["ymin"] = str(ymin)
+        self.axesdict["diff"] = str(diff)
+        # self._axes.set_xlim([, xdata + new_width * (relx)])
+        # self._axes.set_ylim([ydata - new_width * (1-rely), ydata + new_height * (rely)])
         self.update()
         self._update_plot()
-        """update updates the whole GUI, which also runs the bezier plots with the new pointlist"""
 
 
 class Surface3D(PlotCanvas):

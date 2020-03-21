@@ -3,9 +3,9 @@ import numpy
 
 class ZoomPan:
     def __init__(self):
-        self.press = None
-        self.cur_xlim = None
-        self.cur_ylim = None
+        self.middle_dragging = False
+        self.pan_x = None
+        self.pan_y = None
         self.x0 = None
         self.y0 = None
         self.x1 = None
@@ -41,6 +41,7 @@ class ZoomPan:
 
             ax.set_xlim([xdata - new_width * (1-relx), xdata + new_width * (relx)])
             ax.set_ylim([ydata - new_height * (1-rely), ydata + new_height * (rely)])
+
             ax.figure.canvas.draw()
 
         fig = ax.get_figure() # get the figure of interest
@@ -51,24 +52,25 @@ class ZoomPan:
     def pan_factory(self, ax):
         def onPress(event):
             if event.inaxes != ax: return
-            self.cur_xlim = ax.get_xlim()
-            self.cur_ylim = ax.get_ylim()
-            self.press = self.x0, self.y0, event.xdata, event.ydata
-            self.x0, self.y0, self.xpress, self.ypress = self.press
+            if event.button == 2:
+                self.pan_x = ax.get_xlim()
+                self.pan_y = ax.get_ylim()
+                self.xpress, self.ypress = event.xdata, event.ydata
+                self.middle_dragging = True
 
         def onRelease(event):
-            self.press = None
+            self.middle_dragging = False
             ax.figure.canvas.draw()
 
         def onMotion(event):
-            if self.press is None: return
+            if self.middle_dragging is False: return
             if event.inaxes != ax: return
             dx = event.xdata - self.xpress
             dy = event.ydata - self.ypress
-            self.cur_xlim -= dx
-            self.cur_ylim -= dy
-            ax.set_xlim(self.cur_xlim)
-            ax.set_ylim(self.cur_ylim)
+            self.pan_x -= dx
+            self.pan_y -= dy
+            ax.set_xlim(self.pan_x)
+            ax.set_ylim(self.pan_y)
 
             ax.figure.canvas.draw()
 
