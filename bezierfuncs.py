@@ -236,25 +236,3 @@ def along_interp_maker(longlist, pointlistlist, xamount, yamount, displength, di
     def func(x, y):
         return [newmapping(x, y)[0], newmapping(x, y)[1], rate*newfunc(y, x)[1]]
     ps.filewriter(xamount, yamount, displength, dispwidth, func, 2)
-
-
-# pointdict  = [{'node': [-929.0322580645161, 0.0], 'handles': [[-738.7096774193548, -3.2467532467530873]]}, {'node': [-361.2903225806451, 55.19480519480521], 'handles': [[-554.8387096774193, 55.19480519480521], [-167.74193548387098, 55.19480519480521]]}, {'node': [212.9032258064517, -107.14285714285711], 'handles': [[2.2737367544323206e-13, -107.14285714285711]]}]
-#
-# pointdict2 = [{'node': [-117.26451612903224, 4.987012987013145], 'handles': [[-140.68387096774188, 94.75324675324703]]}, {'node': [-47.89677419354837, 156.2597402597404], 'handles': [[-94.14193548387095, 129.6623376623378], [-1.6516129032257822, 182.857142857143]]}, {'node': [107.35483870967744, 128.0000000000001], 'handles': [[99.09677419354841, 179.53246753246765], [115.61290322580646, 76.46753246753258]]}, {'node': [64.41290322580653, -3.3246753246752405], 'handles': [[39.63870967741934, 71.48051948051955]]}]
-#
-#
-# pointdict3 = [{'node': [-113.96129032258057, 6.649350649350708], 'handles': [[-100.7483870967742, 83.11688311688329]]}, {'node': [-146.99354838709678, 167.89610389610402], 'handles': [[-196.54193548387093, 91.42857142857156], [-97.44516129032263, 244.3636363636365]]}, {'node': [33.03225806451621, 191.16883116883128], 'handles': [[-11.561290322580476, 217.76623376623388], [77.6258064516129, 164.57142857142867]]}, {'node': [64.41290322580653, -3.3246753246752405], 'handles': [[102.39999999999998, 84.77922077922085]]}]
-#
-# def pointlist_maker(pointdict):
-#     pointlist = []
-#     pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
-#     for i in range(1,(len(pointdict)-1)):
-#         pointlist[i-1].extend([pointdict[i]["handles"][0], pointdict[i]["node"]])
-#         pointlist.append([pointdict[i]["node"],pointdict[i]["handles"][1]])
-#     pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
-#     return(pointlist)
-#
-# longlist = pointlist_maker(pointdict)
-# shortlist1 = pointlist_maker(pointdict2)
-# shortlist2 = pointlist_maker(pointdict3)
-# along_interp_maker(longlist, [shortlist1, shortlist2], 6, 4, 256, 256)

@@ -24,4 +24,3 @@ for elem in filepathlist:
         pointlistlist.append(pointlist_maker(pointdict))
 
 bez.general_interpmaker_top(pointlistlist, 8*256, 5, 8, 256, 256)
-print("Done")

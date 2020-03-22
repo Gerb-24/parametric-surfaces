@@ -48,8 +48,12 @@ class DraggablePlotExample(PlotCanvas):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.pointdict =    [{"node" : [-150,0], "handles" : [[-100,0]]},
-                            {"node": [150,0], "handles": [[100,0]]}]
+        self.pointdictdict = {"longcurve": [{"node" : [-150,0], "handles" : [[-100,0]]},
+                            {"node": [150,0], "handles": [[100,0]]}],
+                            "shortcurvelist": [[{"node" : [-150,20], "handles" : [[-100,0]]},
+                                                {"node": [150,0], "handles": [[100,0]]}]]}
+        self.selected_curve = 0
+        self.pointdict =    copy.deepcopy(self.pointdictdict["longcurve"])
         self.main_points = [self.pointdict[0]["node"],self.pointdict[1]["node"]]
         #self.pointlist = [[[100,250],[200,250],[300,250],[400,250]]]
         self.undolength = 10
@@ -76,6 +80,9 @@ class DraggablePlotExample(PlotCanvas):
         # background curve list
         self.bg_curve_list = []
         self.bg_pointlist = []
+
+        self.next_curve_list = []
+        self.prev_curve_list = []
 
         self._lines = None
 
@@ -147,12 +154,86 @@ class DraggablePlotExample(PlotCanvas):
         if  self._lines:
             for line in self._lines:
                 self._axes.lines.remove(line)
-        if self.bg_curve_list != []:
-            self._lines = self._axes.plot(*self.bg_curve_list,self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
-        else:
-            self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        # if self.bg_curve_list != []:
+        #     self._lines = self._axes.plot(*self.bg_curve_list,self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        # else:
+        #     self._lines = self._axes.plot(self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
+        self._lines = self._axes.plot(*self.prev_curve_list, *self.next_curve_list, self.x, self.y, "b-", *_handle_drawing_list, *_point_drawing_list)
 
         self._figure.canvas.draw()
+
+
+    def pdd_updater(self):
+        if self.selected_curve:
+            self.pointdictdict["shortcurvelist"][self.selected_curve-1] = copy.deepcopy(self.pointdict)
+        else:
+            self.pointdictdict["longcurve"] = copy.deepcopy(self.pointdict)
+
+
+    def short_bg_setter(self):
+
+        def next_setter(self):
+            pointdict = self.pointdictdict["shortcurvelist"][self.selected_curve]
+            main_points = []
+            for i in range(len(pointdict)):
+                main_points.append(pointdict[i]["node"])
+
+            _point_drawing_list = []
+            _point_drawing_list.extend([*main_points[0], 'ko'])
+            for a, b in main_points[1::]:
+                _point_drawing_list.extend([a, b, 'k.'])
+
+            pointlist = []
+            pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
+            for i in range(1,(len(pointdict)-1)):
+                pointlist[i-1].extend([pointdict[i]["handles"][0], pointdict[i]["node"]])
+                pointlist.append([pointdict[i]["node"], pointdict[i]["handles"][1]])
+            pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
+
+            t = np.linspace(0, 1, 200)
+            x = bez.general_bezier_curve_range_x(t, pointlist)
+            y = bez.general_bezier_curve_range_y(t, pointlist)
+            new_next = [x, y, "k--", *_point_drawing_list]
+
+            return new_next
+
+        def prev_setter(self):
+            pointdict = self.pointdictdict["shortcurvelist"][self.selected_curve-2]
+            main_points = []
+            for i in range(len(pointdict)):
+                main_points.append(pointdict[i]["node"])
+
+            _point_drawing_list = []
+            _point_drawing_list.extend([*main_points[0], 'ro'])
+            for a, b in main_points[1::]:
+                _point_drawing_list.extend([a, b, 'r.'])
+
+            pointlist = []
+            pointlist.append([pointdict[0]["node"],pointdict[0]["handles"][0]])
+            for i in range(1,(len(pointdict)-1)):
+                pointlist[i-1].extend([pointdict[i]["handles"][0], pointdict[i]["node"]])
+                pointlist.append([pointdict[i]["node"], pointdict[i]["handles"][1]])
+            pointlist[(len(pointdict)-2)].extend([pointdict[len(pointdict)-1]["handles"][0], pointdict[len(pointdict)-1]["node"]])
+
+            t = np.linspace(0, 1, 200)
+            x = bez.general_bezier_curve_range_x(t, pointlist)
+            y = bez.general_bezier_curve_range_y(t, pointlist)
+            new_prev = [x, y, "r--", *_point_drawing_list]
+
+            return new_prev
+
+        if self.selected_curve == 0 or len(self.pointdictdict["shortcurvelist"]) == 1:
+            self.prev_curve_list = []
+            self.next_curve_list = []
+        elif self.selected_curve == 1:
+            self.prev_curve_list = []
+            self.next_curve_list = next_setter(self)
+        elif self.selected_curve == len(self.pointdictdict["shortcurvelist"]):
+            self.prev_curve_list = prev_setter(self)
+            self.next_curve_list = []
+        else:
+            self.prev_curve_list = prev_setter(self)
+            self.next_curve_list = next_setter(self)
 
 
     def _find_neighbor_point(self, event):
@@ -713,17 +794,33 @@ class AppForm(QMainWindow):
         #
         # print(curvekeys)
         # =============================================================================
-        # curvekeys = {1: Qt.Key_1, 2: Qt.Key_2, 3: Qt.Key_3, 4: Qt.Key_4, 5: Qt.Key_5, 6: Qt.Key_6, 7: Qt.Key_7, 8: Qt.Key_8, 9: Qt.Key_9}
-        # #create dictionary for keys
-        #
-        # length = len(self.plot.pointlist)
-        # for i,arg in curvekeys.items():
-        #     """this will select curve i in curve mode"""
-        #     if e.key() == arg:
-        #             if i <= length:
-        #                 self.plot.selected_curve = i
-        #                 self.plot.update()
-        #                 self.plot._update_plot()
+        curvekeys = {1: Qt.Key_1, 2: Qt.Key_2, 3: Qt.Key_3, 4: Qt.Key_4, 5: Qt.Key_5, 6: Qt.Key_6, 7: Qt.Key_7, 8: Qt.Key_8, 9: Qt.Key_9}
+        #create dictionary for keys
+
+        length = len(self.plot.pointdictdict["shortcurvelist"])
+        for i,arg in curvekeys.items():
+            """this will select curve i in curve mode"""
+            if e.key() == arg:
+                    if i <= length:
+                        # saving the changed curve into the pointdictdict
+                        self.plot.pdd_updater()
+
+                        #changing the pointdict to the new selected curve
+                        self.plot.selected_curve = i
+                        self.plot.pointdict = copy.deepcopy(self.plot.pointdictdict["shortcurvelist"][i-1])
+                        self.plot.short_bg_setter()
+                        self.plot.update()
+                        self.plot._update_plot()
+        if e.key() == Qt.Key_Q:
+            # saving the changed curve into the pointdictdict
+            self.plot.pdd_updater()
+
+            #changing the pointdict to the longcurve
+            self.plot.selected_curve = 0
+            self.plot.pointdict = copy.deepcopy(self.plot.pointdictdict["longcurve"])
+            self.plot.short_bg_setter()
+            self.plot.update()
+            self.plot._update_plot()
 
         if not e.isAutoRepeat() and e.key() == Qt.Key_X and self.plot.dragging == True:
             self.plot.drag_x = not self.plot.drag_x
@@ -752,6 +849,7 @@ class AppForm(QMainWindow):
             self.control = False
             self.plot.update()
             self.plot._update_plot()
+
 
     def keyReleaseEvent(self, e):
         if e.key() == Qt.Key_Control:
