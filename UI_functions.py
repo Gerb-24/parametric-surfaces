@@ -3,6 +3,7 @@ import bezierfuncs as bez
 from PyQt5.QtWidgets import QFileDialog
 import ast
 import ntpath
+import copy
 
 def add_curvepart(self, pointdict):
     length = len(pointdict)
@@ -29,7 +30,29 @@ def remove_curvepart(self, pointdict):
     self.plot.update()
     self.plot._update_plot()
 
+def add_curve(self, pdd):
+    self.plot.pdd_updater()
+    scl = pdd["shortcurvelist"]
+    length = len(scl)
+    scl.append(scl[length-1])
+    self.plot.selected_curve = length+1
+    self.plot.pointdict = copy.deepcopy(scl[length])
+    self.plot.short_bg_setter()
+    self.plot.update()
+    self.plot._update_plot()
 
+def remove_curve(self, pdd):
+    self.plot.pdd_updater()
+    scl = pdd["shortcurvelist"]
+    length = len(scl)
+    if length == 1:
+        return
+    scl.pop()
+    self.plot.selected_curve = length-1
+    self.plot.pointdict = copy.deepcopy(scl[length-2])
+    self.plot.short_bg_setter()
+    self.plot.update()
+    self.plot._update_plot()
 
 def line_editor(text,changing_property, widget):
     """this one still needs some work"""

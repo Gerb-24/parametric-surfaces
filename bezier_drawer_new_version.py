@@ -850,6 +850,11 @@ class AppForm(QMainWindow):
             self.plot.update()
             self.plot._update_plot()
 
+        if e.key() == Qt.Key_A:
+            UIfuncs.add_curve(self, self.plot.pointdictdict)
+
+        if e.key() == Qt.Key_D:
+            UIfuncs.remove_curve(self, self.plot.pointdictdict)
 
     def keyReleaseEvent(self, e):
         if e.key() == Qt.Key_Control:
