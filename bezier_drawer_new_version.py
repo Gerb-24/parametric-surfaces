@@ -7,6 +7,7 @@ import point_selecter as sel
 import UI_functions as UIfuncs
 import bezierfuncs as bez
 import file_menu_functions as fmf
+import along
 import numpy as np
 
 
@@ -772,12 +773,13 @@ class AppForm(QMainWindow):
 
     def vmf_maker(self):
         try:
-
-            height, xamount, yamount, displength, dispwidth = int(self.height_le.text()), int(self.xamount_le.text()), int(self.yamount_le.text()), int(self.displength_le.text()), int(self.dispwidth_le.text())
+            self.plot.pdd_updater()
+            self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
             # bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
-            cm_list = [bez.curvemaker, bez.curvemaker2]
+            #cm_list = [bez.curvemaker, bez.curvemaker2]
             #cm_list[self.vmfmakenum](self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
-            bez.along_normal_maker(self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
+            print("making the vmf")
+            along.vmf_creater(self.plot.pointdictdict, self.vmfdict, "along")
             print("vmf is made!")
             #sys.exit()
         except ValueError:
