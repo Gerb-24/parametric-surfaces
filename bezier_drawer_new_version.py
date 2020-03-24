@@ -546,7 +546,7 @@ class AppForm(QMainWindow):
         #plot 3d graph
         #self.plot2 = Surface3D(self, width=5, height=4)
         #self.plot2.move(600,0)
-        self.vmfdict = {"height": 16*256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
+        self.vmfdict = {"height": 16*256, "radius": 256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
         self.vmfmakenum = 0
         self.filename = ""
         self.control = False
@@ -752,36 +752,40 @@ class AppForm(QMainWindow):
                     self.label_13.setObjectName("label_13")
                     self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_13)
 
-                    self.lineEdit_13 = QtWidgets.QLineEdit(self.frame_5)
-                    self.lineEdit_13.setObjectName("lineEdit_13")
-                    self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_13)
+                    self.yStart_le = QtWidgets.QLineEdit(self.frame_5)
+                    self.yStart_le.setObjectName("lineEdit_13")
+                    self.yStart_le.setText("0")
+                    self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.yStart_le)
 
                     self.label_14 = QtWidgets.QLabel(self.frame_5)
                     self.label_14.setObjectName("label_14")
                     self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_14)
 
-                    self.lineEdit_14 = QtWidgets.QLineEdit(self.frame_5)
-                    self.lineEdit_14.setObjectName("lineEdit_14")
-                    self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_14)
+                    self.yEnd_le = QtWidgets.QLineEdit(self.frame_5)
+                    self.yEnd_le.setObjectName("lineEdit_14")
+                    self.yEnd_le.setText("2000")
+                    self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.yEnd_le)
 
                     self.label_15 = QtWidgets.QLabel(self.frame_5)
                     self.label_15.setObjectName("label_15")
                     self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_15)
 
-                    self.lineEdit_15 = QtWidgets.QLineEdit(self.frame_5)
-                    self.lineEdit_15.setObjectName("lineEdit_15")
-                    self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_15)
+                    self.yNodeNum_le = QtWidgets.QLineEdit(self.frame_5)
+                    self.yNodeNum_le.setObjectName("lineEdit_15")
+                    self.yNodeNum_le.setText("6")
+                    self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.yNodeNum_le)
 
-                    self.pushButton_11 = QtWidgets.QPushButton(self.tab_5)
-                    self.pushButton_11.setGeometry(QtCore.QRect(40, 120, 93, 28))
-                    self.pushButton_11.setObjectName("pushButton_11")
+                    self.yNewCurve_btn = QtWidgets.QPushButton(self.tab_5)
+                    self.yNewCurve_btn.setGeometry(QtCore.QRect(40, 120, 93, 28))
+                    self.yNewCurve_btn.setObjectName("pushButton_11")
+                    self.yNewCurve_btn.clicked.connect(lambda: UIfuncs.yLine_maker(self))
 
                     self.NewLineTab.addTab(self.tab_5, "")
 
                     self.label_13.setText(_translate("MainWindow", "y-start:"))
                     self.label_14.setText(_translate("MainWindow", "y-end:"))
                     self.label_15.setText(_translate("MainWindow", "node amount:"))
-                    self.pushButton_11.setText(_translate("MainWindow", "new curve"))
+                    self.yNewCurve_btn.setText(_translate("MainWindow", "new curve"))
                     self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_5), _translate("MainWindow", "y-line"))
 
                 def lineTab_init():
