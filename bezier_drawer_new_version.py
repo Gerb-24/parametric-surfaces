@@ -414,8 +414,8 @@ class DraggablePlotExample(PlotCanvas):
             dy = e.ydata - self.ypress
             self.pan_x -= dx
             self.pan_y -= dy
-            self.axesdict["xmin"] = self.pan_x[0]
-            self.axesdict["ymin"] = self.pan_y[0]
+            self.axesdict["xmin"] = str(int(round(self.pan_x[0])))
+            self.axesdict["ymin"] = str(int(round(self.pan_y[0])))
             self.update()
             self._update_plot()
 
@@ -428,10 +428,10 @@ class DraggablePlotExample(PlotCanvas):
         ydata = event.ydata # get event y location
         base_scale = 1.5
 
-        if event.button == 'down':
+        if event.button == 'up':
             # deal with zoom in
             scale_factor = 1 / base_scale
-        elif event.button == 'up':
+        elif event.button == 'down':
             # deal with zoom out
             scale_factor = base_scale
         else:
@@ -610,7 +610,6 @@ class AppForm(QMainWindow):
                 self.diff_le = QtWidgets.QLineEdit(self.axes_grp)
                 self.diff_le.setObjectName("lineEdit")
                 self.diff_le.setText(self.plot.axesdict["diff"])
-                self.diff_le.returnPressed.connect(lambda: UIfuncs.diff_setter(self))
                 self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.diff_le)
                 self.diff_lab = QtWidgets.QLabel(self.axes_grp)
                 self.diff_lab.setObjectName("label")
@@ -623,7 +622,6 @@ class AppForm(QMainWindow):
                 self.xmin_le = QtWidgets.QLineEdit(self.axes_grp)
                 self.xmin_le.setObjectName("lineEdit_2")
                 self.xmin_le.setText(str(self.plot.axesdict["xmin"]))
-                self.xmin_le.returnPressed.connect(lambda: UIfuncs.xmin_setter(self))
                 self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.xmin_le)
                 # ymin
                 self.ymin_lab = QtWidgets.QLabel(self.axes_grp)
@@ -632,16 +630,17 @@ class AppForm(QMainWindow):
                 self.ymin_le = QtWidgets.QLineEdit(self.axes_grp)
                 self.ymin_le.setObjectName("lineEdit_3")
                 self.ymin_le.setText(self.plot.axesdict["ymin"])
-                self.ymin_le.returnPressed.connect(lambda: UIfuncs.ymin_setter(self))
                 self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ymin_le)
                 # get
                 self.axesGetButton = QtWidgets.QPushButton(self.axes_grp)
                 self.axesGetButton.setObjectName("pushButton_13")
                 self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.axesGetButton)
+                self.axesGetButton.clicked.connect(lambda: UIfuncs.axes_getter(self))
                 #set
                 self.axesSetButton = QtWidgets.QPushButton(self.axes_grp)
                 self.axesSetButton.setObjectName("pushButton_14")
                 self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.axesSetButton)
+                self.axesSetButton.clicked.connect(lambda: UIfuncs.axes_setter(self))
 
                 # axes group
                 self.axes_grp.setTitle(_translate("MainWindow", "Axes"))
@@ -673,8 +672,11 @@ class AppForm(QMainWindow):
 
                 self.shortCurveToolsGroup.setTitle(_translate("MainWindow", "Shortcurve tools"))
                 self.addCurveButton.setText(_translate("MainWindow", "add curve"))
+                self.addCurveButton.clicked.connect(lambda: UIfuncs.add_curve(self, self.plot.pointdictdict))
                 self.removeCurveButton.setText(_translate("MainWindow", "remove curve"))
+                self.removeCurveButton.clicked.connect(lambda: UIfuncs.remove_curve(self, self.plot.pointdictdict))
                 self.invAllCurveButton.setText(_translate("MainWindow", "invert all curves"))
+                #self.invAllCurveButton.clicked.connect(lambda: UIfuncs.inv_curve(self, self.plot.pointdictdict))
 
             def newLineTab_init(self, xstart, ystart, length, height):
 
@@ -1029,14 +1031,6 @@ class AppForm(QMainWindow):
 
         menu_init(self)
 
-
-
-
-
-
-
-
-
     def vmf_maker(self):
         try:
             self.plot.pdd_updater()
@@ -1050,7 +1044,6 @@ class AppForm(QMainWindow):
             #sys.exit()
         except ValueError:
             print("thats not a numbo dumbo")
-
 
     def keyPressEvent(self, e):
         # =============================================================================

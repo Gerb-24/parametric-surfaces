@@ -5,6 +5,10 @@ import ast
 import ntpath
 import copy
 
+#####################
+#CURVEPART FUNCTIONS#
+#####################
+
 def add_curvepart(self, pointdict):
     length = len(pointdict)
     lastpoint_vec = np.array(pointdict[length - 1]["node"])
@@ -30,6 +34,10 @@ def remove_curvepart(self, pointdict):
     self.plot.update()
     self.plot._update_plot()
 
+#################
+#CURVE FUNCTIONS#
+#################
+
 def add_curve(self, pdd):
     self.plot.pdd_updater()
     scl = pdd["shortcurvelist"]
@@ -54,43 +62,53 @@ def remove_curve(self, pdd):
     self.plot.update()
     self.plot._update_plot()
 
-def line_editor(text,changing_property, widget):
-    """this one still needs some work"""
-    try:
-        changing_property = int(text)
-    except ValueError:
-        print("thats not a numbo dumbo")
-    print(changing_property)
-    widget.plot.update()
-    widget.plot._update_plot()
 
+################
+#AXES FUNCTIONS#
+################
 
-def diff_setter(self):
-    """this one still needs some work"""
-    try:
-        self.plot.axesdict["diff"] = self.diff_le.text()
-    except ValueError:
-        print("thats not a numbo dumbo")
-    self.plot.update()
-    self.plot._update_plot()
+def axes_setter(self):
+    def diff_setter():
+        """this one still needs some work"""
+        try:
+            self.plot.axesdict["diff"] = self.diff_le.text()
+        except ValueError:
+            print("thats not a numbo dumbo")
+        self.plot.update()
+        self.plot._update_plot()
 
-def xmin_setter(self):
-    """this one still needs some work"""
-    try:
-        self.plot.axesdict["xmin"] = self.xmin_le.text()
-    except ValueError:
-        print("thats not a numbo dumbo")
-    self.plot.update()
-    self.plot._update_plot()
+    def xmin_setter():
+        """this one still needs some work"""
+        try:
+            self.plot.axesdict["xmin"] = self.xmin_le.text()
+        except ValueError:
+            print("thats not a numbo dumbo")
+        self.plot.update()
+        self.plot._update_plot()
 
-def ymin_setter(self):
-    """this one still needs some work"""
-    try:
-        self.plot.axesdict["ymin"] = self.ymin_le.text()
-    except ValueError:
-        print("thats not a numbo dumbo")
-    self.plot.update()
-    self.plot._update_plot()
+    def ymin_setter():
+        """this one still needs some work"""
+        try:
+            self.plot.axesdict["ymin"] = self.ymin_le.text()
+        except ValueError:
+            print("thats not a numbo dumbo")
+        self.plot.update()
+        self.plot._update_plot()
+
+    diff_setter()
+    xmin_setter()
+    ymin_setter()
+
+def axes_getter(self):
+
+    self.diff_le.setText(self.plot.axesdict["diff"])
+    self.xmin_le.setText(self.plot.axesdict["xmin"])
+    self.ymin_le.setText(self.plot.axesdict["ymin"])
+
+#############################
+#NEW CURVE PRESETS FUNCTIONS#
+#############################
+
 
 def vmfmakenum_setter(self, value):
     self.vmfmakenum = value
