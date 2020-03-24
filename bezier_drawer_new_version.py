@@ -539,7 +539,6 @@ class AppForm(QMainWindow):
         self.initUI()
         # in here we put all the buttons and other UI elements
 
-
     def initUI(self):
         #plot 2d graph
         self.plot = DraggablePlotExample(self, width=8, height=8)
@@ -552,7 +551,6 @@ class AppForm(QMainWindow):
         self.filename = ""
         self.control = False
         self.Ui_MainWindow()
-
 
     def Ui_MainWindow(self):
         _translate = QtCore.QCoreApplication.translate
@@ -676,132 +674,175 @@ class AppForm(QMainWindow):
                 self.removeCurveButton.setText(_translate("MainWindow", "remove curve"))
                 self.removeCurveButton.clicked.connect(lambda: UIfuncs.remove_curve(self, self.plot.pointdictdict))
                 self.invAllCurveButton.setText(_translate("MainWindow", "invert all curves"))
-                #self.invAllCurveButton.clicked.connect(lambda: UIfuncs.inv_curve(self, self.plot.pointdictdict))
 
             def newLineTab_init(self, xstart, ystart, length, height):
 
                 self.NewLineTab = QtWidgets.QTabWidget(self.tools_grp)
                 self.NewLineTab.setGeometry(QtCore.QRect(xstart, ystart, length, height))
                 self.NewLineTab.setObjectName("tabWidget_2")
-                self.tab_4 = QtWidgets.QWidget()
-                self.tab_4.setObjectName("tab_4")
-                self.frame_4 = QtWidgets.QFrame(self.tab_4)
-                self.frame_4.setGeometry(QtCore.QRect(10, 0, 171, 111))
-                self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame_4.setObjectName("frame_4")
-                self.formLayout_6 = QtWidgets.QFormLayout(self.frame_4)
-                self.formLayout_6.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
-                self.formLayout_6.setObjectName("formLayout_6")
-                self.label_10 = QtWidgets.QLabel(self.frame_4)
-                self.label_10.setObjectName("label_10")
-                self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_10)
-                self.lineEdit_10 = QtWidgets.QLineEdit(self.frame_4)
-                self.lineEdit_10.setObjectName("lineEdit_10")
-                self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_10)
-                self.label_11 = QtWidgets.QLabel(self.frame_4)
-                self.label_11.setObjectName("label_11")
-                self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_11)
-                self.lineEdit_11 = QtWidgets.QLineEdit(self.frame_4)
-                self.lineEdit_11.setObjectName("lineEdit_11")
-                self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_11)
-                self.label_12 = QtWidgets.QLabel(self.frame_4)
-                self.label_12.setObjectName("label_12")
-                self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_12)
-                self.lineEdit_12 = QtWidgets.QLineEdit(self.frame_4)
-                self.lineEdit_12.setObjectName("lineEdit_12")
-                self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_12)
-                self.pushButton_5 = QtWidgets.QPushButton(self.tab_4)
-                self.pushButton_5.setGeometry(QtCore.QRect(40, 120, 93, 28))
-                self.pushButton_5.setObjectName("pushButton_5")
-                self.NewLineTab.addTab(self.tab_4, "")
-                self.tab_5 = QtWidgets.QWidget()
-                self.tab_5.setObjectName("tab_5")
-                self.frame_5 = QtWidgets.QFrame(self.tab_5)
-                self.frame_5.setGeometry(QtCore.QRect(10, 0, 171, 111))
-                self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame_5.setObjectName("frame_5")
-                self.formLayout_7 = QtWidgets.QFormLayout(self.frame_5)
-                self.formLayout_7.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
-                self.formLayout_7.setObjectName("formLayout_7")
-                self.label_13 = QtWidgets.QLabel(self.frame_5)
-                self.label_13.setObjectName("label_13")
-                self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_13)
-                self.lineEdit_13 = QtWidgets.QLineEdit(self.frame_5)
-                self.lineEdit_13.setObjectName("lineEdit_13")
-                self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_13)
-                self.label_14 = QtWidgets.QLabel(self.frame_5)
-                self.label_14.setObjectName("label_14")
-                self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_14)
-                self.lineEdit_14 = QtWidgets.QLineEdit(self.frame_5)
-                self.lineEdit_14.setObjectName("lineEdit_14")
-                self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_14)
-                self.label_15 = QtWidgets.QLabel(self.frame_5)
-                self.label_15.setObjectName("label_15")
-                self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_15)
-                self.lineEdit_15 = QtWidgets.QLineEdit(self.frame_5)
-                self.lineEdit_15.setObjectName("lineEdit_15")
-                self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_15)
-                self.pushButton_11 = QtWidgets.QPushButton(self.tab_5)
-                self.pushButton_11.setGeometry(QtCore.QRect(40, 120, 93, 28))
-                self.pushButton_11.setObjectName("pushButton_11")
-                self.NewLineTab.addTab(self.tab_5, "")
-                self.tab_6 = QtWidgets.QWidget()
-                self.tab_6.setObjectName("tab_6")
-                self.frame_6 = QtWidgets.QFrame(self.tab_6)
-                self.frame_6.setGeometry(QtCore.QRect(10, 0, 171, 111))
-                self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame_6.setObjectName("frame_6")
-                self.formLayout_8 = QtWidgets.QFormLayout(self.frame_6)
-                self.formLayout_8.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
-                self.formLayout_8.setObjectName("formLayout_8")
-                self.label_16 = QtWidgets.QLabel(self.frame_6)
-                self.label_16.setObjectName("label_16")
-                self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_16)
-                self.lineEdit_16 = QtWidgets.QLineEdit(self.frame_6)
-                self.lineEdit_16.setObjectName("lineEdit_16")
-                self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_16)
-                self.label_17 = QtWidgets.QLabel(self.frame_6)
-                self.label_17.setObjectName("label_17")
-                self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_17)
-                self.lineEdit_17 = QtWidgets.QLineEdit(self.frame_6)
-                self.lineEdit_17.setObjectName("lineEdit_17")
-                self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_17)
-                self.label_18 = QtWidgets.QLabel(self.frame_6)
-                self.label_18.setObjectName("label_18")
-                self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_18)
-                self.lineEdit_18 = QtWidgets.QLineEdit(self.frame_6)
-                self.lineEdit_18.setObjectName("lineEdit_18")
-                self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_18)
-                self.pushButton_12 = QtWidgets.QPushButton(self.tab_6)
-                self.pushButton_12.setGeometry(QtCore.QRect(40, 120, 93, 28))
-                self.pushButton_12.setObjectName("pushButton_12")
-                self.NewLineTab.addTab(self.tab_6, "")
 
-                self.label_10.setText(_translate("MainWindow", "x-start:"))
-                self.label_11.setText(_translate("MainWindow", "x-end:"))
-                self.label_12.setText(_translate("MainWindow", "node amount:"))
-                self.pushButton_5.setText(_translate("MainWindow", "new curve"))
-                self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_4), _translate("MainWindow", "x-line"))
-                self.label_13.setText(_translate("MainWindow", "y-start:"))
-                self.label_14.setText(_translate("MainWindow", "y-end:"))
-                self.label_15.setText(_translate("MainWindow", "node amount:"))
-                self.pushButton_11.setText(_translate("MainWindow", "new curve"))
-                self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_5), _translate("MainWindow", "y-line"))
-                self.label_16.setText(_translate("MainWindow", "startlist:"))
-                self.label_17.setText(_translate("MainWindow", "endlist:"))
-                self.label_18.setText(_translate("MainWindow", "node amount:"))
-                self.pushButton_12.setText(_translate("MainWindow", "new curve"))
-                self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_6), _translate("MainWindow", "line"))
+                def xLineTab_init():
+                    self.tab_4 = QtWidgets.QWidget()
+                    self.tab_4.setObjectName("tab_4")
+
+                    self.frame_4 = QtWidgets.QFrame(self.tab_4)
+                    self.frame_4.setGeometry(QtCore.QRect(10, 0, 171, 111))
+                    self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame_4.setObjectName("frame_4")
+                    self.formLayout_6 = QtWidgets.QFormLayout(self.frame_4)
+                    self.formLayout_6.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+                    self.formLayout_6.setObjectName("formLayout_6")
+
+                    self.label_10 = QtWidgets.QLabel(self.frame_4)
+                    self.label_10.setObjectName("label_10")
+                    self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_10)
+
+                    self.xStart_le = QtWidgets.QLineEdit(self.frame_4)
+                    self.xStart_le.setObjectName("lineEdit_10")
+                    self.xStart_le.setText("0")
+                    self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.xStart_le)
+
+                    self.label_11 = QtWidgets.QLabel(self.frame_4)
+                    self.label_11.setObjectName("label_11")
+                    self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_11)
+
+                    self.xEnd_le = QtWidgets.QLineEdit(self.frame_4)
+                    self.xEnd_le.setObjectName("lineEdit_11")
+                    self.xEnd_le.setText("2000")
+                    self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.xEnd_le)
+
+                    self.label_12 = QtWidgets.QLabel(self.frame_4)
+                    self.label_12.setObjectName("label_12")
+                    self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_12)
+
+                    self.xNodeNum_le = QtWidgets.QLineEdit(self.frame_4)
+                    self.xNodeNum_le.setObjectName("lineEdit_12")
+                    self.xNodeNum_le.setText("6")
+                    self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.xNodeNum_le)
+
+                    self.xNewCurve_btn = QtWidgets.QPushButton(self.tab_4)
+                    self.xNewCurve_btn.setGeometry(QtCore.QRect(40, 120, 93, 28))
+                    self.xNewCurve_btn.setObjectName("pushButton_5")
+                    self.xNewCurve_btn.clicked.connect(lambda: UIfuncs.xLine_maker(self))
+
+                    self.NewLineTab.addTab(self.tab_4, "")
+
+                    self.label_10.setText(_translate("MainWindow", "x-start:"))
+                    self.label_11.setText(_translate("MainWindow", "x-end:"))
+                    self.label_12.setText(_translate("MainWindow", "node amount:"))
+                    self.xNewCurve_btn.setText(_translate("MainWindow", "new curve"))
+                    self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_4), _translate("MainWindow", "x-line"))
+
+                def yLineTab_init():
+                    self.tab_5 = QtWidgets.QWidget()
+                    self.tab_5.setObjectName("tab_5")
+
+                    self.frame_5 = QtWidgets.QFrame(self.tab_5)
+                    self.frame_5.setGeometry(QtCore.QRect(10, 0, 171, 111))
+                    self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame_5.setObjectName("frame_5")
+
+                    self.formLayout_7 = QtWidgets.QFormLayout(self.frame_5)
+                    self.formLayout_7.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+                    self.formLayout_7.setObjectName("formLayout_7")
+
+                    self.label_13 = QtWidgets.QLabel(self.frame_5)
+                    self.label_13.setObjectName("label_13")
+                    self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_13)
+
+                    self.lineEdit_13 = QtWidgets.QLineEdit(self.frame_5)
+                    self.lineEdit_13.setObjectName("lineEdit_13")
+                    self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_13)
+
+                    self.label_14 = QtWidgets.QLabel(self.frame_5)
+                    self.label_14.setObjectName("label_14")
+                    self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_14)
+
+                    self.lineEdit_14 = QtWidgets.QLineEdit(self.frame_5)
+                    self.lineEdit_14.setObjectName("lineEdit_14")
+                    self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_14)
+
+                    self.label_15 = QtWidgets.QLabel(self.frame_5)
+                    self.label_15.setObjectName("label_15")
+                    self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_15)
+
+                    self.lineEdit_15 = QtWidgets.QLineEdit(self.frame_5)
+                    self.lineEdit_15.setObjectName("lineEdit_15")
+                    self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_15)
+
+                    self.pushButton_11 = QtWidgets.QPushButton(self.tab_5)
+                    self.pushButton_11.setGeometry(QtCore.QRect(40, 120, 93, 28))
+                    self.pushButton_11.setObjectName("pushButton_11")
+
+                    self.NewLineTab.addTab(self.tab_5, "")
+
+                    self.label_13.setText(_translate("MainWindow", "y-start:"))
+                    self.label_14.setText(_translate("MainWindow", "y-end:"))
+                    self.label_15.setText(_translate("MainWindow", "node amount:"))
+                    self.pushButton_11.setText(_translate("MainWindow", "new curve"))
+                    self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_5), _translate("MainWindow", "y-line"))
+
+                def lineTab_init():
+                    self.tab_6 = QtWidgets.QWidget()
+                    self.tab_6.setObjectName("tab_6")
+
+                    self.frame_6 = QtWidgets.QFrame(self.tab_6)
+                    self.frame_6.setGeometry(QtCore.QRect(10, 0, 171, 111))
+                    self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame_6.setObjectName("frame_6")
+
+                    self.formLayout_8 = QtWidgets.QFormLayout(self.frame_6)
+                    self.formLayout_8.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+                    self.formLayout_8.setObjectName("formLayout_8")
+
+                    self.label_16 = QtWidgets.QLabel(self.frame_6)
+                    self.label_16.setObjectName("label_16")
+                    self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_16)
+
+                    self.lineEdit_16 = QtWidgets.QLineEdit(self.frame_6)
+                    self.lineEdit_16.setObjectName("lineEdit_16")
+                    self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_16)
+
+                    self.label_17 = QtWidgets.QLabel(self.frame_6)
+                    self.label_17.setObjectName("label_17")
+                    self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_17)
+
+                    self.lineEdit_17 = QtWidgets.QLineEdit(self.frame_6)
+                    self.lineEdit_17.setObjectName("lineEdit_17")
+                    self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_17)
+
+                    self.label_18 = QtWidgets.QLabel(self.frame_6)
+                    self.label_18.setObjectName("label_18")
+                    self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_18)
+
+                    self.lineEdit_18 = QtWidgets.QLineEdit(self.frame_6)
+                    self.lineEdit_18.setObjectName("lineEdit_18")
+                    self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_18)
+
+                    self.pushButton_12 = QtWidgets.QPushButton(self.tab_6)
+                    self.pushButton_12.setGeometry(QtCore.QRect(40, 120, 93, 28))
+                    self.pushButton_12.setObjectName("pushButton_12")
+
+                    self.NewLineTab.addTab(self.tab_6, "")
+
+                    self.label_16.setText(_translate("MainWindow", "startlist:"))
+                    self.label_17.setText(_translate("MainWindow", "endlist:"))
+                    self.label_18.setText(_translate("MainWindow", "node amount:"))
+                    self.pushButton_12.setText(_translate("MainWindow", "new curve"))
+                    self.NewLineTab.setTabText(self.NewLineTab.indexOf(self.tab_6), _translate("MainWindow", "line"))
+
+                xLineTab_init()
+                yLineTab_init()
+                lineTab_init()
+
 
             cpt_grp_init(self,20, 20, 151, 151)
             sct_grp_init(self, 200, 20, 151, 151)
             axes_grp_init(self, 20, 190, 151, 161)
             newLineTab_init(self,200, 190, 181, 191)
-
-        tools_grp_init(self, 800, 30, 391, 401)
 
         def compset_grp_init(self, xstart, ystart, length, height):
             self.compset_grp = QtWidgets.QGroupBox(self)
@@ -968,23 +1009,6 @@ class AppForm(QMainWindow):
             comptab_init(self, 190, 20, 181, 161)
             general_grp_init(self, 20, 20, 151, 171)
 
-        compset_grp_init(self, 800, 450, 381, 221)
-
-
-        # def unused_init(self):
-        #
-        #     # make vmf button
-        #     self.pushButton_4 = QtWidgets.QPushButton(self.tools_grp)
-        #     self.pushButton_4.setGeometry(QtCore.QRect(50, 630, 91, 28))
-        #     self.pushButton_4.setObjectName("pushButton_4")
-        #     self.pushButton_4.clicked.connect(self.vmf_maker)
-        #
-        #     # background opening button
-        #     self.opening_btn = QtWidgets.QPushButton(self.tools_grp)
-        #     self.opening_btn.setGeometry(QtCore.QRect(40, 590, 111, 28))
-        #     self.opening_btn.setObjectName("pushButton_5")
-        #     self.opening_btn.clicked.connect(lambda: UIfuncs.bg_setter(self))
-
         def menu_init(self):
 
             self.menubar = QtWidgets.QMenuBar(self)
@@ -1029,6 +1053,8 @@ class AppForm(QMainWindow):
             self.actionSave.setText(_translate("MainWindow", "Save"))
             self.actionSaveAs.setText(_translate("MainWindow", "Save As"))
 
+        tools_grp_init(self, 800, 30, 391, 401)
+        compset_grp_init(self, 800, 450, 381, 221)
         menu_init(self)
 
     def vmf_maker(self):

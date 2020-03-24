@@ -108,7 +108,24 @@ def axes_getter(self):
 #############################
 #NEW CURVE PRESETS FUNCTIONS#
 #############################
+def xLine_maker(self):
+    num = int(self.xNodeNum_le.text())
+    xStart, xEnd = int(self.xStart_le.text()), int(self.xEnd_le.text())
+    xDiff = xEnd-xStart
+    nodelist = []
+    ratio = (num-1)*3
+    for i in range(ratio+1):
+        nodelist.append([int(round(i*xDiff/ratio)),0])
 
+    pointdict = []
+    pointdict.append({"node": nodelist[0], "handles": [nodelist[1]]})
+    for i in range(2,len(nodelist)-2, 3):
+        pointdict.append({"node": nodelist[i+1],"handles":[nodelist[i], nodelist[i+2]]})
+    pointdict.append({"node": nodelist[len(nodelist)-1], "handles": [nodelist[len(nodelist)-2]]})
+
+    self.plot.pointdict = pointdict
+    self.plot.update()
+    self.plot._update_plot()
 
 def vmfmakenum_setter(self, value):
     self.vmfmakenum = value
