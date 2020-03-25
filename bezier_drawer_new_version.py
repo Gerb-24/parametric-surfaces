@@ -13,6 +13,7 @@ import numpy as np
 
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (AutoMinorLocator, MultipleLocator)
 from matplotlib.backend_bases import MouseEvent
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
@@ -132,6 +133,24 @@ class DraggablePlotExample(PlotCanvas):
         # updating the plot
         self._axes.set_xlim(int(self.axesdict["xmin"]), int(self.axesdict["xmin"])+int(self.axesdict["diff"]))
         self._axes.set_ylim(int(self.axesdict["ymin"]), int(self.axesdict["ymin"])+int(self.axesdict["diff"]))
+
+        def nearestPower(num, power, prevdist):
+            newdist = abs(num-(2**power))
+            if prevdist < newdist and power != 0:
+                return 2**(power-1)
+            else:
+                newPrevdist = newdist
+                return nearestPower(num, power+1, newPrevdist)
+        newDiff = int(self.axesdict["diff"])
+        newMajor = int(nearestPower(newDiff, 0, newDiff)/4)
+        # Change major ticks to show every 20.
+        self._axes.xaxis.set_major_locator(MultipleLocator(newMajor))
+        self._axes.yaxis.set_major_locator(MultipleLocator(newMajor))
+
+        # Change minor ticks to show every 5. (20/4 = 5)
+        self._axes.xaxis.set_minor_locator(AutoMinorLocator(4))
+        self._axes.yaxis.set_minor_locator(AutoMinorLocator(4))
+
         t = np.linspace(0, 1, 200)
         self.x = bez.general_bezier_curve_range_x(t, self.pointlist)
         self.y = bez.general_bezier_curve_range_y(t, self.pointlist)
