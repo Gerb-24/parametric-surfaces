@@ -546,11 +546,12 @@ class AppForm(QMainWindow):
         #plot 3d graph
         #self.plot2 = Surface3D(self, width=5, height=4)
         #self.plot2.move(600,0)
-        self.vmfdict = {"height": 16*256, "radius": 256, "xamount":16, "yamount": 16, "displength": 256, "dispwidth": 256}
+        self.vmfdict = {"height": 16*256, "radius": 256, "xamount":4, "yamount": 4, "displength": 256, "dispwidth": 256}
         self.vmfmakenum = 0
         self.filename = ""
         self.control = False
         self.Ui_MainWindow()
+
 
     def Ui_MainWindow(self):
         _translate = QtCore.QCoreApplication.translate
@@ -858,91 +859,130 @@ class AppForm(QMainWindow):
             def comptab_init(self, xstart, ystart, length, height):
                 self.comp_tab = QtWidgets.QTabWidget(self.compset_grp)
                 self.comp_tab.setGeometry(QtCore.QRect(xstart, ystart, length, height))
-                self.comp_tab.setObjectName("tabWidget")
-                self.tab = QtWidgets.QWidget()
-                self.tab.setObjectName("tab")
-                self.pushButton_4 = QtWidgets.QPushButton(self.tab)
-                self.pushButton_4.setGeometry(QtCore.QRect(40, 90, 91, 28))
-                self.pushButton_4.setObjectName("pushButton_4")
-                self.frame_3 = QtWidgets.QFrame(self.tab)
-                self.frame_3.setGeometry(QtCore.QRect(20, 10, 141, 71))
-                self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame_3.setObjectName("frame_3")
-                self.formLayout_5 = QtWidgets.QFormLayout(self.frame_3)
-                self.formLayout_5.setObjectName("formLayout_5")
-                self.radioButton_10 = QtWidgets.QRadioButton(self.frame_3)
-                self.radioButton_10.setObjectName("radioButton_10")
-                self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.radioButton_10)
-                self.radioButton_11 = QtWidgets.QRadioButton(self.frame_3)
-                self.radioButton_11.setObjectName("radioButton_11")
-                self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.radioButton_11)
-                self.comp_tab.addTab(self.tab, "")
-                self.tab_2 = QtWidgets.QWidget()
-                self.tab_2.setObjectName("tab_2")
-                self.pushButton_9 = QtWidgets.QPushButton(self.tab_2)
-                self.pushButton_9.setGeometry(QtCore.QRect(40, 90, 91, 28))
-                self.pushButton_9.setObjectName("pushButton_9")
-                self.frame = QtWidgets.QFrame(self.tab_2)
-                self.frame.setGeometry(QtCore.QRect(19, 10, 141, 71))
-                self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame.setObjectName("frame")
-                self.formLayout_3 = QtWidgets.QFormLayout(self.frame)
-                self.formLayout_3.setObjectName("formLayout_3")
-                self.label_4 = QtWidgets.QLabel(self.frame)
-                self.label_4.setObjectName("label_4")
-                self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
-                self.lineEdit_4 = QtWidgets.QLineEdit(self.frame)
-                self.lineEdit_4.setObjectName("lineEdit_4")
-                self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
-                self.radioButton_5 = QtWidgets.QRadioButton(self.frame)
-                self.radioButton_5.setObjectName("radioButton_5")
-                self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.radioButton_5)
-                self.radioButton_6 = QtWidgets.QRadioButton(self.frame)
-                self.radioButton_6.setObjectName("radioButton_6")
-                self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.radioButton_6)
-                self.comp_tab.addTab(self.tab_2, "")
-                self.tab_3 = QtWidgets.QWidget()
-                self.tab_3.setObjectName("tab_3")
-                self.pushButton_10 = QtWidgets.QPushButton(self.tab_3)
-                self.pushButton_10.setGeometry(QtCore.QRect(40, 90, 91, 28))
-                self.pushButton_10.setObjectName("pushButton_10")
-                self.frame_2 = QtWidgets.QFrame(self.tab_3)
-                self.frame_2.setGeometry(QtCore.QRect(20, 10, 141, 71))
-                self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-                self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-                self.frame_2.setObjectName("frame_2")
-                self.formLayout_4 = QtWidgets.QFormLayout(self.frame_2)
-                self.formLayout_4.setObjectName("formLayout_4")
-                self.label_9 = QtWidgets.QLabel(self.frame_2)
-                self.label_9.setObjectName("label_9")
-                self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_9)
-                self.lineEdit_9 = QtWidgets.QLineEdit(self.frame_2)
-                self.lineEdit_9.setObjectName("lineEdit_9")
-                self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_9)
-                self.radioButton_7 = QtWidgets.QRadioButton(self.frame_2)
-                self.radioButton_7.setObjectName("radioButton_7")
-                self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.radioButton_7)
-                self.radioButton_8 = QtWidgets.QRadioButton(self.frame_2)
-                self.radioButton_8.setObjectName("radioButton_8")
-                self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.radioButton_8)
-                self.comp_tab.addTab(self.tab_3, "")
 
-                self.pushButton_4.setText(_translate("MainWindow", "make vmf"))
-                self.radioButton_10.setText(_translate("MainWindow", "left"))
-                self.radioButton_11.setText(_translate("MainWindow", "right"))
-                self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab), _translate("MainWindow", "along"))
-                self.pushButton_9.setText(_translate("MainWindow", "make vmf"))
-                self.label_4.setText(_translate("MainWindow", "height:"))
-                self.radioButton_5.setText(_translate("MainWindow", "left"))
-                self.radioButton_6.setText(_translate("MainWindow", "right"))
-                self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab_2), _translate("MainWindow", "height"))
-                self.pushButton_10.setText(_translate("MainWindow", "make vmf"))
-                self.label_9.setText(_translate("MainWindow", "radius"))
-                self.radioButton_7.setText(_translate("MainWindow", "inner"))
-                self.radioButton_8.setText(_translate("MainWindow", "outer"))
-                self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab_3), _translate("MainWindow", "tube"))
+                def alongTab():
+                    self.comp_tab.setObjectName("tabWidget")
+                    self.tab = QtWidgets.QWidget()
+                    self.tab.setObjectName("tab")
+
+                    self.alongVmf_btn = QtWidgets.QPushButton(self.tab)
+                    self.alongVmf_btn.setGeometry(QtCore.QRect(40, 90, 91, 28))
+                    self.alongVmf_btn.setObjectName("pushButton_4")
+                    self.alongVmf_btn.clicked.connect(lambda: self.vmf_maker("along"))
+
+                    self.frame_3 = QtWidgets.QFrame(self.tab)
+                    self.frame_3.setGeometry(QtCore.QRect(20, 10, 141, 71))
+                    self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame_3.setObjectName("frame_3")
+
+                    self.formLayout_5 = QtWidgets.QFormLayout(self.frame_3)
+                    self.formLayout_5.setObjectName("formLayout_5")
+
+                    self.radioButton_10 = QtWidgets.QRadioButton(self.frame_3)
+                    self.radioButton_10.setObjectName("radioButton_10")
+                    self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.radioButton_10)
+
+                    self.radioButton_11 = QtWidgets.QRadioButton(self.frame_3)
+                    self.radioButton_11.setObjectName("radioButton_11")
+                    self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.radioButton_11)
+
+                    self.comp_tab.addTab(self.tab, "")
+
+                    self.alongVmf_btn.setText(_translate("MainWindow", "make vmf"))
+                    self.radioButton_10.setText(_translate("MainWindow", "left"))
+                    self.radioButton_11.setText(_translate("MainWindow", "right"))
+                    self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab), _translate("MainWindow", "along"))
+
+                def heightTab():
+                    self.tab_2 = QtWidgets.QWidget()
+                    self.tab_2.setObjectName("tab_2")
+
+                    self.heightVmf_btn = QtWidgets.QPushButton(self.tab_2)
+                    self.heightVmf_btn.setGeometry(QtCore.QRect(40, 90, 91, 28))
+                    self.heightVmf_btn.setObjectName("pushButton_9")
+                    self.heightVmf_btn.clicked.connect(lambda: self.vmf_maker("height"))
+
+                    self.frame = QtWidgets.QFrame(self.tab_2)
+                    self.frame.setGeometry(QtCore.QRect(19, 10, 141, 71))
+                    self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame.setObjectName("frame")
+
+                    self.formLayout_3 = QtWidgets.QFormLayout(self.frame)
+                    self.formLayout_3.setObjectName("formLayout_3")
+
+                    self.label_4 = QtWidgets.QLabel(self.frame)
+                    self.label_4.setObjectName("label_4")
+                    self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
+
+                    self.height_le = QtWidgets.QLineEdit(self.frame)
+                    self.height_le.setObjectName("lineEdit_4")
+                    self.height_le.setText("2000")
+                    self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.height_le)
+
+                    self.radioButton_5 = QtWidgets.QRadioButton(self.frame)
+                    self.radioButton_5.setObjectName("radioButton_5")
+                    self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.radioButton_5)
+
+                    self.radioButton_6 = QtWidgets.QRadioButton(self.frame)
+                    self.radioButton_6.setObjectName("radioButton_6")
+                    self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.radioButton_6)
+
+                    self.comp_tab.addTab(self.tab_2, "")
+
+                    self.heightVmf_btn.setText(_translate("MainWindow", "make vmf"))
+                    self.label_4.setText(_translate("MainWindow", "height:"))
+                    self.radioButton_5.setText(_translate("MainWindow", "left"))
+                    self.radioButton_6.setText(_translate("MainWindow", "right"))
+                    self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab_2), _translate("MainWindow", "height"))
+
+                def tubeTab():
+                    self.tab_3 = QtWidgets.QWidget()
+                    self.tab_3.setObjectName("tab_3")
+
+                    self.tubeVmf_btn = QtWidgets.QPushButton(self.tab_3)
+                    self.tubeVmf_btn.setGeometry(QtCore.QRect(40, 90, 91, 28))
+                    self.tubeVmf_btn.setObjectName("pushButton_10")
+                    self.tubeVmf_btn.setText(_translate("MainWindow", "make vmf"))
+                    self.tubeVmf_btn.clicked.connect(lambda: self.vmf_maker("tube"))
+
+
+                    self.frame_2 = QtWidgets.QFrame(self.tab_3)
+                    self.frame_2.setGeometry(QtCore.QRect(20, 10, 141, 71))
+                    self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+                    self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+                    self.frame_2.setObjectName("frame_2")
+
+                    self.formLayout_4 = QtWidgets.QFormLayout(self.frame_2)
+                    self.formLayout_4.setObjectName("formLayout_4")
+
+                    self.label_9 = QtWidgets.QLabel(self.frame_2)
+                    self.label_9.setObjectName("label_9")
+                    self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_9)
+
+                    self.tubeRadius_le = QtWidgets.QLineEdit(self.frame_2)
+                    self.tubeRadius_le.setObjectName("lineEdit_9")
+                    self.tubeRadius_le.setText("256")
+                    self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tubeRadius_le)
+
+                    self.tubeInner_rb = QtWidgets.QRadioButton(self.frame_2)
+                    self.tubeInner_rb.setObjectName("radioButton_7")
+                    self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.tubeInner_rb)
+                    self.tubeInner_rb.setText(_translate("MainWindow", "inner"))
+
+                    self.tubeOuter_rb = QtWidgets.QRadioButton(self.frame_2)
+                    self.tubeOuter_rb.setObjectName("radioButton_8")
+                    self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.tubeOuter_rb)
+                    self.tubeOuter_rb.setText(_translate("MainWindow", "outer"))
+
+                    self.comp_tab.addTab(self.tab_3, "")
+                    self.label_9.setText(_translate("MainWindow", "radius"))
+                    self.comp_tab.setTabText(self.comp_tab.indexOf(self.tab_3), _translate("MainWindow", "tube"))
+
+                alongTab()
+                heightTab()
+                tubeTab()
 
             def general_grp_init(self, xstart, ystart, length, height):
                 self.general_grp = QtWidgets.QGroupBox(self.compset_grp)
@@ -1061,19 +1101,19 @@ class AppForm(QMainWindow):
         compset_grp_init(self, 800, 450, 381, 221)
         menu_init(self)
 
-    def vmf_maker(self):
+    def vmf_maker(self, mode):
         try:
             self.plot.pdd_updater()
-            self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
+            self.vmfdict = {"height": self.height_le.text(), "radius": self.tubeRadius_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
             # bez.interpmaker(self.plot.bg_pointlist, self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             #cm_list = [bez.curvemaker, bez.curvemaker2]
             #cm_list[self.vmfmakenum](self.plot.pointlist, height, xamount, yamount, displength, dispwidth)
             print("making the vmf")
-            along.vmf_creater(self.plot.pointdictdict, self.vmfdict, "along")
+            along.vmf_creater(self.plot.pointdictdict, self.vmfdict, mode)
             print("vmf is made!")
             #sys.exit()
         except ValueError:
-            print("thats not a numbo dumbo")
+            print("thats not a numbo hahaha")
 
     def keyPressEvent(self, e):
         # =============================================================================
