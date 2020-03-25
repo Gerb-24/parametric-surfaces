@@ -99,7 +99,7 @@ class DraggablePlotExample(PlotCanvas):
         self._axes = self._figure.add_subplot(111)
         self._axes.set_xlim(int(self.axesdict["xmin"]), int(self.axesdict["xmin"])+int(self.axesdict["diff"]))
         self._axes.set_ylim(int(self.axesdict["ymin"]), int(self.axesdict["ymin"])+int(self.axesdict["diff"]))
-        self._axes.grid(which="both")
+        self._axes.grid(which="both", linestyle="--")
 
         self._figure.canvas.mpl_connect('button_press_event', self._on_click)
         self._figure.canvas.mpl_connect('button_release_event', self._on_release)

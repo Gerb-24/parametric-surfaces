@@ -11,7 +11,7 @@ def save(self):
     if filepath == "":
         return
     self.filename = filepath
-    self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
+    self.vmfdict = {"height": self.height_le.text(), "radius": self.tubeRadius_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
     self.plot.axesdict = {"diff": self.diff_le.text(), "xmin": self.xmin_le.text(), "ymin": self.ymin_le.text()}
     with open(filepath, "w") as text:
         text.writelines([str(self.plot.pointdictdict)+"\n", str(self.vmfdict)+"\n", str(self.plot.axesdict)+"\n"])
@@ -26,7 +26,7 @@ def q_save(self):
     if self.filename == "":
         save(self)
         return
-    self.vmfdict = {"height": self.height_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
+    self.vmfdict = {"height": self.height_le.text(), "radius":self.tubeRadius_le.text(), "xamount": self.xamount_le.text(), "yamount": self.yamount_le.text(), "displength": self.displength_le.text(), "dispwidth": self.dispwidth_le.text()}
     self.plot.axesdict = {"diff": self.diff_le.text(), "xmin": self.xmin_le.text(), "ymin": self.ymin_le.text()}
     with open(self.filename, "w") as text:
         text.writelines([str(self.plot.pointdictdict)+"\n", str(self.vmfdict)+"\n", str(self.plot.axesdict)+"\n"])
@@ -44,7 +44,7 @@ def load(self):
         self.plot.axesdict = ast.literal_eval(text.readline())
 
         # updating the values in the toolbar
-        newvmfdict = {self.height_le: "height", self.xamount_le: "xamount", self.yamount_le: "yamount", self.displength_le: "displength", self.dispwidth_le: "dispwidth"}
+        newvmfdict = {self.height_le: "height", self.tubeRadius_le: "radius", self.xamount_le: "xamount", self.yamount_le: "yamount", self.displength_le: "displength", self.dispwidth_le: "dispwidth"}
         newaxesdict = {self.diff_le: "diff", self.xmin_le: "xmin", self.ymin_le: "ymin"}
         for le, le_text in newvmfdict.items():
             le.setText(self.vmfdict[le_text])
