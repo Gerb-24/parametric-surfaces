@@ -35,12 +35,35 @@ filepath = r"C:\Users\Acer\Documents\GitHub\parametric-surfaces\saved files\new_
 #     pointdictdict = ast.literal_eval(text.readline())
 #     vmfdict = ast.literal_eval(text.readline())
 
+def evaluate(string):
+    list = []
+    newString = ""
+    for char in string:
+        if char == "*" or char == "^":
+            list.append(newString)
+            list.append(char)
+            newString = ""
+        else:
+            newString += char
+    list.append(newString)
+
+    def calc(list):
+        if len(list) == 1:
+            return int(list[0])
+        elif len(list) == 3:
+            if list[1] == "*":
+                return int(list[0])*int(list[2])
+            elif list[1] == "^":
+                return int(list[0])**int(list[2])
+
+    return(calc(list))
+
 def vmf_creater(pdd, vmfdict, mode):
     int_vmfdict = {}
     for key,value in vmfdict.items():
         # literal_value = ast.literal_eval(value)
         # print(literal_value)
-        int_vmfdict[key] = int(value)
+        int_vmfdict[key] = evaluate(value)
     pll = []
     pll.append(pointlist_maker(pdd["longcurve"]))
     scl = []
